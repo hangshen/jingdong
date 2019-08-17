@@ -100,7 +100,7 @@
                     <span class="sp4">{{add.receiverName}}</span>
                     <span class="sp4">{{add.province}} {{add.city}} {{add.area}} {{add.detailAdd}}</span>
                     <span class="sp4">{{add.receiverPhone}}</span>
-                    <span id="sp5">默认地址</span>
+                    <span id="sp5" v-if="add.addressType === 1">默认地址</span>
                 </div>
             </div>
         </div>
@@ -642,7 +642,7 @@
                     dataType: "json",
                     contentType: 'application/json;charset=UTF-8',
                     success:function (data) {
-                        alert(data);
+                        alert("添加成功！");
                     }
                 })
             }
