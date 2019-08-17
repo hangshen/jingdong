@@ -8,9 +8,13 @@ public class Orders {
 
     private String orderState;
 
-    private Integer orExpressType;
+    private String orExpressType;
+
+    private int orExpressTypeId;
 
     private String payType;
+
+    private int payTypeId;
 
     private Double total;
 
@@ -46,11 +50,11 @@ public class Orders {
         this.payType = payType;
     }
 
-    public Integer getOrExpressType() {
+    public String getOrExpressType() {
         return orExpressType;
     }
 
-    public void setOrExpressType(Integer orExpressType) {
+    public void setOrExpressType(String orExpressType) {
         this.orExpressType = orExpressType;
     }
 
@@ -112,5 +116,21 @@ public class Orders {
 
     public void setOrderDetailSet(Set<OrderDetail> orderDetailSet) {
         this.orderDetailSet = orderDetailSet;
+    }
+
+    public int getOrExpressTypeId() {
+        return orExpressTypeId;
+    }
+
+    public void setOrExpressTypeId(int orExpressTypeId) {
+        this.orExpressTypeId = orExpressTypeId;
+    }
+
+    public int getPayTypeId() {
+        return payTypeId;
+    }
+
+    public void setPayTypeId(int payTypeId) {
+        this.payTypeId = payTypeId;
     }
 }

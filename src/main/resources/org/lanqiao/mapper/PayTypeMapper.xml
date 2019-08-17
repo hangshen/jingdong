@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.PayTypeMapper" >
+  <resultMap id="PayTypeResultMap" type="org.lanqiao.entity.PayType" >
+    <id column="pay_type_id" property="payTypeId" jdbcType="INTEGER" />
+    <result column="pay_type_name" property="payTypeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pay_type_id, pay_type_name
+  </sql>
+  <select id="selectByPrimaryKey" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select pay_type_id from paytype where pay_type_name = #{payTypeName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from paytype
+    where pay_type_id = #{payTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.PayType" >
+    insert into paytype (pay_type_id, pay_type_name)
+    values (#{payTypeId,jdbcType=INTEGER}, #{payTypeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.PayType" >
+    insert into paytype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="payTypeId != null" >
+        pay_type_id,
+      </if>
+      <if test="payTypeName != null" >
+        pay_type_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="payTypeId != null" >
+        #{payTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="payTypeName != null" >
+        #{payTypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.PayType" >
+    update paytype
+    <set >
+      <if test="payTypeName != null" >
+        pay_type_name = #{payTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pay_type_id = #{payTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.PayType" >
+    update paytype
+    set pay_type_name = #{payTypeName,jdbcType=VARCHAR}
+    where pay_type_id = #{payTypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

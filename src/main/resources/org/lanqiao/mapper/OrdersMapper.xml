@@ -4,7 +4,7 @@
   <resultMap id="OrdersResultMap" type="org.lanqiao.entity.Orders" >
     <id column="order_id" property="orderId" jdbcType="INTEGER" />
     <result column="state_name" property="orderState" jdbcType="VARCHAR" />
-    <result column="or_express_type" property="orExpressType" jdbcType="INTEGER" />
+    <result column="or_express_type" property="orExpressType" jdbcType="VARCHAR" />
     <result column="pay_type_name" property="payType" jdbcType="VARCHAR" />
     <result column="total" property="total" jdbcType="DOUBLE" />
     <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
@@ -52,13 +52,17 @@
     select max(order_id) from orders;
   </select>
   <select id="getUserOrders" resultMap="OrdersResultMap">
-    select * from orders o,orderdetail od,state s, address a,product p ,paytype pt where o.pay_type=pt.pay_type_id and p.pro_id=od.de_pro_id and a.address_id=o.or_add_id and o.or_user_id=#{userId} and o.order_state =s.state_id and s.state_name=#{orderState} and od.de_order_id=o.order_id;
+    select * from orders o,orderdetail od,state s, address a,product p ,paytype pt,express e
+    where o.pay_type=pt.pay_type_id and p.pro_id=od.de_pro_id and a.address_id=o.or_add_id and o.or_user_id=#{userId}
+    and o.order_state =s.state_id and s.state_name=#{orderState} and od.de_order_id=o.order_id and o.or_express_type = e.express_id;
   </select>
   <select id="getAllOrders" resultMap="OrdersResultMap" parameterType="java.lang.Integer">
-    select * from orders o,orderdetail od,state s,address a,product p ,paytype pt where o.pay_type=pt.pay_type_id and p.pro_id=od.de_pro_id and a.address_id=o.or_add_id and o.or_user_id=#{userId} and od.de_order_id=o.order_id and o.order_state =s.state_id;
+    select * from orders o,orderdetail od,state s,address a,product p ,paytype pt, express
+    where o.pay_type=pt.pay_type_id and p.pro_id=od.de_pro_id and a.address_id=o.or_add_id
+    and o.or_user_id=#{userId} and od.de_order_id=o.order_id and o.order_state =s.state_id and or_express_type = e.express_id;
   </select>
   <insert id="insert" parameterType="org.lanqiao.entity.Orders" >
-    insert into orders (or_express_type, pay_type, total, or_add_id, or_user_id ) values (#{orExpressType,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, #{total,jdbcType=DOUBLE}, #{orAddId,jdbcType=INTEGER}, #{orUserId,jdbcType=INTEGER})
+    insert into orders (or_express_type, pay_type, total, or_add_id, or_user_id ) values (#{orExpressTypeId,jdbcType=INTEGER}, #{payTypeId,jdbcType=INTEGER}, #{total,jdbcType=DOUBLE}, #{orAddId,jdbcType=INTEGER}, #{orUserId,jdbcType=INTEGER})
   </insert>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from orders

@@ -13,7 +13,7 @@ public interface ExpressMapper {
 
     int insertSelective(Express record);
 
-    List<String> selectByPrimaryKey();
+    int selectByPrimaryKey(String expressName);
 
     int updateByPrimaryKeySelective(Express record);
 

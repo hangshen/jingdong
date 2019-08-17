@@ -2,8 +2,10 @@ package org.lanqiao.service;
 
 import org.lanqiao.entity.OrderDetail;
 import org.lanqiao.entity.Orders;
+import org.lanqiao.mapper.ExpressMapper;
 import org.lanqiao.mapper.OrderDetailMapper;
 import org.lanqiao.mapper.OrdersMapper;
+import org.lanqiao.mapper.PayTypeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +18,15 @@ public class OrdersServiceImpl implements OrdersService {
     OrdersMapper ordersMapper;
     @Autowired
     OrderDetailMapper orderDetailMapper;
+    @Autowired
+    ExpressMapper expressMapper;
+    @Autowired
+    PayTypeMapper payTypeMapper;
 
     @Override
     public int CreateOrders(Orders orders) {
+        orders.setOrExpressTypeId(expressMapper.selectByPrimaryKey(orders.getOrExpressType()));
+        orders.setPayTypeId(payTypeMapper.selectByPrimaryKey(orders.getPayType()));
         ordersMapper.insert(orders);
         return ordersMapper.selectByPrimaryKey();
     }

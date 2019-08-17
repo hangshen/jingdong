@@ -10,7 +10,7 @@ import java.util.Set;
 public interface OrdersMapper {
     int deleteByPrimaryKey(Integer orderId);
 
-    int insert(Orders record);
+    int insert(Orders orders);
 
     int insertSelective(Orders orders);
 

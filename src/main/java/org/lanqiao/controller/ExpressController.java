@@ -12,6 +12,6 @@ public class ExpressController {
     @Autowired
     ExpressService expressService;
 
-    @RequestMapping("/Express/getExpress")
-    public List<String> getExpress() {return expressService.getExpress();}
+//    @RequestMapping("/Express/getExpress")
+//    public List<String> getExpress() {return expressService.getExpress();}
 }

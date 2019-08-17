@@ -8,8 +8,8 @@
   <sql id="Base_Column_List" >
     express_id, express_name
   </sql>
-  <select id="selectByPrimaryKey" resultType="java.lang.String">
-    select express_name from express;
+  <select id="selectByPrimaryKey" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select express_id from express where express_name = #{expressName,jdbcType=VARCHAR};
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from express

@@ -6,5 +6,5 @@ import java.util.List;
 
 @Repository
 public interface ExpressService {
-    public List<String> getExpress();
+//    public List<String> getExpress();
 }

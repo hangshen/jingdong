@@ -12,6 +12,6 @@ public class ExpressServiceImpl implements ExpressService{
     @Autowired
     ExpressMapper expressMapper;
 
-    @Override
-    public List<String> getExpress(){return expressMapper.selectByPrimaryKey();}
+//    @Override
+//    public List<String> getExpress(){return expressMapper.selectByPrimaryKey();}
 }

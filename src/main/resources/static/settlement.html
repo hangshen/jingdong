@@ -445,7 +445,7 @@
                 this.orAddId = orAddId;
                 this.orUserId = orUserId;
             }
-            var orders = new order(1, 1, temp_total, 1, 1);
+            var orders = new order("顺丰快递", "在线支付", temp_total, 1, 1);
             $.ajax({
                 url: "http://localhost:8080/Orders/CreateOrders",
                 type: "post",
