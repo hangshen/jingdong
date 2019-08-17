@@ -45,7 +45,6 @@ public class OrdersServiceImpl implements OrdersService {
 
         if(orderState.equals("待付款") || orderState.equals("待收货")){
             String str = "等" +orderState;
-            System.out.println(userId+"  "+str);
             return ordersMapper.getUserOrders(userId,str);
         }else {
             return ordersMapper.getUserOrders(userId,orderState);
