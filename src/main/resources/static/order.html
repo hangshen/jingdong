@@ -787,7 +787,6 @@
                     },
                     methods:{
                         deleteOrder:function (i) {
-                            alert($(".order_tb .tb").eq(i).find("span[class='goods_number'] a").text());
                             $.ajax({
                                 url:"http://localhost:8080/delete/user/order",
                                 type:"post",
