@@ -45,7 +45,6 @@ public class OrdersController {
 
     @RequestMapping("update/order")
     public int updateOrder(Orders orders){
-        System.out.println("ooookkkk"+orders.getOrderState());
         if(orders.getOrderState().equals("等待付款")){
             orders.setOrderState("已取消");
         } else if ( orders.getOrderState().equals("等待收货")){
