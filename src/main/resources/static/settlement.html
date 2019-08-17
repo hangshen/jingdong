@@ -346,7 +346,7 @@
     <div class="row1">
         新增收货人信息<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
     </div>
-    <div id="bigbox">
+    <form id="bigbox">
         <div id="one">
             <span>所在省</span>
             <input name="sheng" type="text">
@@ -372,9 +372,9 @@
             <input name="rphone" type="text">
         </div>
         <div class="twe">
-            <input name="insert" id="infor" type="button" value="保存收货人信息">
+            <input name="insert" id="infor" type="submit" value="保存收货人信息">
         </div>
-    </div>
+    </form>
 </div>
 
 <script src="js/jquery-3.4.1.js"></script>
@@ -568,6 +568,85 @@
             })
         })
 
+        $().ready(function() {
+            // 提交时验证表单
+            var validator = $("#bigbox").validate({
+                rules: {
+                    sheng: {
+                        required: true,
+                    },
+                    shi: {
+                        required: true,
+                    },
+                    qu: {
+                        required: true,
+                    },
+                    rname: {
+                        required: true,
+                    },
+                    addde: {
+                        required: true,
+                    },
+                    rphone: {
+                        required: true,
+                        minlength: 11,
+                        maxlength: 11,
+                    }
+                },
+                messages: {
+                    sheng: {
+                        required: " (必需字段)",
+                    },
+                    shi: {
+                        required: " (必需字段)",
+                    },
+                    qu: {
+                        required: " (必需字段)",
+                    },
+                    rname: {
+                        required: " (必需字段)",
+                    },
+                    addde: {
+                        required: " (必需字段)",
+                    },
+                    rphone: {
+                        required: " (必需字段)",
+                        minlength:" (手机号码应为11位!)",
+                        maxlength:" (手机号码应为11位!)"
+                    }
+                }
+            });
+
+            $(".cancel").click(function() {
+                validator.resetForm();
+            });
+        });
+
+        $.validator.setDefaults({
+            submitHandler: function() {
+                var address = function (receiverName, receiverPhone, province, city, area, detailAdd, addUserId) {
+                    this.receiverName = receiverName;
+                    this.receiverPhone = receiverPhone;
+                    this.province = province;
+                    this.city = city;
+                    this.area = area;
+                    this.detailAdd = detailAdd;
+                    this.addUserId = addUserId;
+                }
+                var temp_address = new address($("input[name = 'rname']").val(), $("input[name = 'rphone']").val(), $("input[name = 'sheng']").val(),
+                    $("input[name = 'shi']").val(), $("input[name = 'qu']").val(), $("input[name = 'addde']").val(), 1);
+                $.ajax({
+                    url:"http://localhost:8080/Address/createAddress",
+                    type: "post",
+                    data: JSON.stringify(temp_address),
+                    dataType: "json",
+                    contentType: 'application/json;charset=UTF-8',
+                    success:function (data) {
+                        alert(data);
+                    }
+                })
+            }
+        });
     })
 </script>
 

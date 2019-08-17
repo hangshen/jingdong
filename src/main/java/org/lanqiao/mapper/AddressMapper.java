@@ -9,7 +9,7 @@ import java.util.List;
 public interface AddressMapper {
     int deleteByPrimaryKey(Integer addressId);
 
-    int insert(Address record);
+    int insert(Address address);
 
     int insertSelective(Address record);
 

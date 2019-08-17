@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface AddressService {
     public List<Address> getAddress(int userId);
+
+    public int createAddress(Address address);
 }

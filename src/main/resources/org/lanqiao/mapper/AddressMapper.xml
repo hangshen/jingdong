@@ -24,14 +24,9 @@
     where address_id = #{addressId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.Address" >
-    insert into address (address_id, receiver_name, receiver_phone, 
-      province, city, area, 
-      detail_add, address_type, add_user_id
-      )
-    values (#{addressId,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, #{receiverPhone,jdbcType=VARCHAR}, 
-      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
-      #{detailAdd,jdbcType=VARCHAR}, #{addressType,jdbcType=INTEGER}, #{addUserId,jdbcType=INTEGER}
-      )
+    insert into address (receiver_name, receiver_phone, province, city, area, detail_add, add_user_id)
+    values (#{receiverName,jdbcType=VARCHAR}, #{receiverPhone,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR},
+    #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{detailAdd,jdbcType=VARCHAR}, #{addUserId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.lanqiao.entity.Address" >
     insert into address

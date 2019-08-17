@@ -5,6 +5,7 @@ import org.lanqiao.entity.Express;
 import org.lanqiao.mapper.AddressMapper;
 import org.lanqiao.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,5 +21,8 @@ public class AddressController {
         return addressService.getAddress(userId);
     }
 
-
+    @RequestMapping("/Address/createAddress")
+    public int createAddress(@RequestBody  Address address){
+        return addressService.createAddress(address);
+    }
 }

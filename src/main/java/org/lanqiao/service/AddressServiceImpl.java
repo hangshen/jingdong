@@ -17,4 +17,9 @@ public class AddressServiceImpl implements AddressService {
         return addressMapper.selectByPrimaryKey(userId);
     }
 
+    @Override
+    public int createAddress(Address address) {
+        return addressMapper.insert(address);
+    }
+
 }
