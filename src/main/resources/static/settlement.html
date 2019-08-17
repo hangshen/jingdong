@@ -92,9 +92,16 @@
         </div>
         <div id="address">
             <div id="third_2_2" v-for="(add, index) in adds">
-                <div id="third_2_2_1">
-                    <span>{{add.receiverName}}</span>
-                    <img src="settlementimages/ss.png">
+                <div v-if="index == 0">
+                    <div class="third_2_2_1" @click="changeColor(index)">
+                        <span>{{add.receiverName}}</span>
+                        <img src="settlementimages/ss.png" id = "T">
+                    </div>
+                </div>
+                <div v-else>
+                    <div class="third_2_2_1" style="border: #E3E4E5 1px solid" @click="changeColor(index)">
+                        <span>{{add.receiverName}}</span>
+                    </div>
                 </div>
                 <div id="third_2_2_2">
                     <span class="sp4">{{add.receiverName}}</span>
@@ -130,21 +137,17 @@
                     <div id="third_2_7_1">
                         <h4>配送方式</h4>
                         <ul>
-                            <li style="list-style:none; float: left; width: 150px;">
-                                <div class="third_2_7_1_1">韵达快递</div>
-                                <img src="settlementimages/uu.png">
+                            <li style="list-style:none; float: left; width: 150px;" class="kuaidi" @click="changeColor2(0)">
+                                <div class="third_2_7_1_1" style="border: #FF0000 2px solid">韵达快递</div>
                             </li>
-                            <li style="list-style:none; float: left; width: 150px;">
+                            <li style="list-style:none; float: left; width: 150px;" class="kuaidi" @click="changeColor2(1)">
                                 <div class="third_2_7_1_1">顺丰快递</div>
-                                <img src="settlementimages/uu.png">
                             </li>
-                            <li style="list-style:none; float: left; width: 150px;">
+                            <li style="list-style:none; float: left; width: 150px;" class="kuaidi" @click="changeColor2(2)">
                                 <div class="third_2_7_1_1">圆通快递</div>
-                                <img src="settlementimages/uu.png">
                             </li>
-                            <li style="list-style:none; float: left; width: 150px;">
+                            <li style="list-style:none; float: left; width: 150px;" class="kuaidi" @click="changeColor2(3)">
                                 <div class="third_2_7_1_1">京东快递</div>
-                                <img src="settlementimages/uu.png">
                             </li>
                         </ul>
                         <div id="third_2_7_1_2">配送时间：工作日、双休日与节假日均可送货</div>
@@ -427,6 +430,9 @@
         var temp_total;
         var temp_order_id;
         var temp_carts;
+        var red1 = 0;
+        var temp_add;
+        var red2 = 0;
 
         $.ajax({
             url: "http://localhost:8080/Address/getAddress",
@@ -434,18 +440,31 @@
             data: {userId: 1},
             dataType: "json",
             success: function (data) {
+                temp_add = data;
+                var mv6 = new Vue({
+                    el: '#third_4_2',
+                    data: {adds:{}},
+                    created: function() {
+                        this.adds = data[red1];
+                    }
+                });
                 var mv1 = new Vue({
                     el: '#address',
                     data: {adds: []},
                     created: function() {
                         this.adds = data;
-                    }
-                });
-                var mv6 = new Vue({
-                    el: '#third_4_2',
-                    data: {adds:{}},
-                    created: function() {
-                        this.adds = data[0];
+                    },
+                    methods: {
+                        changeColor: function (i) {
+                            if(red1 != i){
+                                $(".third_2_2_1").eq(i).css("border","#FF0000 2px solid")
+                                $(".third_2_2_1").eq(red1).css("border","#E3E4E5 1px solid")
+                                $(".third_2_2_1").eq(i).append("<img src=\"settlementimages/ss.png\" id = \"T\">");
+                                $(".third_2_2_1").eq(red1).children().remove("#T");
+                                mv6.adds = data[i];
+                                red1 = i;
+                            }
+                        }
                     }
                 })
             }
@@ -488,6 +507,16 @@
                                     return false;
                             }
                             return true;
+                        },
+                        changeColor2:function (i) {
+                            for(var j = 0; j < $(".third_2_7_1_1").length; j++){
+                                if(j % 4 === i){
+                                    $(".third_2_7_1_1").eq(j).css("border", "#FF0000 2px solid");
+                                }else if(j % 4 == red2){
+                                    $(".third_2_7_1_1").eq(j).css("border", "#E3E4E5 2px solid");
+                                }
+                            }
+                            red2 = i;
                         }
                     }
                 })
@@ -522,7 +551,7 @@
                 this.orAddId = orAddId;
                 this.orUserId = orUserId;
             }
-            var orders = new order("顺丰快递", "在线支付", temp_total, 1, 1);
+            var orders = new order($(".third_2_7_1_1").eq(red2).text(), "在线支付", temp_total, temp_add[red1].addressId, 1);
             $.ajax({
                 url: "http://localhost:8080/Orders/CreateOrders",
                 type: "post",
@@ -531,7 +560,6 @@
                 contentType: 'application/json;charset=UTF-8',
                 success: function (data) {
                     temp_order_id = data;
-                    alert(temp_order_id);
                     var OrderDetail = function (proPrice, proNum, leaveMsg, returnWorry, deOrderId, deProId) {
                         this.proPrice = proPrice;
                         this.proNum = proNum;
@@ -550,7 +578,6 @@
                         }
                         var orderDetail = new OrderDetail(temp_carts[i].proDetail.proPrice, temp_carts[i].carProNum, $(".third_2_7").eq(i).find("textarea").val(),
                             flag, temp_order_id, temp_carts[i].proDetail.product.proId);
-                        alert(temp_order_id)
                         orderDetails.push(orderDetail);
                     }
 
@@ -561,7 +588,7 @@
                         dataType: "json",
                         contentType: 'application/json;charset=UTF-8',
                         success: function (data) {
-                            alert(data);
+                            // alert(data);
                         }
                     })
                 }

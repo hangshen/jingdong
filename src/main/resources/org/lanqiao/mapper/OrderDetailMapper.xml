@@ -34,7 +34,7 @@
     where or_de_id = #{orDeId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.lanqiao.entity.OrderDetail" >
-    insert into orderdetail (pro_price, pro_num, leave_msg, return_worry, de_order_id, de_pro_id)
+    insert into orderdetail (pro_price, pro_num, leave_msg, return_worry, de_order_id, de_prode_id)
     values (#{proPrice,jdbcType=DOUBLE}, #{proNum,jdbcType=INTEGER}, #{leaveMsg,jdbcType=VARCHAR}, #{returnWorry,jdbcType=VARCHAR},
      #{deOrderId,jdbcType=INTEGER}, #{deProId,jdbcType=INTEGER})
   </insert>

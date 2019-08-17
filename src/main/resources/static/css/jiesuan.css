@@ -295,14 +295,14 @@ body {
     margin: 6px 21px 6px 21px;
 }
 
-#third_2_2_1 {
+.third_2_2_1 {
     width: 140px;
     height: 26px;
     float: left;
     border: #FF0000 2px solid;
 }
 
-#third_2_2_1 span {
+.third_2_2_1 span {
     color: #666666;
     text-align: center;
     line-height: 25px;
@@ -311,7 +311,7 @@ body {
     height: 26px;
 }
 
-#third_2_2_1 img {
+.third_2_2_1 img {
     float: right;
     margin-top: -12px;
 }
@@ -538,13 +538,7 @@ body {
     margin-right: 0;
     padding: 4px 0;
     text-align: center;
-    border: #FF0000 2px solid;
-}
-
-#third_2_7_1 img {
-    float: right;
-    margin-top: -12px;
-    margin-right: 5px;
+    border: #E3E4E5 2px solid;
 }
 
 #third_2_7_1_2 {
