@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.CartMapper">
+    <resultMap id="CartResultMap" type="org.lanqiao.entity.Cart">
+        <id column="cart_id" property="cartId" jdbcType="INTEGER"/>
+        <result column="car_pro_num" property="carProNum" jdbcType="INTEGER"/>
+        <result column="add_time" property="addTime" jdbcType="TIMESTAMP"/>
+        <result column="cart_flag" property="cartFlag" jdbcType="INTEGER"/>
+        <result column="car_user_id" property="carUserId" jdbcType="INTEGER"/>
+        <association property="proDetail" resultMap="ProDetailResultMap">
+        </association>
+    </resultMap>
+    <resultMap id="ProDetailResultMap" type="org.lanqiao.entity.ProDetail">
+        <result column="pro_price" property="proPrice" jdbcType="DOUBLE"/>
+        <result column="stock" property="stock" jdbcType="INTEGER"/>
+        <association property="product" resultMap="ProductResultMap">
+        </association>
+        <collection property="standardsVal" resultMap="StandardsValResultMap">
+        </collection>
+    </resultMap>
+    <resultMap id="ProductResultMap" type="org.lanqiao.entity.Product">
+        <id column="pro_id" property="proId" jdbcType="INTEGER" />
+        <result column="pro_name" property="proName" jdbcType="VARCHAR"/>
+        <result column="pro_user_id" property="proUserId" jdbcType="INTEGER"/>
+        <association property="user" resultMap="UserResultMap">
+        </association>
+    </resultMap>
+    <resultMap id="UserResultMap" type="org.lanqiao.entity.User">
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="StandardsValResultMap" type="org.lanqiao.entity.StandardsVal">
+        <result column="stan_val_name" property="stanValName" jdbcType="VARCHAR"/>
+        <result column="stanval_stan_id" property="stanvalStanId" jdbcType="INTEGER"/>
+        <association property="standards" resultMap="StandardsResultMap">
+        </association>
+    </resultMap>
+    <resultMap id="StandardsResultMap" type="org.lanqiao.entity.Standards">
+        <result column="stan_name" property="stanName" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    cart_id, car_pro_num, add_time, cart_flag, car_user_id, car_prode_id
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="CartResultMap" parameterType="java.lang.Integer">
+    select u.user_name, p.pro_id, p.pro_name, pd.pro_price, c.car_pro_num, pd.stock, s.stan_name, sv.
+    stan_val_name from cart c, prodetail pd, product p, user u, standardsval sv,
+    prodtlstanval pdsv, standards s where c.car_prode_id = pd.pdetail_id and pd.dtl_pro_id
+    = p.pro_id and p.pro_user_id = u.user_id and pdsv.pdsv_pdetail_id = pd.pdetail_id and
+    pdsv.pdsv_stan_val_id = sv.stan_val_id and sv.stanval_stan_id = s.stan_id and c.
+    cart_flag = 1;
+  </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cart
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="org.lanqiao.entity.Cart">
+    insert into cart (cart_id, car_pro_num, add_time, 
+      cart_flag, car_user_id, car_prode_id
+      )
+    values (#{cartId,jdbcType=INTEGER}, #{carProNum,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{cartFlag,jdbcType=INTEGER}, #{carUserId,jdbcType=INTEGER}, #{carProdeId,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="org.lanqiao.entity.Cart">
+        insert into cart
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cartId != null">
+                cart_id,
+            </if>
+            <if test="carProNum != null">
+                car_pro_num,
+            </if>
+            <if test="addTime != null">
+                add_time,
+            </if>
+            <if test="cartFlag != null">
+                cart_flag,
+            </if>
+            <if test="carUserId != null">
+                car_user_id,
+            </if>
+            <if test="carProdeId != null">
+                car_prode_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cartId != null">
+                #{cartId,jdbcType=INTEGER},
+            </if>
+            <if test="carProNum != null">
+                #{carProNum,jdbcType=INTEGER},
+            </if>
+            <if test="addTime != null">
+                #{addTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cartFlag != null">
+                #{cartFlag,jdbcType=INTEGER},
+            </if>
+            <if test="carUserId != null">
+                #{carUserId,jdbcType=INTEGER},
+            </if>
+            <if test="carProdeId != null">
+                #{carProdeId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Cart">
+        update cart
+        <set>
+            <if test="carProNum != null">
+                car_pro_num = #{carProNum,jdbcType=INTEGER},
+            </if>
+            <if test="addTime != null">
+                add_time = #{addTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cartFlag != null">
+                cart_flag = #{cartFlag,jdbcType=INTEGER},
+            </if>
+            <if test="carUserId != null">
+                car_user_id = #{carUserId,jdbcType=INTEGER},
+            </if>
+            <if test="carProdeId != null">
+                car_prode_id = #{carProdeId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where cart_id = #{cartId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Cart">
+    update cart
+    set car_pro_num = #{carProNum,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      cart_flag = #{cartFlag,jdbcType=INTEGER},
+      car_user_id = #{carUserId,jdbcType=INTEGER},
+      car_prode_id = #{carProdeId,jdbcType=INTEGER}
+    where cart_id = #{cartId,jdbcType=INTEGER}
+  </update>
+</mapper>

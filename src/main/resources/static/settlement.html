@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>buy</title>
+    <link href="css/jiesuan.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="first">
+    <div id="first_1">
+        <div id="first_1_0">
+            <img src="settlementimages/nn.png">
+            <a href="jingdong.html" style="text-decoration: none">京东首页</a>
+        </div>
+        <div id="first_1_1">
+            <a>
+                <ul>
+                    <li class="map"></li>
+                    <li>福建</li>
+                </ul>
+            </a>
+        </div>
+        <div id="first_1_2">
+            <ul>
+                <li class="a4">
+                    <div id="first_1_2_1">
+                        <img src="settlementimages/b.png" id="img0">
+                        <img src="settlementimages/oo.png" id="img0_0">
+                        <a>jd_5dd22538</a>
+                    </div>
+                </li>
+                <li class="f1"></li>
+                <li class="a5"><a href="order.html" style="text-decoration: none">我的订单</a></li>
+                <li class="f1"></li>
+                <li class="a6"><a>
+                    <div class="f2">
+                        我的京东
+                        <div class="b1"></div>
+                    </div>
+                </a></li>
+                <li class="f1"></li>
+                <li class="a5"><a>京东会员</a></li>
+                <li class="f1"></li>
+                <li class="a6"><a class="a1">
+                    <div class="f2">企业采购
+                        <div class="b1"></div>
+                    </div>
+                </a></li>
+                <li class="f1"></li>
+                <li><a>
+                    <div class="f2">
+                        客户服务
+                        <div class="b1"></div>
+                    </div>
+                </a></li>
+                <li class="f1"></li>
+                <li><a>
+                    <div class="f2">
+                        网站导航
+                        <div class="b1"></div>
+                    </div>
+                </a></li>
+                <li class="f1"></li>
+                <li class="a5"><a>手机京东</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="second">
+    <div id="second_1">
+        <img src="settlementimages/pp.png">
+        <span>结算页</span>
+    </div>
+    <div id="second_2">
+        <img src="settlementimages/qq.png">
+        <span id="sp1">3.成功提交订单</span>
+        <span id="sp2">2.填写核对订单信息</span>
+        <span id="sp3">1.我的购物车</span>
+    </div>
+</div>
+<div id="third">
+    <div id="third_1">
+        <span>填写并核对订单信息</span>
+    </div>
+    <div id="third_2">
+        <div id="third_2_1">
+            <h3>收货人信息</h3>
+            <a>新增收货地址</a>
+        </div>
+        <div id="address">
+            <div id="third_2_2" v-for="(add, index) in adds">
+                <div id="third_2_2_1">
+                    <span>{{add.receiverName}}</span>
+                    <img src="settlementimages/ss.png">
+                </div>
+                <div id="third_2_2_2">
+                    <span class="sp4">{{add.receiverName}}</span>
+                    <span class="sp4">{{add.province}} {{add.city}} {{add.area}} {{add.detailAdd}}</span>
+                    <span class="sp4">{{add.receiverPhone}}</span>
+                    <span id="sp5">默认地址</span>
+                </div>
+            </div>
+        </div>
+        <div id="third_2_3">
+            <span id="sp6">京东自提</span>
+            <span id="sp7">抱歉，存在不支持自提的商品或该地址下没有可用的自提点</span>
+            <a>详情</a>
+        </div>
+        <div class="x1"></div>
+        <div id="third_2_4">
+            <h3>支付方式</h3>
+        </div>
+        <div id="third_2_5">
+            <a><div id="third_2_5_1">货到付款</div></a>
+            <a><div id="third_2_5_2"><span>惠</span>在线支付<img src="settlementimages/ss.png"></div></a>
+        </div>
+        <div class="x1"></div>
+        <div id="third_2_6">
+            <h3>送货清单</h3>
+            <a>返回修改购物车</a>
+            <a id="a1">价格说明</a>
+            <img src="settlementimages/tt.png">
+        </div>
+        <div id="qingdan">
+            <div class="third_2_7" v-for="(user, index1) in carts">
+                <div v-if="con(index1)">
+                    <div id="third_2_7_1">
+                        <h4>配送方式</h4>
+                        <ul>
+                            <li style="list-style:none; float: left; width: 150px;">
+                                <div class="third_2_7_1_1">韵达快递</div>
+                                <img src="settlementimages/uu.png">
+                            </li>
+                            <li style="list-style:none; float: left; width: 150px;">
+                                <div class="third_2_7_1_1">顺丰快递</div>
+                                <img src="settlementimages/uu.png">
+                            </li>
+                            <li style="list-style:none; float: left; width: 150px;">
+                                <div class="third_2_7_1_1">圆通快递</div>
+                                <img src="settlementimages/uu.png">
+                            </li>
+                            <li style="list-style:none; float: left; width: 150px;">
+                                <div class="third_2_7_1_1">京东快递</div>
+                                <img src="settlementimages/uu.png">
+                            </li>
+                        </ul>
+                        <div id="third_2_7_1_2">配送时间：工作日、双休日与节假日均可送货</div>
+                        <div class="x3" style="margin-top: 133px"></div>
+                        <div id="third_2_7_1_3">
+                            <div id="third_2_7_1_3_1">
+                                <input name="return" type="checkbox" width="13px" height="13px">
+                                <span>退换无忧</span>
+                                <span class="sp11">￥2.00</span>
+                            </div>
+                        </div>
+                        <div class="x3" style="margin-top: 40px"></div>
+                    </div>
+                    <div id="third_2_7_2">
+                        <div id="third_2_7_2_1">商家：{{user.proDetail.product.user.userName}}</div>
+                        <div v-for="(pro, index2) in carts">
+                            <div v-if="user.proDetail.product.user.userName===pro.proDetail.product.user.userName">
+                                <div id="third_2_7_2_2">
+                                    <a><img src="settlementimages/ww.png"></a>
+                                    <div id="third_2_7_2_2_1">
+                                        <a>{{pro.proDetail.product.proName}}</a>
+                                        <div id="third_2_7_2_2_2">￥ {{pro.proDetail.proPrice}}</div>
+                                        <div id="third_2_7_2_2_3">x{{pro.carProNum}}</div>
+                                        <div class="third_2_7_2_2_4" v-if="pro.proDetail.stock > 0">有货</div>
+                                        <div class="third_2_7_2_2_4" v-else>无货</div>
+                                    </div>
+                                    <div v-for="(stan, index3) in pro.proDetail.standardsVal">
+                                        <div class="third_2_7_2_2_5"><span>{{stan.standards.stanName}}：</span>{{stan.stanValName}}
+                                        </div>
+                                        <br>
+                                    </div>
+                                    <div id="third_2_7_2_2_6">
+                                        <img src="settlementimages/xx.png">
+                                        支持7天无理由退货（使用后不支持）
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="third_2_7_2_3"><span>留言:</span><textarea></textarea></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="x1"></div>
+        <div id="third_2_8">
+            <h3>发票信息</h3>
+            <span>
+                <img src="settlementimages/zz.png">
+                开企业抬头发票须填写纳税人识别号，以免影响报销
+            </span>
+        </div>
+        <div id="third_2_9">
+            不开发票
+            <a> 修改</a>
+        </div>
+        <div class="x1"></div>
+        <div id="third_2_10">
+            <h3>使用优惠/礼品卡/抵用</h3>
+            <a><img src="settlementimages/aaa.png"></a>
+        </div>
+    </div>
+    <div id="third_3">
+        <ul>
+            <li>
+                <div id="third_3_1">
+                    <div id="third_3_1_1">￥{{price}}</div>
+                    <span>{{num}} 件商品，总商品金额:</span>
+                </div>
+            </li>
+            <li>
+                <div id="third_3_2">
+                    <div id="third_3_2_1">￥2.00</div>
+                    <span>退换无忧:</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="third_4">
+        <div id="third_4_1">
+            <span id="sp12">￥{{price}}</span>
+            <span id="sp13">应付金额:</span>
+        </div>
+        <div id="third_4_2">
+            <span>收货人：{{adds.receiverName}} {{adds.receiverPhone}}</span>
+            <span class="stl">寄送至： {{adds.province}} {{adds.city}} {{adds.area}} {{adds.detailAdd}}</span>
+        </div>
+    </div>
+    <div id="third_5">
+        <input id="sub" type="submit" value="提交订单">
+    </div>
+</div>
+<div id="four">
+    <a id="a2">我要<br>反馈</a>
+    <a id="a3" href="#"><img src="settlementimages/ccc.png"></a>
+</div>
+<div id="fifth">
+    <div id="footer">
+        <div id="service-2014">
+            <div class="slogan">
+                <img src="settlementimages/service_items_1.png">
+                <img src="settlementimages/service_items_2.png">
+                <img src="settlementimages/service_items_3.png">
+                <img src="settlementimages/service_items_4.png">
+            </div>
+            <div class="w">
+                <dl class="fore1">
+                    <dt>购物指南</dt>
+                    <dd>
+                        <div><a>购物流程</a>
+                        </div>
+                        <div><a>会员介绍</a>
+                        </div>
+                        <div><a>生活旅行/团购</a>
+                        </div>
+                        <div><a>常见问题</a></div>
+                        <div><a>大家电</a>
+                        </div>
+                        <div><a>联系客服</a></div>
+                    </dd>
+                </dl>
+                <dl class="fore2">
+                    <dt>配送方式</dt>
+                    <dd>
+                        <div><a>上门自提</a>
+                        </div>
+                        <div><a>211限时达</a>
+                        </div>
+                        <div><a>配送服务查询</a>
+                        </div>
+                        <div><a>配送费收取标准</a>
+                        </div>
+                        <div><a>海外配送</a></div>
+                    </dd>
+                </dl>
+                <dl class="fore3">
+                    <dt>支付方式</dt>
+                    <dd>
+                        <div><a>货到付款</a>
+                        </div>
+                        <div><a>在线支付</a>
+                        </div>
+                        <div><a>分期付款</a>
+                        </div>
+                        <div><a>邮局汇款</a>
+                        </div>
+                        <div><a>公司转账</a>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="fore4">
+                    <dt>售后服务</dt>
+                    <dd>
+                        <div><a>售后政策</a>
+                        </div>
+                        <div><a>价格保护</a>
+                        </div>
+                        <div><a>退款说明</a>
+                        </div>
+                        <div><a>返修/退换货</a>
+                        </div>
+                        <div><a>取消订单</a>
+                        </div>
+                    </dd>
+                </dl>
+                <dl class="fore5">
+                    <dt>特色服务</dt>
+                    <dd>
+                        <div><a>夺宝岛</a></div>
+                        <div><a>DIY装机</a></div>
+                        <div><a>延保服务</a></div>
+                        <div><a>京东E卡</a></div>
+                        <div><a>京东通信</a></div>
+                        <div><a>京东JD+</a></div>
+                    </dd>
+                </dl>
+                <div id="coverage">
+                    <div class="dt">
+                        京东自营覆盖区县
+                    </div>
+                    <div class="dd">
+                        <p>京东已向全国2649个区县提供自营配送服务，支持货到付款、POS机刷卡和售后上门服务。</p>
+                        <p class="ar"><a>查看详情&nbsp;&gt;</a>
+                        </p>
+                    </div>
+                </div>
+                <span class="clr"></span>
+            </div>
+        </div>
+        <div class="copyright">
+            <a target="_blank" href=""><img src="settlementimages/ga.png"> 京公网安备11000002000088号</a>&nbsp;&nbsp;|&nbsp;&nbsp;京ICP证070359号&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a target="_blank" href="">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>&nbsp;&nbsp;|&nbsp;&nbsp;新出发京零&nbsp;字第大120007号<br>互联网出版许可证编号新出网证(京)字150号&nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="" target="_blank">出版物经营许可证</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" target="_blank">网络文化经营许可证京网文[2014]2148-348号</a>&nbsp;&nbsp;|&nbsp;&nbsp;违法和不良信息举报电话：4006561155<br>Copyright&nbsp;©&nbsp;2004&nbsp;-&nbsp;2016&nbsp;&nbsp;京东JD.com&nbsp;版权所有&nbsp;&nbsp;|&nbsp;&nbsp;消费者维权热线：4006067733<br>京东旗下网站：<a
+                href="" target="_blank">京东钱包</a>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/vue.min.js"></script>
+
+<script>
+    $(function () {
+
+        var temp_total;
+        var temp_order_id;
+        var temp_carts;
+
+        $.ajax({
+            url: "http://localhost:8080/Address/getAddress",
+            type: "post",
+            data: {userId: 1},
+            dataType: "json",
+            success: function (data) {
+                var mv1 = new Vue({
+                    el: '#address',
+                    data: {adds: []},
+                    created: function() {
+                        this.adds = data;
+                    }
+                });
+                var mv6 = new Vue({
+                    el: '#third_4_2',
+                    data: {adds:{}},
+                    created: function() {
+                        this.adds = data[0];
+                    }
+                })
+            }
+        })
+
+        // $.ajax({
+        //     url:"http://localhost:8080/Express/getExpress",
+        //     type:"post",
+        //     dataType:"json",
+        //     success:function (data) {
+        //         var mv2 = new Vue({
+        //             el:'#third_2_7_1',
+        //             data: {exps:[]},
+        //             beforeCreate: function () {
+        //             }, mounted: function() {
+        //                 this.exps = data;
+        //                 alert(0);
+        //             }
+        //         })
+        //     }
+        // })
+
+        $.ajax({
+            url:"http://localhost:8080/Cart/GetCartInformation",
+            type:"post",
+            data:{userId:1},
+            dataType:"json",
+            success:function (data) {
+                var mv3 = new Vue({
+                    el: '#qingdan',
+                    data: {carts: []},
+                    created: function () {
+                        this.carts = data;
+                        temp_carts = this.carts;
+                    },
+                    methods:{
+                        con:function (j) {
+                            for(var i = 0; i < j ; i++){
+                                if(this.carts[i].proDetail.product.user.userName === this.carts[j].proDetail.product.user.userName)
+                                    return false;
+                            }
+                            return true;
+                        }
+                    }
+                })
+                var sum_num = 0;
+                var sum_price = 0.0;
+                for(var i = 0; i < data.length; i++){
+                    sum_num = sum_num + parseInt(data[i].carProNum);
+                    sum_price = sum_price + parseFloat(parseFloat(data[i].proDetail.proPrice) * parseInt(data[i].carProNum));
+                }
+                temp_total = sum_price;
+                var mv4 = new Vue({
+                    el: '#third_3_1',
+                    data: {
+                        num:sum_num,
+                        price:sum_price
+                    }
+                })
+                var mv5 = new Vue({
+                    el: '#third_4_1',
+                    data: {
+                        price:sum_price
+                    }
+                })
+            }
+        })
+
+        $("#sub").click(function () {
+            var order = function (orExpressType, payType, total, orAddId, orUserId) {
+                this.orExpressType = orExpressType;
+                this.payType = payType;
+                this.total = total;
+                this.orAddId = orAddId;
+                this.orUserId = orUserId;
+            }
+            var orders = new order(1, 1, temp_total, 1, 1);
+            $.ajax({
+                url: "http://localhost:8080/Orders/CreateOrders",
+                type: "post",
+                data: JSON.stringify(orders),
+                dataType: "json",
+                contentType: 'application/json;charset=UTF-8',
+                success: function (data) {
+                    temp_order_id = data;
+                    alert(temp_order_id);
+                    var OrderDetail = function (proPrice, proNum, leaveMsg, returnWorry, deOrderId, deProId) {
+                        this.proPrice = proPrice;
+                        this.proNum = proNum;
+                        this.leaveMsg = leaveMsg;
+                        this.returnWorry = returnWorry;
+                        this.deOrderId = deOrderId;
+                        this.deProId = deProId;
+                    }
+                    var orderDetails = new Array();
+                    for (var i = 0; i < temp_carts.length; i++) {
+                        var flag;
+                        if ($(".third_2_7").eq(i).find("input[name = 'return']").prop("checked")) {
+                            flag = "是";
+                        } else {
+                            flag = "不是";
+                        }
+                        var orderDetail = new OrderDetail(temp_carts[i].proDetail.proPrice, temp_carts[i].carProNum, $(".third_2_7").eq(i).find("textarea").val(),
+                            flag, temp_order_id, temp_carts[i].proDetail.product.proId);
+                        alert(temp_order_id)
+                        orderDetails.push(orderDetail);
+                    }
+
+                    $.ajax({
+                        url: "http://localhost:8080/Orders/CreateOrdersDetail",
+                        type: "post",
+                        data: JSON.stringify(orderDetails),
+                        dataType: "json",
+                        contentType: 'application/json;charset=UTF-8',
+                        success: function (data) {
+                            alert(data);
+                        }
+                    })
+                }
+            })
+        })
+
+    })
+</script>
+
+</body>
+</html>

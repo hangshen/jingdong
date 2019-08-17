@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.AddressMapper" >
+  <resultMap id="AddResultMap" type="org.lanqiao.entity.Address" >
+    <id column="address_id" property="addressId" jdbcType="INTEGER" />
+    <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
+    <result column="receiver_phone" property="receiverPhone" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="detail_add" property="detailAdd" jdbcType="VARCHAR" />
+    <result column="address_type" property="addressType" jdbcType="INTEGER" />
+    <result column="add_user_id" property="addUserId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    address_id, receiver_name, receiver_phone, province, city, area, detail_add, address_type, 
+    add_user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="AddResultMap" parameterType="java.lang.Integer" >
+    select * from address where add_user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from address
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Address" >
+    insert into address (address_id, receiver_name, receiver_phone, 
+      province, city, area, 
+      detail_add, address_type, add_user_id
+      )
+    values (#{addressId,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, #{receiverPhone,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{detailAdd,jdbcType=VARCHAR}, #{addressType,jdbcType=INTEGER}, #{addUserId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Address" >
+    insert into address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="addressId != null" >
+        address_id,
+      </if>
+      <if test="receiverName != null" >
+        receiver_name,
+      </if>
+      <if test="receiverPhone != null" >
+        receiver_phone,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="detailAdd != null" >
+        detail_add,
+      </if>
+      <if test="addressType != null" >
+        address_type,
+      </if>
+      <if test="addUserId != null" >
+        add_user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="addressId != null" >
+        #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null" >
+        #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null" >
+        #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="detailAdd != null" >
+        #{detailAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="addressType != null" >
+        #{addressType,jdbcType=INTEGER},
+      </if>
+      <if test="addUserId != null" >
+        #{addUserId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Address" >
+    update address
+    <set >
+      <if test="receiverName != null" >
+        receiver_name = #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null" >
+        receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="detailAdd != null" >
+        detail_add = #{detailAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="addressType != null" >
+        address_type = #{addressType,jdbcType=INTEGER},
+      </if>
+      <if test="addUserId != null" >
+        add_user_id = #{addUserId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Address" >
+    update address
+    set receiver_name = #{receiverName,jdbcType=VARCHAR},
+      receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      detail_add = #{detailAdd,jdbcType=VARCHAR},
+      address_type = #{addressType,jdbcType=INTEGER},
+      add_user_id = #{addUserId,jdbcType=INTEGER}
+    where address_id = #{addressId,jdbcType=INTEGER}
+  </update>
+</mapper>

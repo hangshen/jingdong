@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.OrdersMapper" >
+  <resultMap id="OrdersResultMap" type="org.lanqiao.entity.Orders" >
+    <id column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="state_name" property="orderState" jdbcType="VARCHAR" />
+    <result column="or_express_type" property="orExpressType" jdbcType="INTEGER" />
+    <result column="pay_type_name" property="payType" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="DOUBLE" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="pay_time" property="payTime" jdbcType="DATE" />
+    <result column="or_add_id" property="orAddId" jdbcType="INTEGER" />
+    <result column="or_user_id" property="orUserId" jdbcType="INTEGER" />
+    <association property="address" resultMap="AddressResultMap"></association>
+    <collection property="orderDetailSet" resultMap="OrderDetailResultMap"></collection>
+  </resultMap>
+  <resultMap id="ProductResultMap" type="org.lanqiao.entity.Product" >
+    <id column="pro_id" property="proId" jdbcType="INTEGER" />
+    <result column="pro_name" property="proName" jdbcType="VARCHAR" />
+    <result column="pro_type_id" property="proTypeId" jdbcType="INTEGER" />
+    <result column="pro_brand_id" property="proBrandId" jdbcType="INTEGER" />
+    <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
+    <result column="down_time" property="downTime" jdbcType="DATE" />
+    <result column="pro_state" property="proState" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="AddressResultMap" type="org.lanqiao.entity.Address" >
+    <id column="address_id" property="addressId" jdbcType="INTEGER" />
+    <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
+    <result column="receiver_phone" property="receiverPhone" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="detail_add" property="detailAdd" jdbcType="VARCHAR" />
+    <result column="address_type" property="addressType" jdbcType="INTEGER" />
+    <result column="add_user_id" property="addUserId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="OrderDetailResultMap" type="org.lanqiao.entity.OrderDetail" >
+    <id column="or_de_id" property="orDeId" jdbcType="INTEGER" />
+    <result column="pro_price" property="proPrice" jdbcType="DOUBLE" />
+    <result column="pro_num" property="proNum" jdbcType="INTEGER" />
+    <result column="leave_msg" property="leaveMsg" jdbcType="VARCHAR" />
+    <result column="return_worry" property="returnWorry" jdbcType="VARCHAR" />
+    <result column="de_order_id" property="deOrderId" jdbcType="INTEGER" />
+    <association property="product" resultMap="ProductResultMap"></association>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    order_id, order_state, or_express_type, pay_type, total, order_time, pay_time, or_add_id, 
+    or_user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultType="java.lang.Integer">
+    select max(order_id) from orders;
+  </select>
+  <select id="getUserOrders" resultMap="OrdersResultMap">
+    select * from orders o,orderdetail od,state s, address a,product p ,paytype pt where o.pay_type=pt.pay_type_id and p.pro_id=od.de_pro_id and a.address_id=o.or_add_id and o.or_user_id=#{userId} and o.order_state =s.state_id and s.state_name=#{orderState} and od.de_order_id=o.order_id;
+  </select>
+  <select id="getAllOrders" resultMap="OrdersResultMap" parameterType="java.lang.Integer">
+    select * from orders o,orderdetail od,state s,address a,product p ,paytype pt where o.pay_type=pt.pay_type_id and p.pro_id=od.de_pro_id and a.address_id=o.or_add_id and o.or_user_id=#{userId} and od.de_order_id=o.order_id and o.order_state =s.state_id;
+  </select>
+  <insert id="insert" parameterType="org.lanqiao.entity.Orders" >
+    insert into orders (or_express_type, pay_type, total, or_add_id, or_user_id ) values (#{orExpressType,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, #{total,jdbcType=DOUBLE}, #{orAddId,jdbcType=INTEGER}, #{orUserId,jdbcType=INTEGER})
+  </insert>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orders
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Orders" >
+    update orders set order_state=(select state_id from state where state_name =#{orderState}) where order_id = #{orderId,jdbcType=INTEGER};
+  </update>
+</mapper>

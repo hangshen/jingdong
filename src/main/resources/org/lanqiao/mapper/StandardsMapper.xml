@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.StandardsMapper" >
+  <resultMap id="StandardsResultMap" type="org.lanqiao.entity.Standards" >
+    <id column="stan_id" property="stanId" jdbcType="INTEGER" />
+    <result column="stan_name" property="stanName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    stan_id, stan_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="StandardsResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from standards
+    where stan_id = #{stanId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from standards
+    where stan_id = #{stanId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Standards" >
+    insert into standards (stan_id, stan_name)
+    values (#{stanId,jdbcType=INTEGER}, #{stanName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Standards" >
+    insert into standards
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stanId != null" >
+        stan_id,
+      </if>
+      <if test="stanName != null" >
+        stan_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stanId != null" >
+        #{stanId,jdbcType=INTEGER},
+      </if>
+      <if test="stanName != null" >
+        #{stanName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Standards" >
+    update standards
+    <set >
+      <if test="stanName != null" >
+        stan_name = #{stanName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stan_id = #{stanId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Standards" >
+    update standards
+    set stan_name = #{stanName,jdbcType=VARCHAR}
+    where stan_id = #{stanId,jdbcType=INTEGER}
+  </update>
+</mapper>
