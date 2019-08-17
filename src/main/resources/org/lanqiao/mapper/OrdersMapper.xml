@@ -53,12 +53,12 @@
   </select>
   <select id="getUserOrders" resultMap="OrdersResultMap">
     select * from orders o,orderdetail od,state s, address a,product p ,paytype pt,express e
-    where o.pay_type=pt.pay_type_id and p.pro_id=od.de_pro_id and a.address_id=o.or_add_id and o.or_user_id=#{userId}
+    where o.pay_type=pt.pay_type_id and p.pro_id=pd.dtl_pro_id and od.de_prode_id=pd.pdetail_id  and a.address_id=o.or_add_id and o.or_user_id=#{userId}
     and o.order_state =s.state_id and s.state_name=#{orderState} and od.de_order_id=o.order_id and o.or_express_type = e.express_id;
   </select>
   <select id="getAllOrders" resultMap="OrdersResultMap" parameterType="java.lang.Integer">
     select * from orders o,orderdetail od,state s,address a,product p ,paytype pt, express
-    where o.pay_type=pt.pay_type_id and p.pro_id=od.de_pro_id and a.address_id=o.or_add_id
+    where o.pay_type=pt.pay_type_id and p.pro_id=pd.dtl_pro_id and od.de_prode_id=pd.pdetail_id and a.address_id=o.or_add_id
     and o.or_user_id=#{userId} and od.de_order_id=o.order_id and o.order_state =s.state_id and or_express_type = e.express_id;
   </select>
   <insert id="insert" parameterType="org.lanqiao.entity.Orders" >
