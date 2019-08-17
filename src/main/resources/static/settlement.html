@@ -5,6 +5,7 @@
     <title>buy</title>
     <link href="css/jiesuan.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="css/addressadd.css"/>
 
 </head>
 <body>
@@ -87,7 +88,7 @@
     <div id="third_2">
         <div id="third_2_1">
             <h3>收货人信息</h3>
-            <a>新增收货地址</a>
+            <a href="#" id="tanchuang" style="text-decoration: none">新增收货地址</a>
         </div>
         <div id="address">
             <div id="third_2_2" v-for="(add, index) in adds">
@@ -341,8 +342,84 @@
     </div>
 </div>
 
+<div id="add">
+    <div class="row1">
+        新增收货人信息<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
+    </div>
+    <div id="bigbox">
+        <div id="one">
+            <span>所在省</span>
+            <input name="sheng" type="text">
+        </div>
+        <div class="twe">
+            <span>所在市</span>
+            <input name="shi" type="text">
+        </div>
+        <div class="twe">
+            <span>所在区</span>
+            <input name="qu" type="text">
+        </div>
+        <div class="twe">
+            <span>收货人姓名</span>
+            <input name="rname" type="text">
+        </div>
+        <div class="twe">
+            <span>详细地址</span>
+            <input name="addde" type="text">
+        </div>
+        <div class="twe">
+            <span>收货人手机号</span>
+            <input name="rphone" type="text">
+        </div>
+        <div class="twe">
+            <input name="insert" id="infor" type="button" value="保存收货人信息">
+        </div>
+    </div>
+</div>
+
 <script src="js/jquery-3.4.1.js"></script>
 <script src="js/vue.min.js"></script>
+<script src="js/jquery.validate.js" type="application/javascript"></script>
+<script src="js/jquery.validate.regex.js" type="application/javascript"></script>
+
+<script>
+    $(function ($) {
+        //弹出登录
+        $("#tanchuang").hover(function () {
+            $(this).stop().animate({
+                opacity: '1'
+            }, 600);
+        }, function () {
+            $(this).stop().animate({
+                opacity: '0.6'
+            }, 1000);
+        }).on('click', function () {
+            $("body").append("<div id='mask'></div>");
+            $("#mask").addClass("mask").fadeIn("slow");
+            $("#add").fadeIn("slow");
+        });
+        //
+        //按钮的透明度
+        $("#insert").hover(function () {
+            $(this).stop().animate({
+                opacity: '1'
+            }, 600);
+        }, function () {
+            $(this).stop().animate({
+                opacity: '0.8'
+            }, 1000);
+        });
+        //关闭
+        $(".close_btn").hover(function () {
+            $(this).css({color: 'black'})
+        }, function () {
+            $(this).css({color: '#999'})
+        }).on('click', function () {
+            $("#add").fadeOut("fast");
+            $("#mask").css({display: 'none'});
+        });
+    });
+</script>
 
 <script>
     $(function () {
