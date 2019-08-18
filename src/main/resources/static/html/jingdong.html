@@ -49,6 +49,14 @@
             setTimeout("changeImg()", 3000);
         }
     </script>
+    <script>
+        window.onload=function () {
+            document.getElementById("liA4").innerText = sessionStorage.getItem("userName");
+            var userId = sessionStorage.getItem("userId");
+            sessionStorage.setItem("userId",userId);
+            // alert(sessionStorage.getItem('userName'));
+        }
+    </script>
 </head>
 <body>
 <div id="first">
@@ -64,8 +72,8 @@
             </div>
             <div id="first_1_2">
                 <ul>
-                    <li class="a4"><a>你好，请登录</a></li>
-                    <li class="a5"><a class="a1">免费注册</a></li>
+                    <li class="a4" ><a id="liA4">你好，请登录</a></li>
+                    <li class="a5"><a class="a1" href="loginhtml/reRegister.html">免费注册</a></li>
                     <li class="f1"></li>
                     <li class="a5"><a>我的订单</a></li>
                     <li class="f1"></li>
