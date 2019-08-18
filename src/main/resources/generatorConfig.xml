@@ -54,7 +54,7 @@
 <!--			enableSelectByExample="false" enableUpdateByExample="false">-->
 <!--			<property name="useActualColumnNames" value="false" />-->
 <!--		</table>-->
-<!--		<table tableName="paytype" domainObjectName="PayType"-->
+<!--		<table tableName="image" domainObjectName="Image"-->
 <!--			enableCountByExample="false" enableDeleteByExample="false"-->
 <!--			enableSelectByExample="false" enableUpdateByExample="false">-->
 <!--			<property name="useActualColumnNames" value="false" />-->

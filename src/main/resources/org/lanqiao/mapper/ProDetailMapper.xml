@@ -9,6 +9,8 @@
     </association>
     <collection property="standardsVal" resultMap="StandardsValResultMap">
     </collection>
+    <collection property="images" resultMap="ImageResultMap">
+    </collection>
   </resultMap>
   <resultMap id="ProductResultMap" type="org.lanqiao.entity.Product" >
     <id column="pro_id" property="proId" jdbcType="INTEGER" />
@@ -39,6 +41,12 @@
   </resultMap>
   <resultMap id="StandardsResultMap" type="org.lanqiao.entity.Standards" >
     <result column="stan_name" property="stanName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ImageResultMap" type="org.lanqiao.entity.Image">
+    <id column="image_id" jdbcType="INTEGER" property="imageId" />
+    <result column="img_psv_id" jdbcType="INTEGER" property="imgPsvId" />
+    <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
+    <result column="img_flag" jdbcType="INTEGER" property="imgFlag" />
   </resultMap>
   <sql id="Base_Column_List" >
     pdetail_id, dtl_pro_id, pro_price, stock

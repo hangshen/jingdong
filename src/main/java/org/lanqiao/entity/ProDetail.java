@@ -13,6 +13,8 @@ public class ProDetail {
 
     private List<StandardsVal> standardsVal;
 
+    private List<Image> images;
+
     public Integer getPdetailId() {
         return pdetailId;
     }
@@ -53,13 +55,23 @@ public class ProDetail {
         this.standardsVal = standardsVal;
     }
 
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
     @Override
     public String toString() {
         return "ProDetail{" +
+                "pdetailId=" + pdetailId +
                 ", product=" + product +
                 ", proPrice=" + proPrice +
                 ", stock=" + stock +
                 ", standardsVal=" + standardsVal +
+                ", images=" + images +
                 '}';
     }
 }

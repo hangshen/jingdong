@@ -7,6 +7,8 @@ public class Image {
 
     private String imgPath;
 
+    private Integer imgFlag;
+
     public Integer getImageId() {
         return imageId;
     }
@@ -29,5 +31,23 @@ public class Image {
 
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath == null ? null : imgPath.trim();
+    }
+
+    public Integer getImgFlag() {
+        return imgFlag;
+    }
+
+    public void setImgFlag(Integer imgFlag) {
+        this.imgFlag = imgFlag;
+    }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "imageId=" + imageId +
+                ", imgPsvId=" + imgPsvId +
+                ", imgPath='" + imgPath + '\'' +
+                ", imgFlag=" + imgFlag +
+                '}';
     }
 }

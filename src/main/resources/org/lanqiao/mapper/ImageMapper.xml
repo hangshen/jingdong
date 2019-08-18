@@ -1,71 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.lanqiao.mapper.ImageMapper" >
-  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Image" >
-    <id column="image_id" property="imageId" jdbcType="INTEGER" />
-    <result column="img_psv_id" property="imgPsvId" jdbcType="INTEGER" />
-    <result column="img_path" property="imgPath" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.ImageMapper">
+  <resultMap id="ImageResultMap" type="org.lanqiao.entity.Image">
+    <id column="image_id" jdbcType="INTEGER" property="imageId" />
+    <result column="img_psv_id" jdbcType="INTEGER" property="imgPsvId" />
+    <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
+    <result column="img_flag" jdbcType="INTEGER" property="imgFlag" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    image_id, img_psv_id, img_path
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from image
-    where image_id = #{imageId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from image
-    where image_id = #{imageId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="org.lanqiao.entity.Image" >
-    insert into image (image_id, img_psv_id, img_path
-      )
-    values (#{imageId,jdbcType=INTEGER}, #{imgPsvId,jdbcType=INTEGER}, #{imgPath,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="org.lanqiao.entity.Image" >
-    insert into image
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="imageId != null" >
-        image_id,
-      </if>
-      <if test="imgPsvId != null" >
-        img_psv_id,
-      </if>
-      <if test="imgPath != null" >
-        img_path,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="imageId != null" >
-        #{imageId,jdbcType=INTEGER},
-      </if>
-      <if test="imgPsvId != null" >
-        #{imgPsvId,jdbcType=INTEGER},
-      </if>
-      <if test="imgPath != null" >
-        #{imgPath,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Image" >
-    update image
-    <set >
-      <if test="imgPsvId != null" >
-        img_psv_id = #{imgPsvId,jdbcType=INTEGER},
-      </if>
-      <if test="imgPath != null" >
-        img_path = #{imgPath,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where image_id = #{imageId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Image" >
-    update image
-    set img_psv_id = #{imgPsvId,jdbcType=INTEGER},
-      img_path = #{imgPath,jdbcType=VARCHAR}
-    where image_id = #{imageId,jdbcType=INTEGER}
-  </update>
 </mapper>

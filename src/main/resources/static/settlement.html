@@ -167,6 +167,11 @@
                             <div v-if="user.proDetail.product.user.userName===pro.proDetail.product.user.userName">
                                 <div id="third_2_7_2_2">
                                     <a><img src="images/productimages/img1.png"></a>
+<!--                                    <div v-for="(image, x) in pro.proDetail.images">-->
+<!--                                        <div v-if="image.imgFlag == 1" v-on="tupian(image)">-->
+<!--                                            <a><img src='"+image.imgPath+"'></a>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                     <div id="third_2_7_2_2_1">
                                         <a>{{pro.proDetail.product.proName}}</a>
                                         <div id="third_2_7_2_2_2">￥ {{pro.proDetail.proPrice}}</div>
@@ -517,6 +522,8 @@
                                 }
                             }
                             red2 = i;
+                        },
+                        tupian:function (image) {
                         }
                     }
                 })
