@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.Orders;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Set;
 
 @Repository
@@ -20,7 +21,7 @@ public interface OrdersMapper {
 
     int updateByPrimaryKey(Orders record);
 
-    Set<Orders> getUserOrders(@Param("userId")Integer userId, @Param("orderState")String orderState);
+    List<Orders> getUserOrders(@Param("userId")Integer userId, @Param("orderState")String orderState);
 
-    Set<Orders> getAllOrders(Integer userId);
+    List<Orders> getAllOrders(Integer userId);
 }

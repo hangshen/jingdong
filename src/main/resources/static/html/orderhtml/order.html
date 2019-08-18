@@ -535,9 +535,9 @@
                             </div>
                             <div class="mt20">
                                 <div class="page">
-                                    <span class="prev_page">上一页</span>
+                                    <span class="prev_page" @click="prevPage()">上一页</span>
                                     <a href="" class="pagenum">1</a>
-                                    <span class="next_page">下一页</span>
+                                    <span class="next_page" @click="nextPage()">下一页</span>
                                 </div>
                             </div>
                         </div>
@@ -692,11 +692,14 @@
             url:"http://localhost:8080/get/user/state/order",
             type:"post",
             data:{
+                "pageNum":1,
+                "pageSize":4,
                 'userId':1,
                 'orderState':state,
             },
             dataType:"json",
             success:function (data) {
+                var lan = data[0].pageNum;
                 for(var i = 0;i<data.length;i++){
                     data[i].orderTime=data[i].orderTime.substring(0,10)+" "+data[i].orderTime.substring(12,19);
                 }
@@ -754,6 +757,48 @@
                         leave2:function (i) {
                             $(".address").eq(i).css("display","none");
                         },
+                        prevPage:function(){
+                            if(parseInt($(".pagenum").text()) > 1){
+                                $(".pagenum").text(parseInt($(".pagenum").text())-1);
+                                $.ajax({
+                                    url:"http://localhost:8080/get/user/state/order",
+                                    type:"post",
+                                    data:{
+                                        "pageNum":$(".pagenum").text(),
+                                        "pageSize":4,
+                                        "userId":1,
+                                        'orderState':state,
+                                    },
+                                    dataType:"json",
+                                    success:function (data) {
+                                        vm.orders=data;
+                                    }
+                                })
+
+                            }
+                        },
+
+                        nextPage:function () {
+                            if($(".pagenum").text() < lan){
+                                $(".pagenum").text(parseInt($(".pagenum").text())+1);
+
+                                $.ajax({
+                                    url:"http://localhost:8080/get/user/state/order",
+                                    type:"post",
+                                    data:{
+                                        "pageNum":$(".pagenum").text(),
+                                        "pageSize":4,
+                                        "userId":1,
+                                        'orderState':state,
+                                    },
+                                    dataType:"json",
+                                    success:function (data) {
+                                        vm.orders=data;
+                                    }
+                                })
+
+                            }
+                        },
 
                     }
                 })
@@ -772,10 +817,13 @@
             url:"http://localhost:8080/get/user/all/order",
             type:"post",
             data:{
-                'userId':1,
+                "pageNum":1,
+                "pageSize":4,
+                "userId":1,
             },
             dataType:"json",
             success:function (data) {
+                var lan = data[0].pageNum;
                 for(var i = 0;i<data.length;i++){
                     data[i].orderTime=data[i].orderTime.substring(0,10)+" "+data[i].orderTime.substring(12,19);
                 }
@@ -791,7 +839,7 @@
                                 url:"http://localhost:8080/delete/user/order",
                                 type:"post",
                                 data:{
-                                    orderId:$(".order_tb .tb").eq(i).find("span[class='goods_number'] a").text(),
+                                    "orderId":$(".order_tb .tb").eq(i).find("span[class='goods_number'] a").text(),
                                 },
                                 dataType:"json",
                             })
@@ -823,6 +871,48 @@
                         },
                         leave2:function (i) {
                             $(".address").eq(i).css("display","none");
+                        },
+
+                        prevPage:function(){
+                            if(parseInt($(".pagenum").text()) > 1){
+                                $(".pagenum").text(parseInt($(".pagenum").text())-1);
+
+                                $.ajax({
+                                    url:"http://localhost:8080/get/user/all/order",
+                                    type:"post",
+                                    data:{
+                                        "pageNum":$(".pagenum").text(),
+                                        "pageSize":4,
+                                        "userId":1,
+                                    },
+                                    dataType:"json",
+                                    success:function (data) {
+                                        vm.orders=data;
+                                    }
+                                })
+
+                            }
+
+                        },
+
+                        nextPage:function () {
+                            if(parseInt($(".pagenum").text()) < lan){
+                                $(".pagenum").text(parseInt($(".pagenum").text())+1);
+                                $.ajax({
+                                    url:"http://localhost:8080/get/user/all/order",
+                                    type:"post",
+                                    data:{
+                                        "pageNum":$(".pagenum").text(),
+                                        "pageSize":4,
+                                        "userId":1,
+                                    },
+                                    dataType:"json",
+                                    success:function (data) {
+                                        vm.orders=data;
+                                    }
+                                })
+
+                            }
                         },
                     }
                 })

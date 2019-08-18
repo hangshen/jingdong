@@ -13,9 +13,9 @@ public interface OrdersService {
 
     public int CreateOrderDetail(List<OrderDetail> orderDetails);
 
-    public Set<Orders> getUserOrders(Integer userId, String orderState);
+    public List<Orders> getUserOrders(Integer userId, String orderState,Integer pageNum,Integer pageSize);
 
-    Set<Orders> getAllOrders(Integer userId);
+    List<Orders> getAllOrders(Integer userId,Integer pageNum,Integer pageSize);
 
     public int deleteOrder(Integer orderid);
 
