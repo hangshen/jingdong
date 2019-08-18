@@ -12,4 +12,6 @@ public interface CartService {
     public Integer getProDel(Integer cartId);
 
     public Integer getProAdd(List<Cart> cartId);
+
+    public int insert(Cart record);
 }

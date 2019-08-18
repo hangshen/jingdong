@@ -1,6 +1,7 @@
 package org.lanqiao.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 public class Product {
     private Integer proId;
@@ -18,6 +19,8 @@ public class Product {
     private String proState;
 
     private User user;
+
+    private Set<Standards> standardsSet;
 
     public Integer getProId() {
         return proId;
@@ -81,6 +84,14 @@ public class Product {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Standards> getStandardsSet() {
+        return standardsSet;
+    }
+
+    public void setStandardsSet(Set<Standards> standardsSet) {
+        this.standardsSet = standardsSet;
     }
 
     @Override

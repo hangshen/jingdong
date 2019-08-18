@@ -1,11 +1,15 @@
 package org.lanqiao.entity;
 
+import java.util.Set;
+
 public class StandardsVal {
     private Integer stanValId;
 
     private String stanValName;
 
     private Standards standards;
+
+    private Set<ProDetail> proDetailSet;
 
     public Integer getStanValId() {
         return stanValId;
@@ -29,6 +33,14 @@ public class StandardsVal {
 
     public void setStandards(Standards standards) {
         this.standards = standards;
+    }
+
+    public Set<ProDetail> getProDetailSet() {
+        return proDetailSet;
+    }
+
+    public void setProDetailSet(Set<ProDetail> proDetailSet) {
+        this.proDetailSet = proDetailSet;
     }
 
     @Override

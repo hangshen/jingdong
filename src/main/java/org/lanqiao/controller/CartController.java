@@ -26,4 +26,9 @@ public class CartController {
 
     @RequestMapping("/Cart/GetCartInformation")
     public List<Cart> getCartInformation(int userId){return cartService.GetCartInformation(userId);}
+
+    @RequestMapping("/insertToCart")
+    public int insert(@RequestBody Cart record){
+        return cartService.insert(record);
+    }
 }

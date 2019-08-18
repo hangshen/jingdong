@@ -30,4 +30,9 @@ public class CartServiceImpl implements CartService {
     public List<Cart> GetCartInformation(int userId) {
         return cartMapper.selectByPrimaryKey(userId);
     }
+
+    @Override
+    public int insert(Cart record){
+        return cartMapper.insert(record);
+    }
 }
