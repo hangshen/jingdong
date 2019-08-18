@@ -71,3 +71,20 @@
     font-weight: bolder;
 }
 
+.suoyin{
+    width: 300px;
+    margin: auto;
+    font-size: 30px;
+}
+
+.suoyin ul{
+    margin-top: 200px;
+}
+
+.suoyin li{
+    margin-top: 20px;
+}
+
+.suoyin a{
+    text-decoration: none;
+}

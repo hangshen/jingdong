@@ -14,6 +14,7 @@ public class Cart {
     private Integer carUserId;
 
     private ProDetail proDetail;
+    private Integer carProdeId;
 
     public Integer getCartId() {
         return cartId;
@@ -61,6 +62,14 @@ public class Cart {
 
     public void setProDetail(ProDetail proDetail) {
         this.proDetail = proDetail;
+    }
+
+    public Integer getCarProdeId() {
+        return carProdeId;
+    }
+
+    public void setCarProdeId(Integer carProdeId) {
+        this.carProdeId = carProdeId;
     }
 
     @Override

@@ -13,6 +13,7 @@
     <collection property="standardsSet" resultMap="StandardsResultMap"></collection>
   </resultMap>
   <resultMap id="UserResultMap" type="org.lanqiao.entity.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
