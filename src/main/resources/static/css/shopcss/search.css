@@ -1,0 +1,182 @@
+/*主背景*/
+#mainbg{width: 1520px;height: 1600px;margin: 0px 0px;background-color:#ffffff; }
+/*导航*/
+#navfind{width: 1520px;height: 31px;margin: 0px 0px;float: left; background-color: #E3E4E5;}
+#topfind{width: 1390px;height: 31px;margin-left:50px; }
+
+#backtop{width: 73px;height: 30px;float: left;}
+.iconfont{font-family:iconfont;font-style:normal;-webkit-text-stroke-width:.2px;-moz-osx-font-smoothing:grayscale}
+.backli{margin-top: 6px}
+
+#find1{width: 77px;height: 30px;float: left; }
+#m_site{width: 58px;height: 30px;}
+#m_site li{list-style: none;margin-right: 5px;margin-top: 6px}
+
+#find2{width: 660px;height: 30px;float: right; }
+#m_find .dt{width: 60px;height: 30px;padding: 0 2px;text-align: center;margin-top: 6px}
+#m_find .deng{width: 70pt;height: 30px;padding: 0 2px;text-align: center;margin-top: 6px}
+#m_find .spacer{overflow: hidden;margin: 11px 5px 0;width: 1px;height: 10px;background-color: #ccc;}
+#m_find .register{width: 50px;margin-top: 6px;color: #c81623}
+
+
+
+/*搜索*/
+#topsearch{width: 1390px;height: 87px;margin-left: 50px ; float: left;}
+
+#show1{width: 160px;height: 50px; margin-top: 22px;
+    float: left;background-image: url("../../images/jddog.png");background-size: 160px;}
+#sear{width: 736px;height: 40px;margin-top: 25px;float: left;margin-left:250px;}
+#sear1{width: 650px;height: 32px;float: left; border: 2px solid #e1251b;}
+#sear1_1{text-align: left;font-size: 16px;margin-top: 6px;width: 600px;height: 16px;outline: none;}
+#sear1_2{width: 32px;height: 20px;margin-top: 5px;float: right;background-color: chocolate;margin-right: 10px;}
+
+#sear2{width: 80px;height: 36px;float: left;background-color: #f30213;}
+#sear2_1{    float: left;
+    width: 50px;
+    height: 16px;
+    margin:8px 15px 8px 15px;
+    font-family: tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+    text-align:center;
+    border: none;
+    border-radius: 0;
+    line-height: 1;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;}
+
+#shopcar{width: 140px;height: 36px;float: left;background-color: #f9f9f9;margin-left: 20px;margin-top: 25px}
+
+
+
+#q_sear{width: 740px;height: 20px;float: left;margin-left:250px;}
+#q_sear1 .q_sear2{width: 48pt;height: 20px;text-align: center;}
+#q_sear1 .spacer{overflow: hidden;margin: 0px 2px 0 2px;width: 1px;height: 20px;background-color: #ccc;}
+
+
+
+
+
+
+
+
+/*商品分类*/
+#shoptype{width: 1520px;height: 35px ; float: left; margin-top: 10px;
+    border-bottom: 2px solid #B1191A;}
+.shoptype1{width:200px;height: 35px;margin-left: 50px;background-color: #f30213}
+.shopfont{font-size: 14px;color: #ffffff;text-align: center;margin-top: 5px;}
+ .shoptype2{width: 100px;height:33px;margin-top: 5px ;text-align: center;
+    color: black;font-size: 14px;font-weight: bold;}
+.acolor{color: #333}
+
+
+
+/*结果*/
+#res{width: 1390px;height: 44px;margin-left: 50px ; float: left;}
+#res1{width: 1265px;height: 29px;float: left;margin-top: 13px}
+#res1_1{width: 48px;height: 24px;float: left;margin-top: 2px;}
+#res1_2{width: 72px;height: 15px;float: left;margin-top: 2px;font-weight: bold;}
+.resf {
+    float: left;margin-right: 5px;font-style: normal;
+    font-family: "Helvetica Neue","Hiragino Sans GB",SimSun,serif;
+    }
+
+
+
+/*品牌*/
+#brand{width: 1390px;height: 120px;margin-left: 50px ; float: left;margin-top: 3px;}
+
+#brand1{width: 110px;height: 120px;float: left;background-color: #f2f3f3;}
+#brand1_1{width: 110px;height: 34px;float: left;
+   font-weight: bold;
+    color: #666;margin-left: 10px;margin-top: 10px;}
+#brand2{width: 1140px;height: 109px;float: left;margin-left: 2px;}
+.brand2_1{width: 102px;height: 36px;float: left;margin: 5px 6px;text-align: center;
+box-shadow: #E4393c}
+.brand2_2{color:#E4393c;}
+
+.brand3{width: 52px;height: 25px;float: left;margin-left: 10px;margin-top: 5px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*选择*/
+.sel{width: 110px;height: 34px;margin-left: 50px ; float: left; background-color: #f2f3f3;}
+.selfont{font-weight: bold;margin-left: 10px;margin-top:5px;height: 20px;width:80px;float: left }
+.selfont1{margin-left: 10px;margin-top:5px;height: 20px;width:80px;float: left }
+
+.ect{width: 1280px;height: 34px;float: left; }
+.ectbox{width: 1140px;height: 34px;float: left;}
+.ect1{width: 130px;height: 26px;float: left;margin: 6px 0 0 10px;}
+.ect1font{color: #005AA0}
+.ect2{width: 67px;height: 26px;float: left;margin: 6px 0 0 10px;}
+
+
+
+/*商品*/
+#shop{width: 1400px;height: 1000px;margin-left: 50px ; float: left;}
+#shopsel{width: 1200px;height: 38px;float: right;margin-top: 10px;background-color: #f9f9f9}
+#shopseach{width: 168px;height: 25px;float: right;margin: 6px 0 0 7px;}
+.shopseach1{width: 116px;height: 20px }
+
+#shopv{width: 180px;height: 1000px;float: left;padding: 0px 0px 10px ;}
+#shopvs{width: 168px;height: 36px;float: left;padding: 0px 0px 0px 10px;}
+.shopv1{width: 178px;height:260px;float: left;padding: 2px 1px; }
+.sv_1{width: 160px;height: 160px;float: left;margin-top: 10px;margin-left: 9px;}
+.sv_2{width: 160px;height: 20px;float: left;margin-top: 5px;margin-left: 9px;}
+.sv_3{width: 160px;height: 36px;float: left;margin-top: 5px;margin-left: 9px;}
+.sv_4{width: 160px;height: 26px;float: left;margin-top: 5px;margin-left: 9px;}
+
+#shopshow{width: 1200px;height:1000px;float: left ;margin: 10px 9px 10px ;background-color: deepskyblue}
+.s_s{width: 240px;height: 426px;float: left;margin-top: 5px;}
+.s_s1{width: 220px;height: 220px;float: left;margin-top: 20px;margin-left: 10px;}
+.s_s2{width: 220px;height: 22px;float: left;margin-top: 8px;margin-left: 10px;}
+.s_s2font{font-size: 20px;color: #e3393c; }
+.s_s3{width: 220px;height: 40px;float: left;margin-top: 5px;margin-left: 10px;}
+.s_s4{width: 220px;height: 15px;float: left;margin-top: 5px;margin-left: 10px;}
+.s_s5{width: 220px;height: 15px;float: left;margin-top: 8px;margin-left: 10px;}
+.s_s6{width: 220px;height: 16px;float: left;margin-top: 8px;margin-left: 10px;}
+.s_s6f {
+    float: left;
+    height: 14px;
+    line-height: 14px;
+    padding: 0 3px;
+    border: 1px solid #e23a3a;
+    margin-right: 3px;
+    overflow: hidden;
+    text-align: center;
+    font-style: normal;
+    font-size: 12px;
+    font-family: "Helvetica Neue","Hiragino Sans GB",SimSun,serif;
+    border-radius: 2px;
+    color: #e23a3a;}
+.s_s6f2{border: #005AA0;background-color: #005AA0;color: #f2f3f3}
+
+.s_s7{width: 220px;height: 27px;float: left;margin-top: 5px;margin-left: 10px;}
+.s_s7_1{width: 57px;height: 27px;float: left;}
+.s_s7_2{width: 57px;height: 27px;float: left;}
+.s_fontc{color:#E4393c }
+.s_s7_3{width: 96px;height: 27px;float: left;}
+
+
+/**/
+#bootsearch{width: 1390px;height: 111px;margin-left: 50px ; background-color: lightcoral;float: left;margin-top: 15px;}
+
+
+.floatmun{width: 34px;height: 35px;background-color: #7a6e6e;position: fixed; z-index: 1;}
+#floatmun1{right: 0px;top: 300px}
+#floatmun2{right: 0px;top: 336px}
+#floatmun3{right: 0px;top: 372px}
+#floatmun4{right: 0px;top: 408px}
+#floatmun5{right: 0px;top: 668px}
+#floatmun6{right: 0px;top: 704px}
+#floatmun7{right: 0px;top: 740px}

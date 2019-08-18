@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>搜索</title>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/shopcss/search.css" rel="stylesheet">
+    <script src="../../js/shopjs/jquery.js"></script>
+</head>
+<body>
+<div id="mainbg">
+    <div id="navfind">
+        <div id="topfind">
+            <div id="backtop">
+                <ul>
+                    <!--                    <i  class="backli iconfont"></i>-->
+                    <li class="backli"><a>京东首页</a></li>
+                </ul>
+            </div>
+            <div id="find1">
+                <ul id="m_site">
+                    <li class="iconfont red font14"></li>
+                    <li>福建</li>
+                </ul>
+            </div>
+            <div id="find2">
+                <ul id="m_find">
+                    <li class="deng"><a>你好，请登录</a></li>
+                    <li class="register">免费注册</li>
+                    <li class="spacer"></li>
+                    <li class="dt"><a>我的订单</a></li>
+                    <li class="spacer"></li>
+                    <li class="dt"><a>我的京东</a></li>
+                    <li class="spacer"></li>
+                    <li class="dt"><a>京东会员</a></li>
+                    <li class="spacer"></li>
+                    <li class="register"><a>企业采购</a></li>
+                    <li class="spacer"></li>
+                    <li class="dt"><a>客户服务</a></li>
+                    <li class="spacer"></li>
+                    <li class="dt"><a>网络导航</a></li>
+                    <li class="spacer"></li>
+                    <li class="dt"><a>手机京东</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="topsearch">
+            <div id="show1"></div>
+            <div id="sear">
+                <div id="sear1">
+                    <input id="sear1_1" type="text" name="search1"/>
+                    <div id="sear1_2"><img src="../../images/shopimages/camera.png"></div>
+                </div>
+                <div id="sear2">
+                    <ul>
+                        <li id="sear2_1">搜索</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div id="shopcar">
+                <img src="../../images/shopimages/shopcar1.png">
+            </div>
+            <div id="q_sear">
+                <ul id="q_sear1">
+                    <li class="q_sear2"><a>笔记本电脑</a></li>
+                    <li class="spacer"></li>
+                    <li class="q_sear2"><a>电脑主机</a></li>
+                    <li class="spacer"></li>
+                    <li class="q_sear2"><a>台式电脑</a></li>
+                    <li class="spacer"></li>
+                    <li class=q_sear2"><a>笔记本</a></li>
+                    <li class="spacer"></li>
+                    <li class=q_sear2"><a>电脑笔记本</a></li>
+                    <li class="spacer"></li>
+                    <li class="q_sear2"><a>组装电脑</a></li>
+                    <li class="spacer"></li>
+                    <li class="q_sear2"><a>显示屏</a></li>
+                    <li class="spacer"></li>
+                    <li class="q_sear2"><a>手机</a></li>
+                    <li class="spacer"></li>
+                    <li class="q_sear2"><a>台式机</a></li>
+                    <li class="spacer"></li>
+                    <li class="q_sear2"><a>电脑桌</a></li>
+                    <li class="spacer"></li>
+                    <li class="q_sear2"><a>苹果电脑</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="shoptype">
+            <ul>
+                <li class="shoptype1 shopfont">全部商品分类</li>
+                <li class="shoptype2"><a class="acolor">京东时尚</a></li>
+                <li class="shoptype2"><a class="acolor">美妆馆</a></li>
+                <li class="shoptype2"><a class="acolor">超市</a></li>
+                <li class="shoptype2"><a class="acolor">生鲜</a></li>
+                <li class="shoptype2"><a class="acolor">海囤全场</a></li>
+                <li class="shoptype2"><a class="acolor">闪购</a></li>
+                <li class="shoptype2"><a class="acolor">拍卖</a></li>
+                <li class="shoptype2"><a class="acolor">金融</a></li>
+            </ul>
+        </div>
+        <div id="res">
+            <div id="res1">
+                <div id="res1_1" class="resf">全部结果</div>
+                <i class="resf"> > </i>
+                <div id="res1_2"> “电脑”</div>
+            </div>
+        </div>
+        <div id="brand">
+            <div id="brand1">
+                <div id="brand1_1">品牌:</div>
+            </div>
+            <div id="brand2">
+                <div class="brand2_1"><a>戴维（DELL）</a></div>
+                <div class="brand2_1"><a>联想（Lenovo）</a></div>
+                <div class="brand2_1"><a>惠普（HP）</a></div>
+                <div class="brand2_1"><a>极限矩阵</a></div>
+                <div class="brand2_1"><a>七喜（HEDY）</a></div>
+                <div class="brand2_1"><a>微星（MSI）</a></div>
+                <div class="brand2_1"><a>海尔（Haier）</a></div>
+                <div class="brand2_1"><a>清华同方（THTF）</a></div>
+                <div class="brand2_1"><a>机械革命</a></div>
+                <div class="brand2_1"><a>戴维（DELL）</a></div>
+                <div class="brand2_1"><a>联想（Lenovo）</a></div>
+                <div class="brand2_1"><a>惠普（HP）</a></div>
+                <div class="brand2_1"><a>极限矩阵</a></div>
+                <div class="brand2_1"><a>七喜（HEDY）</a></div>
+                <div class="brand2_1"><a>微星（MSI）</a></div>
+                <div class="brand2_1"><a>海尔（Haier）</a></div>
+                <div class="brand2_1"><a>清华同方（THTF）</a></div>
+                <div class="brand2_1"><a>机械革命</a></div>
+            </div>
+            <div class="brand3"><i>更多</i></div>
+            <div class="brand3"><i>多选</i></div>
+        </div>
+
+
+        <div class="sel ">
+            <div class="selfont">电脑整机</div>
+        </div>
+        <div class="ect">
+            <div class="ectbox">
+                <div class="ect1"><a class="ect1font">台式机</a></div>
+                <div class="ect1"><a class="ect1font">笔记本</a></div>
+                <div class="ect1"><a class="ect1font">一体机</a></div>
+                <div class="ect1"><a class="ect1font">游戏本</a></div>
+                <div class="ect1"><a class="ect1font">平板电脑</a></div>
+                <div class="ect1"><a class="ect1font">服务器/工作站</a></div>
+                <div class="ect1"><a class="ect1font">笔记本配件</a></div>
+            </div>
+            <div class="brand3"><i>更多</i></div>
+        </div>
+        <div class="sel ">
+            <div class="selfont">电脑配件</div>
+        </div>
+        <div class="ect">
+            <div class="ectbox">
+                <div class="ect1"><a class="ect1font">组装电脑</a></div>
+                <div class="ect1"><a class="ect1font">显示屏</a></div>
+                <div class="ect1"><a class="ect1font">电脑配件套装</a></div>
+                <div class="ect1"><a class="ect1font">显卡</a></div>
+                <div class="ect1"><a class="ect1font">CPU</a></div>
+                <div class="ect1"><a class="ect1font">内存</a></div>
+                <div class="ect1"><a class="ect1font">机箱</a></div>
+            </div>
+            <div class="brand3"><i>更多</i></div>
+
+        </div>
+        <div class="sel ">
+            <div class="selfont">二手电脑整机</div>
+        </div>
+        <div class="ect">
+            <div class="ectbox">
+                <div class="ect1"><a class="ect1font">二手台式机</a></div>
+                <div class="ect1"><a class="ect1font">二手笔记本</a></div>
+                <div class="ect1"><a class="ect1font">二手一体机</a></div>
+                <div class="ect1"><a class="ect1font">二手平板电脑</a></div>
+                <div class="ect1"><a class="ect1font">二手笔记本配件</a></div>
+                <div class="ect1"><a class="ect1font">二手平板电脑配件</a></div>
+
+            </div>
+
+        </div>
+        <div class="sel ">
+            <div class="selfont1">高级选项</div>
+        </div>
+        <div class="ect">
+            <div class="ectbox">
+                <div class="ect2"><p class="ect1font">处理器</p></div>
+                <div class="ect2"><p class="ect1font">内存容量</p></div>
+                <div class="ect2"><p class="ect1font">硬盘容量</p></div>
+                <div class="ect2"><p class="ect1font">屏幕尺寸</p></div>
+                <div class="ect2"><p class="ect1font">系统</p></div>
+                <div class="ect2"><p class="ect1font">优质服务</p></div>
+                <div class="ect2"><p class="ect1font">显卡</p></div>
+                <div class="ect2"><p class="ect1font">系列</p></div>
+                <div class="ect2"><p class="ect1font">屏幕类型</p></div>
+                <div class="ect2"><p class="ect1font">其他分类</p></div>
+            </div>
+
+        </div>
+
+
+        <div id="shop">
+            <div id="shopsel">
+                <i>配送至</i>
+                <input class="shopseach1" type="text"/>
+                <input type="checkbox"/>京东快递
+                <input type="checkbox"/>211限时达
+                <input type="checkbox"/>货到付款
+                <input type="checkbox"/>仅显示有货
+                <input type="checkbox"/>海囤全球
+                <input type="checkbox"/>可配送全球
+                <input type="checkbox"/>新品
+                <div id="shopseach">
+                    <input class="shopseach1" type="text"/>
+                    <input type="button" value="确定"/>
+                </div>
+            </div>
+
+
+            <div id="shopv">
+                <div id="shopvs">
+                    <h3>商品精选</h3>
+                </div>
+                <div class="shopv1">
+                    <div class="sv_1"><img src="../../images/shopimages/shopvv.png"></div>
+                    <div class="sv_2"><p class="s_fontc">￥4599.00</p></div>
+                    <div class="sv_3"><p>武极 i7 8700/华硕GTX1660-6G/256G 游戏台式吃鸡电脑..</p></div>
+                    <div class="sv_4"><p>已有7.1万+评论</p></div>
+
+                </div>
+                <div class="shopv1">
+                    <div class="sv_1"><img src="../../images/shopimages/shopvv.png"></div>
+                    <div class="sv_2"><p class="s_fontc">￥4599.00</p></div>
+                    <div class="sv_3"><p>武极 i7 8700/华硕GTX1660-6G/256G 游戏台式吃鸡电脑..</p></div>
+                    <div class="sv_4"><p>已有7.1万+评论</p></div>
+
+                </div>
+                <div class="shopv1">
+                    <div class="sv_1"><img src="../../images/shopimages/shopvv.png"></div>
+                    <div class="sv_2"><p class="s_fontc">￥4599.00</p></div>
+                    <div class="sv_3"><p>武极 i7 8700/华硕GTX1660-6G/256G 游戏台式吃鸡电脑..</p></div>
+                    <div class="sv_4"><p>已有7.1万+评论</p></div>
+
+                </div>
+
+
+            </div>
+
+
+            <div id="shopshow">
+                <div class="s_s" id="s1" v-for="(pro, index1) in pro">
+                    <div class="s_s1"><img src={{pro.imgPath}}></div>
+                    <div class="s_s2"><p class="s_s2font">￥{{pro.price}}</p></div>
+                    <div class="s_s3"><a class="s" @click="getId(index1)">{{pro.proName}}</a></div>
+                    <div class="s_s4"><p>7.1万+评论</p></div>
+                    <div class="s_s5"><p>武极电脑DIY旗舰店</p></div>
+                    <div class="s_s6">
+                        <i class="s_s6f">赠</i>
+                        <i class="s_s6f s_s6f2">险</i>
+                    </div>
+                    <div class="s_s7">
+                        <div class="s_s7_1"><input type="checkbox">对比</div>
+                        <div class="s_s7_2"><i>关注</i></div>
+                        <div class="s_s7_3"><i class="s_fontc">加入购物车</i></div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div id="floatmun1" class="floatmun"></div>
+            <div id="floatmun2" class="floatmun"></div>
+            <div id="floatmun3" class="floatmun"></div>
+            <div id="floatmun4" class="floatmun"></div>
+            <div id="floatmun5" class="floatmun"></div>
+            <div id="floatmun6" class="floatmun"></div>
+            <div id="floatmun7" class="floatmun"></div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="../../js/shopjs/vue.min.js"></script>
+<script>
+    var p = sessionStorage.getItem("p");
+    var msg = document.getElementById('sear1_1');
+    var mv1 = new Vue();
+    $(function () {
+        if (msg.value == "") {
+            msg.value = p;
+            $.ajax({
+                url: "http://localhost:8080/seach",
+                type: "post",
+                data: {produce: $("input[name='search1']").val()},
+                dataType: "json",
+                success: function (data) {
+                    mv1 = new Vue({
+                        el: '#shopshow',
+                        data: {pro: []},
+                        methods: {
+                            getId: function (i) {
+
+                                $.ajax({
+                                    url: "http://localhost:8080/getId",
+                                    type: "POST",
+                                    data: {"pname": $(".s").eq(i).text()},
+                                    dataType: "json",
+                                    success: function (data) {
+                                        alert(data);
+                                    },
+                                    error: function () {
+
+                                        alert("error");
+
+                                    }
+                                })
+                            }
+                        },
+
+                        created: function () {
+                            this.pro = data;
+                        },
+
+
+                    })
+                    $("#sear2_1").click(function () {
+                        $.ajax({
+                            url: "http://localhost:8080/seach",
+                            type: "post",
+                            data: {produce: $("input[name='search1']").val()},
+                            dataType: "json",
+                            success: function (data) {
+                                mv1.pro = data;
+
+                            },
+
+                            error: function () {
+
+                                alert("error");
+
+                            }
+                        })
+
+                    });
+
+                },
+
+                error: function () {
+
+                    alert("error");
+
+                }
+            })
+        }
+
+
+    })
+
+
+</script>
+</body>
+</html>
