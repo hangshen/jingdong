@@ -12,6 +12,8 @@
     <script src="../../js/productjs/vue.min.js"></script>
     <script>
             $(function() {
+                var pid=sessionStorage.getItem("id");
+                alert(pid);
                 var stock;
                 var num;
                 var proid=0;
@@ -27,14 +29,13 @@
                     url:"http://localhost:8080/seleOnePro",
                     dataType:"json",
                     type:"post",
-                    data:{proId:1},
+                    data:{proId:pid},
                     success:function (data) {
                        $("#proInfo2_1").html(data.proName);
                         $("#proInfo2_4_1_3").html(data.standardsSet[0].standardsvalSet[0].proDetailSet[0].proPrice);
                         $("#ul2_2").html(data.user.userName);
                         proid = data.standardsSet[0].standardsvalSet[0].proDetailSet[0].pdetailId;
                         userId = data.user.userId;
-                        alert(data.user.userId);
                         stock = data.standardsSet[0].standardsvalSet[0].proDetailSet[0].stock;
                         for(var i in data.standardsSet){
                             a = data.standardsSet[i].stanName;
@@ -47,15 +48,14 @@
                         // }
                     },
                     error: function (msg) {//ajax请求失败后触发的方法
-                        alert(1);//弹出错误信息
+                        alert("错误1");//弹出错误信息
                     }
                 })
-                alert(userId);
                 $.ajax({
                     url:"http://localhost:8080/seleAllPro",
                     dataType:"json",
                     type:"post",
-                    data:{proId:1},
+                    data:{proId:pid},
                     success:function (data) {
                         var vum1 = new Vue({
                             el: "#prostand",
@@ -154,7 +154,7 @@
                     })
                     },
                     error: function (msg) {//ajax请求失败后触发的方法
-                        alert(2);//弹出错误信息
+                        alert("错误2");//弹出错误信息
                     }
                 }),
                 // $("#dt6_pro2_1").click(function () {
@@ -190,9 +190,6 @@
                         "carProdeId":proid,
                         "carUserId":userId
                     };
-                    alert(record.carProNum);
-                    alert(record.carUserId);
-                    alert(record.carProdeId);
                     $.ajax({
                         url:"http://localhost:8080/insertToCart",
                         dataType:"json",
@@ -200,11 +197,10 @@
                         data:JSON.stringify(record),
                         contentType: "application/json;charset-UTF-8",
                         success:function (data) {
-                            // sessionStorage.setItem("carProdeId",record.carProdeId);
-                            // window.location = "/1.html";
+                            window.location = "/html/carthtml/cart.html";
                         },
                         error: function (msg) {//ajax请求失败后触发的方法
-                            alert(2);//弹出错误信息
+                            alert("错误3");//弹出错误信息
                         }
                     })
                 })
@@ -230,7 +226,7 @@
                         })
                     },
                     error: function (msg) {//ajax请求失败后触发的方法
-                        alert(5);//弹出错误信息
+                        alert("错误3");//弹出错误信息
                     }
                 }),
                 $("#next").click(function () {
@@ -246,7 +242,7 @@
                             vn.coms=data;
                         },
                         error: function (msg) {//ajax请求失败后触发的方法
-                            alert(5);//弹出错误信息
+                            alert("错误3");//弹出错误信息
                         }
                     })
                 }),
@@ -265,7 +261,7 @@
                                 vn.coms=data;
                             },
                             error: function (msg) {//ajax请求失败后触发的方法
-                                alert(5);//弹出错误信息
+                                alert("错误3");//弹出错误信息
                             }
                         })
                     }
