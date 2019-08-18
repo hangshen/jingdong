@@ -1,0 +1,356 @@
+
+#top_show{width: 2249.16px;
+          height: 1000px;
+  background-color: #ffffff;
+  color: #666666;
+            }
+
+
+/*menu*/
+#menu {
+  width: 1423px;
+  height: 31px;
+  background-color: #E3E4E5;
+  color: black;
+}
+
+#menu li {
+  line-height: 30px ;float: left;
+}
+
+#menu_content {
+  width: 990px;
+  height: 30px;
+  margin: 0px 220px;
+}
+
+#m_left li {
+  margin-right: 4px;
+}
+
+#m_right {
+  width: 704px;
+  height: 30px;
+  float: right;
+  margin-right: 10px;
+}
+
+#m_right .dt {
+  width: 62px;
+  height: 30px;
+  padding: 0 2px;
+  text-align: center
+}
+
+#m_right .dt1 {
+  width: 77px;
+  height: 30px;
+  padding: 0 2px;
+  text-align: center
+}
+
+#m_right_first {
+  width: 105px
+}
+
+#m_right .spacer {
+  overflow: hidden;
+  margin: 11px 5px 0;
+  width: 1px;
+  height: 10px;
+  background-color: #ccc;
+}
+
+/*************logo and sousuo***************/
+#logo\ and\ sousuo{
+  width: 990px;
+  height: 97px;
+  background-color: #ffffff;
+  margin: 0px 216.5px;
+  padding: 10px 0px 0px;
+}
+#logo{width: 277px;
+height: 50px;
+margin: 15px 0px 22px;
+  background-image: url("../../img/newlogo.png");}
+#search{width: 325.75px;
+  height: 28px;
+float: right;
+  margin: -50px 0px 0px;
+}
+#keyword{width: 270px;
+height: 24px;
+}
+#button{width: 48px;
+  height: 24px;
+  background-color: #e1251b;
+  color: #eeeeee;
+
+}
+/*****************全部商品***********************/
+#goods{width: 1423px;
+height: 353px;
+margin: 37px 0px 20px;
+background-color: #ffffff}
+#all{
+  width: 990px;
+  height: 37px;
+  float: left;
+  background-color: #ffffff;
+  margin: 0px 240px;
+
+
+}
+#all-left {
+  width: 78.64px;
+  height: 36px;
+  padding: 0px 0px 0px;
+  margin: 5px 30px 0px 0px;
+}
+ #all-left li{ color: #e1251b;
+  font: 16px tahoma,arial,"Microsoft YaHei";
+  background-color: #ffffff;
+  float: left;
+   font-weight: bold;
+
+}
+#all-right{
+  margin: -35px 0px 0px;
+  float: right;
+}
+#shuxing{width: 990px;
+height: 30px;
+background-color:#E3E4E5;
+  float: left;
+margin: 0px 240px 10px;
+padding: 5px 0px}
+
+#sx{float: left}
+#sx0 {
+  width: 140px;
+  height: 32px;
+  float: left;
+}
+#sx1{width: 100px;
+  height: 32px;
+float: left;
+}
+#sx2{width: 100px;
+  height: 32px;
+  margin-left: 140px;
+  float: left;
+}
+#sx3{width: 100px;
+  height: 32px;
+  float: left;
+}#sx4{width: 100px;
+   height: 32px;
+  float: left;
+ }#sx5{width: 100px;
+    height: 32px;
+  margin-left: 40px;
+  float: left;
+  }
+#sx6{width: 120px;
+  height: 32px;
+  float: left;
+}
+#kuang{width: 990px;
+  height: 30px;
+  background-color: #ffffff;
+  margin: 0px 240px;
+float: left}
+  #dianming{
+  font-size: 14px;
+  font-weight: bold;
+    float: left;
+}
+#lianxikefu{width: 29px;
+height: 30px;
+background-image: url("../../img/111.png");
+float: left;
+margin-left: 40px}
+#shop-coupon-btn{
+  float: left;
+  margin-left: 200px;
+  margin-top: 5px;
+  background-color: #cccccc;
+}
+#item-header{
+  width:990px ;
+  background-color:#e1251b;
+  height: 26px;
+  margin: 0px 240px;
+float: left;
+}
+#cart_content{
+  border-top: 1px solid #c5c5c5;
+  width: 988px;
+  height: 118px;
+  float: left;
+  margin: 0px 240px;
+}
+.cart_content_1{
+  float: left;
+  width: 40px;
+  height: 118px;
+}
+.cart_content_1 input{position: relative;top: 20px;left: 10px}
+.cart_content_2{
+  float: left;
+  width: 300px;
+  height: 118px;
+}
+.cart_content_img{position: relative;top: 15px;}
+.cart_content_text{width: 203px;height: 56px;position: relative;left: 90px;top: -65px}
+.cart_content_3{
+  float: left;
+  width: 150px;
+  height: 118px;
+}
+.cart_content_select{position: relative;top: 20px;left: 20px}
+.cart_content_4{
+  float: left;
+  width: 190px;
+  height: 118px;
+}
+.cart_content_price{position: relative;top: 15px;left: 100px}
+.cart_content_5{
+  float: left;
+  width: 80px;
+  height: 118px;
+  display: block;
+}
+.desc{width: 17px;height: 22px;position: relative;top: 15px}
+.add{width: 17px;height: 22px;position: relative;top: -7px; left: 59px}
+.num{width: 44px;height: 18px;position: relative;top: 15px;left: -5px;text-align: center}
+.cart_content_6{
+  float: left;
+  width: 140px;
+  height: 118px;
+}
+.cart_content_price2{position: relative;top: 15px;left: 50px;font-weight: bold}
+.cart_content_7{
+  float: left;
+  width: 75px;
+  height: 118px;
+}
+.cart_content_7 a{position: relative;top: 15px}
+
+#content_total{
+  margin-top: 10px;
+  width: 990px;
+  height: 52px;
+}
+
+/*********total左边************/
+.total_left{
+  float: left;
+  width: 270px;
+  height: 52px;
+  margin: 0px 240px;
+
+}
+.total_left input{
+  position: relative;top:15px;left: 10px;
+}
+.total_left a{
+  position: relative;top: 12px;left: 10px;
+}
+.remove{
+  font-weight: bold;
+}
+/*******total右边部分*********/
+.total_right{
+  float: right;
+  width: 480px;
+  height: 52px;
+  margin-top: -35px;
+}
+.amount{
+  width: 100px;
+  height: 52px;
+  position: relative;left: 400px;
+}
+.amount_text{
+  position: relative;top: 7px;
+}
+.amount em{
+  color: #e2231a;
+  font-weight: bold;
+}
+.price{
+  width: 126px;
+  height: 52px;
+  position: relative;left: 500px;top: -52px;
+}
+.price_one{
+  position: relative;top: 2px;left: 10px;
+}
+.price_two{
+  color: #e2231a;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;top: 4px;left: 10px;
+}
+.price_three{
+  position: relative;left: 25px;
+}
+.price_four{
+  position: relative;left: 30px;
+}
+.pay{
+  width: 94px;
+  height: 52px;
+  position: relative;left: 626px;top: -104px;
+  background-color: #e54346;
+}
+.pay_text{
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+  position: relative;top: 10px;left: 15px;
+}
+
+/*#h3{
+  width: 990px;
+  height: 19.16px;
+  background-color: #ffffff;
+  margin: 0px 240px;
+}*/
+#h4{width: 990px;
+height: 18px;
+
+float: left;
+background-color: crimson;
+  margin:5px 240px;
+}
+#item-main1{width: 950px;
+height: 50px;
+  margin: 0px 240px;
+  padding: 15px 20px;
+  background-color:#111111;
+  float: left;
+}
+#smart-item1{width:990px;
+height: 275px;
+float: left;
+background-color: aqua;
+  margin:0px 240px;}
+#item-main2{width: 950px;
+  height: 50px;
+  margin: 0px 240px;
+  padding: 15px 20px;
+  background-color:#111111;
+  float: left;
+}
+#smart-item2{width:990px;
+  height: 275px;
+  float: left;
+  background-color: aqua;
+  margin:0px 240px;}
+#new{width: 990px;
+height: 359px;
+float: left;
+  background-color: crimson;
+  margin:0px 240px;}

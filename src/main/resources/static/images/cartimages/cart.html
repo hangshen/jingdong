@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    div, ul, li {
+      margin: 0;
+      padding: 0
+    }
+
+    li {
+      float: left;
+      width: 100px;
+      height: 24px;
+      line-height: 24px;
+      list-style: none;
+      border: solid 1px;
+      text-align: center;
+    }
+
+    #cart {
+      width: 700px;
+      text-align: center;
+    }
+
+    .num input {
+      width: 30px;
+      text-align: center;
+    }
+
+    ul{
+      background-color:cornflowerblue;
+
+    }
+
+    /*ul:nth-child(0) {*/
+    /*background-color: aqua;*/
+    /*}*/
+
+    .num {
+      width: 150px;
+    }
+
+    #total {
+      clear: both;
+      text-align: right;
+      padding-right: 50px;
+      padding-top: 5px;
+    }
+
+    #total span {
+      color: red
+    }
+  </style>
+  <script src="js/jquery.js"></script>
+  <script>
+    var pro = ["电脑","u盘","充电器","鼠标"];
+    var price = [10000,23,45,65];
+    $(function(){
+      //数量加1
+      //1.找到+1按钮 绑定单击事件
+      $("input[value='+']").click(function () {
+        //2.获取文本框的值进行加1操作
+        $(this).prev().val(parseInt($(this).prev().val())+1); //this很重要 这里不能选name=num的值加1
+      })
+      //数量减1
+      //1.找到-1按钮，绑定单击事件
+      $("input[value='-']").click(function () {
+        //2.获取同级文本框的值进行减1操作 需要判断不为0则减1  为0则不变
+        if ($(this).next().val()>0) {
+          $(this).next().val(parseInt($(this).next().val()) - 1);
+        }else{
+          var b = parseInt($(this).next().val());
+          b = 0;
+        }
+      })
+      //全选操作
+      //找到全选按钮并且绑定点击事件
+      $("input[name='all']").click(function () {                  //单击全选 再次单击怎么取消全选
+                                                                  //判断全选checked为true时，其他ul的单选框选中 否则不选中
+        if ($(this).is(':checked')) {
+          $("input[name='one']").each(function () {
+            $(this).prop("checked",true);                   //用attr()第三次会失效
+          })                                                //prop可以设置属性值 动态的
+        }else {
+          $("input[name='one']").each(function () {         //each遍历找到所有name='one'的匹配元素
+            $(this).prop("checked",false);
+          })
+        }
+      })
+      //合计
+      //1.获取每个ul中的合计位置li
+//            var $tol = $("#cart ul:eq(4)").val();
+      //2.val的值为数量框的值 乘以价格框的值
+//            var price = $("#cart ul:eq(2)").val();
+//            var count = $("#cart ul:eq(3)").val();
+//            $tol.text(price*count);
+      //删除操作
+      //对span中为删除的元素绑定单击事件
+      $("#cart ul span").click(function () {
+        //this代表span元素 父元素为li 再父元素为ul remove删除
+        var warm = confirm("确定删除？");            //confirm确认框 if判断 ture/returntrue
+        if (warm == true) {
+          $(this).parent().parent().remove();
+          //$(this).closest("ul").remove();      直接找匹配的最近的祖先元素
+        }else{
+          return false;
+        }
+      })
+      //页面加载时运行 cart下的第二个ul进行删除操作
+      var $model=$("#cart ul:eq(1)").detach();
+      //添加操作 属性选择器
+      $("[name='add']").click(function () {
+//                $("#total").before($model);
+        var $node=$model.clone(true);            //克隆
+        //1.生成随机数0-3
+        var i =Math.floor(Math.random()*4);      //一是乘4取整 二是乘10除3取余
+        //2.使用data替换，如何得到124li
+        $node.children().eq(1).html(pro[i]);     //$node是复制的ul
+        $node.children().eq(2).html(price[i]);   /de的第三个儿子li
+        $node.children().eq(4).html(price[i]);
+        //3.判断商品是否存在，若存在则数量加1
+        //3.1获得当前存在的li ->存在哪些商品
+        var $uls = $("#cart ul:gt(0)");          /t(0) 索引大于0的元素
+        //3.2循环对比，有则数量加一 无则加新纪录
+        var flag = -1;
+        for (var j = 0; j<$uls.length;j++){
+          if ($uls.eq(j).children().eq(1).text() ==pro[i]){
+            flag = j;
+            break;
+          }
+        }
+        if (flag>-1){
+          //加一
+          //            $uls.eq(flag).children().eq(3).children().eq(1).val(parseInt($uls.eq(flag).children().eq(3).children().eq(1).val())+1);
+          $uls.eq(flag).find($("[name='num']")).val(parseInt($uls.eq(flag).find($("[name='num']")).val())+1);
+        }else{
+          //加新记录
+          $("#total").before($node);        //4.将节点添加到指定位置
+        }
+
+      })
+    })
+  </script>
+</head>
+<body>
+<input type="date">
+<div id="cart">
+  <ul>
+    <li><input name="all" type="checkbox">全选</li>
+    <li>产品名称</li>
+    <li>价格</li>
+    <li class="num">数量</li>
+    <li>合计</li>
+    <li>操作</li>
+  </ul>
+  <ul>
+    <li><input name="one" type="checkbox"></li>
+    <li>手机</li>
+    <li>1000.00</li>
+    <li class="num"><input type="button" value="-"> <input name="num" type="text" value="1"> <input type="button" value="+">
+    </li>
+    <li>1000.00</li>
+    <li><span>删除</span></li>
+  </ul>
+
+  <div id="total">总价:<span>0.00</span></div>
+</div>
+<input name="add" type="button" value="添加">
+</body>
+</body>
+</html>

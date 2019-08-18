@@ -11,8 +11,9 @@
         </association>
     </resultMap>
     <resultMap id="ProDetailResultMap" type="org.lanqiao.entity.ProDetail">
-        <result column="pro_price" property="proPrice" jdbcType="DOUBLE"/>
-        <result column="stock" property="stock" jdbcType="INTEGER"/>
+        <id column="pdetail_id" property="pdetailId" jdbcType="INTEGER" />
+        <result column="pro_price" property="proPrice" jdbcType="DOUBLE" />
+        <result column="stock" property="stock" jdbcType="INTEGER" />
         <association property="product" resultMap="ProductResultMap">
         </association>
         <collection property="standardsVal" resultMap="StandardsValResultMap">
@@ -22,22 +23,36 @@
     </resultMap>
     <resultMap id="ProductResultMap" type="org.lanqiao.entity.Product">
         <id column="pro_id" property="proId" jdbcType="INTEGER" />
-        <result column="pro_name" property="proName" jdbcType="VARCHAR"/>
-        <result column="pro_user_id" property="proUserId" jdbcType="INTEGER"/>
+        <result column="pro_name" property="proName" jdbcType="VARCHAR" />
+        <result column="pro_type_id" property="proTypeId" jdbcType="INTEGER" />
+        <result column="pro_brand_id" property="proBrandId" jdbcType="INTEGER" />
+        <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
+        <result column="down_time" property="downTime" jdbcType="DATE" />
+        <result column="pro_state" property="proState" jdbcType="VARCHAR" />
         <association property="user" resultMap="UserResultMap">
         </association>
     </resultMap>
     <resultMap id="UserResultMap" type="org.lanqiao.entity.User">
-        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <id column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="user_type" property="userType" jdbcType="VARCHAR" />
+        <result column="user_pid" property="userPid" jdbcType="VARCHAR" />
     </resultMap>
     <resultMap id="StandardsValResultMap" type="org.lanqiao.entity.StandardsVal">
-        <result column="stan_val_name" property="stanValName" jdbcType="VARCHAR"/>
-        <result column="stanval_stan_id" property="stanvalStanId" jdbcType="INTEGER"/>
+        <id column="stan_val_id" property="stanValId" jdbcType="INTEGER" />
+        <result column="stan_val_name" property="stanValName" jdbcType="VARCHAR" />
+        <result column="stanval_stan_id" property="stanvalStanId" jdbcType="INTEGER" />
         <association property="standards" resultMap="StandardsResultMap">
         </association>
     </resultMap>
     <resultMap id="StandardsResultMap" type="org.lanqiao.entity.Standards">
-        <result column="stan_name" property="stanName" jdbcType="VARCHAR"/>
+        <id column="stan_id" property="stanId" jdbcType="INTEGER" />
+        <result column="stan_name" property="stanName" jdbcType="VARCHAR" />
     </resultMap>
     <resultMap id="ImageResultMap" type="org.lanqiao.entity.Image">
         <id column="image_id" jdbcType="INTEGER" property="imageId" />
