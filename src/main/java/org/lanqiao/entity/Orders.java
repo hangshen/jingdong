@@ -28,6 +28,8 @@ public class Orders {
 
     private Address address;
 
+    private Integer pageNum;
+
     private Set<OrderDetail> orderDetailSet;
 
     public Integer getOrderId() {
@@ -132,5 +134,13 @@ public class Orders {
 
     public void setPayTypeId(int payTypeId) {
         this.payTypeId = payTypeId;
+    }
+
+    public Integer getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
     }
 }
