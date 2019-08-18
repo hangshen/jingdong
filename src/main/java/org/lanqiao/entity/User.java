@@ -1,6 +1,8 @@
 package org.lanqiao.entity;
 
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class User {
@@ -10,6 +12,8 @@ public class User {
 
     private String sex;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date birthday;
 
     private String phone;
@@ -102,12 +106,5 @@ public class User {
 
     public void setLove(byte[] love) {
         this.love = love;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                ", userName='" + userName + '\'' +
-                '}';
     }
 }

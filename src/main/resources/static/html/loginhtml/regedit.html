@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>填写个人信息</title>
+
+<script src="../../js/loginjs/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+
+<link rel="stylesheet" type="text/css" href="../../css/logincss/regedit.css">
+<link href="../../css/logincss/base.css" rel="stylesheet">
+<!--	<link rel="stylesheet" href="../logincss/logincss.logincss">-->
+
+	<script>
+		$(function () {
+			$(".submit_btn").click(function () {
+
+				$.ajax({
+					type: "POST",
+					url: "http://localhost:8080/addUser",
+					dataType: "json",
+					data: {
+						userName: $("input[name='userName']").val(),
+						sex: $("input[name='sex']").val(),
+						password: $("input[name='password']").val(),
+						birthday: $("input[name='birthday']").val(),
+						userPid: $("input[name='ID']").val(),
+						email: $("input[name='email']").val(),
+						userType: $('input:radio[name="userType"]:checked').val(),
+						account: $("input[name='phone']").val(),
+						love: $("input[name='love']").val()
+					},
+					success: function (data){
+						alert(data);
+					},
+					error: function () {
+						alert("注册错误！");
+					}
+				});
+
+			})
+		})
+	</script>
+	<script>
+		window.onload = function () {
+			document.getElementById("phoneNum").value = sessionStorage.getItem('phone');
+		}
+	</script>
+</head>
+<body>
+
+<header>
+	<a href="#" class="logo"></a>
+	<div class="desc">欢迎注册</div>
+</header>
+<section>
+	<form id="register" onsubmit="return false" method="post">
+		<div class="register-box">
+					<label class="username_label">用 户 名
+			<input maxlength="20" type="text" name="userName" placeholder="您的用户名和登录名">
+					</label>
+			<div class="tips">
+						
+					</div>
+		</div>
+		<div class="register-box">
+			<label class="other_label">设 置 密 码
+			<input maxlength="20" type="password" name="password" placeholder="建议至少使用两种字符组合">
+			</label>
+			<div class="tips">
+				
+			</div>
+		</div>
+		<div class="register-box">
+			<label class="other_label">确 认 密 码
+			<input maxlength="20" type="password" name="rePassword" placeholder="请再次输入密码">
+			</label>
+			<div class="tips">
+				
+			</div>
+		</div>
+		<div>
+			<label class="other_label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="sex" value="男">男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="sex" value="女">女
+			</label>
+			<div class="tips">
+
+			</div>
+		</div>
+		<br>
+		<div class="register-box">
+			<label class="other_label">出 生 日 期
+			<input type="date" name="birthday">
+			</label>
+			<div class="tips">
+
+			</div>
+		</div>
+
+		<div class="register-box">
+			<label class="other_label">证   件   号
+				<input type="text" name="ID" maxlength="18">
+			</label>
+			<div class="tips">
+
+			</div>
+		</div>
+
+		<div class="register-box">
+			<label class="other_label">电 子 邮 箱
+				<input type="email" name="email">
+			</label>
+			<div class="tips">
+
+			</div>
+		</div>
+		<div>
+			<label class="other_label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用 户 类 型
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="radio" name="userType" value="非会员">非会员
+				<input type="radio" name="userType" value="会员">会员
+				<input type="radio" name="userType" value="卖家">卖家
+			</label>
+			<div class="tips">
+
+			</div>
+		</div>
+		<br>
+		<div class="register-box">
+			<label class="other_label">
+			<span>中国 0086∨</span>
+			<input id="phoneNum" class="phone" maxlength="20" type="text" name="phone" value="" readonly="readonly">
+			</label>
+			<div class="tips">
+				
+			</div>
+		</div>
+		<div class="register-box">
+			<label class="other_label">爱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好
+				<input type="text" name="love" maxlength="20">
+			</label>
+			<div class="tips">
+
+			</div>
+		</div>
+		<div class="register-box">
+			<label class="other_label">验 证 码
+			<input maxlength="20" type="text" placeholder="请输入验证码">
+			</label>
+			<span id="code"></span>
+			<div class="tips">
+				
+			</div>
+		</div>
+		<div class="arguement">
+					<input type="checkbox" id="xieyi">
+			阅读并同意
+			<a href="#">《京东用户注册协议》</a>
+			<a href="#">《隐私政策》</a>
+			<div class="tips">
+				
+			</div>
+				</div>
+		<div class="submit_btn">
+					<button type="submit" id="submit_btn">立 即 注 册</button>
+				</div>
+	</form>
+</section>
+
+<script src="../../js/loginjs/regedit.js" type="text/javascript" charset="utf-8"></script>
+<br><br><br><br><br>
+<div id="form-footer" class="footer w" align="center">
+	<div class="links">
+		<a rel="nofollow" target="_blank" href="//www.jd.com/intro/about.aspx"> 关于我们</a>|
+		<a rel="nofollow" target="_blank" href="//www.jd.com/contact/">联系我们</a>|
+		<a rel="nofollow" target="_blank" href="//zhaopin.jd.com/">人才招聘</a>|
+		<a rel="nofollow" target="_blank" href="//www.jd.com/contact/joinin.aspx">商家入驻</a>|
+		<a rel="no  follow" target="_blank" href="//www.jd.com/intro/service.aspx">广告服务</a>|
+		<a rel="nofollow" target="_blank" href="//app.jd.com/">手机京东</a>|
+		<a target="_blank" href="//club.jd.com/links.aspx">友情链接</a>|
+		<a target="_blank" href="//media.jd.com">销售联盟</a>|
+		<a href="//club.jd.com/" target="_blank">京东社区</a>|
+		<a href="//gongyi.jd.com" target="_blank">京东公益</a>|
+		<a target="_blank" href="//en.jd.com/" clstag="pageclick|keycount|20150112ABD|9">English Site</a>
+	</div>
+	<div class="copyright">
+		Copyright&copy;2004-2019&nbsp;&nbsp;京东JD.com&nbsp;版权所有
+	</div>
+</div>
+</body>
+
+</html>

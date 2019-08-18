@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+    <title>个人注册</title>
+    <link type="text/css" rel="stylesheet" href="//misc.360buyimg.com/jdf/1.0.0/unit/??ui-base/1.0.0/ui-base.css">
+    <link type="text/css" rel="stylesheet" href="//misc.360buyimg.com/user/reg/3.0.0/css/tinyscrollbar-170524.css">
+    <script type="text/javascript" src="//misc.360buyimg.com/jdf/1.0.0/unit/??base/1.0.0/base.js"></script>
+    <link source="widget" type="text/css" rel="stylesheet"
+          href="//misc.360buyimg.com/user/reg/3.0.0/widget/??/header/header.css,/common/common.css,/progress-bar/progress-bar.css,/reg-steps/reg-steps.css,/foreign-number-layer-170524/foreign-number-layer-170524.css,/footer/footer.css">
+    <script SRC="../../js/loginjs/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#step00').click(function () {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "http://localhost:8080/registerNum",
+                    data: {
+                        "phone": $("input[name='phone']").val(),
+                    },
+                    success: function (data) {
+                        if (data.user != null) {
+                            alert(data.phone + "已注册！");
+                        }
+                        else{
+                            sessionStorage.setItem("phone",data.phone);
+                            window.location.href="regedit.html";
+                        }
+                    },
+                    error: function () {
+                        alert("注册失败");
+
+                    }
+                })
+            })
+
+        })
+    </script>
+    <script>
+        $(function () {
+            var phoneNum = /^[1][3,4,5,7,8][0-9]{9}$/;
+            $('input').eq(0).blur(function(){
+                if($(this).val().length==0){
+                    $(this).parent().next("div").text("");
+                    $(this).parent().next("div").css("color",'#ccc');
+                    $(".btn-register").addClass('noclick');
+                }else if(!phoneNum.test($(this).val())){
+                    $(this).parent().next("div").text("手机号格式不正确");
+                    $(this).parent().next("div").css("color",'red');
+                    $(".btn-register").addClass('noclick');
+                }else{
+                    $(this).parent().next("div").text("");
+                    $(".btn-register").removeClass('.noclick');
+                }
+            })
+        })
+
+    </script>
+</head>
+<body>
+<!-- widget header begin -->
+<div class="header">
+    <div class="logo-con w clearfix">
+        <a href="https://www.jd.com" class="logo ">
+        </a>
+        <div class="logo-title">欢迎注册</div>
+
+        <div class="have-account">已有账号？ <a
+                href="http://localhost:8080/html/login.html">请登录&gt;</a>
+        </div>
+
+    </div>
+</div>
+<!-- widget header end -->
+<div class="container w">
+
+
+    <!-- widget progress-bar begin -->
+    <div class="progress-bar clearfix">
+        <div class="pro-step cur-step ">
+            <span class="step-index">1</span>
+            <p class="step-desc">验证手机号</p>
+        </div>
+        <div class="pro-line pro-line1 person-pro-line person-pro-line1 "></div>
+        <div class="pro-step pro-step2 person-pro-step2  ">
+            <span class="step-index">2</span>
+            <p class="step-desc">填写账号信息</p>
+        </div>
+        <div class="pro-line pro-line2 person-pro-line person-pro-line2 "></div>
+        <div class="pro-step pro-step3 person-pro-step3  ">
+            <span class="step-index">3</span>
+            <p class="step-desc">注册成功</p>
+        </div>
+    </div>
+    <!-- widget progress-bar end -->
+
+    <!-- widget reg-steps begin -->
+    <div class="main ">
+        <div class="reg-form">
+            <form onsubmit="return false" id="reRegister" method="POST">
+                <div id="step1-wrap">
+                    <div class="item-phone-wrap">
+                        <div class="form-item form-item-phone">
+                            <label class="select-country" id="select-country" country_id="0086">中国 0086<a
+                                    href="javascript:void(0) " class="arrow"></a></label>
+                            <div class="item-input-wrap">
+                                <input type="text" id="form-phone" maxlength="11" name="phone" class="field"
+                                       placeholder="建议使用常用手机号" autocomplete="off"
+                                       default="<i class='i-def'></i>验证完成后，你可以使用该手机登录或找回密码">
+                                <i class="i-status"></i>
+                                <i class="i-cancel"></i>
+                            </div>
+                            <div class="input-tip">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="step00" class="btn-register">下一步
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="reg-other clearfix">
+            <a href="//reg.jd.com/b/regPage?source=buser" class="reg-other-item reg-other-person"
+               clstag="pageclick|keycount|reg_puser_201804031|4">
+                <i class="reg-ohter-icon"></i>企业用户注册 </a>
+            <a href="//reg.jd.com/p/regPage?source=IBG&ReturnUrl=http%3A//hk.jd.com/"
+               class="reg-other-item reg-other-inter" clstag="pageclick|keycount|reg_puser_201804031|5">
+                <i class="reg-ohter-icon"></i>海外用户注册 </a>
+        </div>
+
+    </div>
+
+</div>
+</div>
+<!-- widget reg-steps end -->
+</div>
+
+
+<!-- widget footer begin -->
+<div id="form-footer" class="footer w">
+    <div class="links">
+        <a rel="nofollow" target="_blank" href="//www.jd.com/intro/about.aspx"> 关于我们</a>|
+        <a rel="nofollow" target="_blank" href="//www.jd.com/contact/">联系我们</a>|
+        <a rel="nofollow" target="_blank" href="//zhaopin.jd.com/">人才招聘</a>|
+        <a rel="nofollow" target="_blank" href="//www.jd.com/contact/joinin.aspx">商家入驻</a>|
+        <a rel="no  follow" target="_blank" href="//www.jd.com/intro/service.aspx">广告服务</a>|
+        <a rel="nofollow" target="_blank" href="//app.jd.com/">手机京东</a>|
+        <a target="_blank" href="//club.jd.com/links.aspx">友情链接</a>|
+        <a target="_blank" href="//media.jd.com">销售联盟</a>|
+        <a href="//club.jd.com/" target="_blank">京东社区</a>|
+        <a href="//gongyi.jd.com" target="_blank">京东公益</a>|
+        <a target="_blank" href="//en.jd.com/" clstag="pageclick|keycount|20150112ABD|9">English Site</a>
+    </div>
+    <div class="copyright">
+        Copyright&copy;2004-2019&nbsp;&nbsp;京东JD.com&nbsp;版权所有
+    </div>
+</div>
+<!-- widget footer end -->
+
+<script type="text/javascript" src="//misc.360buyimg.com/user/reg/3.0.0/js/common/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+    seajs.use('//misc.360buyimg.com/user/reg/3.0.0/js/personal/register-190428', function (reg) {
+        reg.init();
+    });
+</script>
+</body>
+</html>
+
+

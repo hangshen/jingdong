@@ -47,10 +47,27 @@
 }
 
 #biaoge table{
-    margin-top: 150px;
 }
 
 .tableHead{
     background-color: #005EA7;
     color: #ffffff;
 }
+
+#shouye{
+    width: 800px;
+    height: 580px;
+    float: left;
+    background-color: #f8f8ff;
+    margin-top: -20px;
+}
+
+#shouye span{
+    font-size: 40px;
+    text-align: center;
+    display: block;
+    margin-top: 250px;
+    color: #E1251B;
+    font-weight: bolder;
+}
+
