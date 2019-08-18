@@ -7,6 +7,8 @@ public class ProDetail {
 
     private Product product;
 
+    private Integer dtlProId;
+
     private Double proPrice;
 
     private Integer stock;
@@ -61,6 +63,14 @@ public class ProDetail {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public Integer getDtlProId() {
+        return dtlProId;
+    }
+
+    public void setDtlProId(Integer dtlProId) {
+        this.dtlProId = dtlProId;
     }
 
     @Override

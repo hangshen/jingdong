@@ -17,6 +17,8 @@ public class OrderDetail {
 
     private Product product;
 
+    private ProDetail proDetail;
+
     public Integer getOrDeId() {
         return orDeId;
     }
@@ -79,5 +81,13 @@ public class OrderDetail {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public ProDetail getProDetail() {
+        return proDetail;
+    }
+
+    public void setProDetail(ProDetail proDetail) {
+        this.proDetail = proDetail;
     }
 }

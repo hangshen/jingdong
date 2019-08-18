@@ -9,8 +9,8 @@
     <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
     <result column="down_time" property="downTime" jdbcType="DATE" />
     <result column="pro_state" property="proState" jdbcType="VARCHAR" />
-    <association property="user" resultMap="UserResultMap">
-    </association>
+    <association property="user" resultMap="UserResultMap"></association>
+    <collection property="standardsSet" resultMap="StandardsResultMap"></collection>
   </resultMap>
   <resultMap id="UserResultMap" type="org.lanqiao.entity.User" >
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
@@ -22,118 +22,36 @@
     <result column="user_type" property="userType" jdbcType="VARCHAR" />
     <result column="user_pid" property="userPid" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="StandardsResultMap" type="org.lanqiao.entity.Standards" >
+    <id column="stan_id" property="stanId" jdbcType="INTEGER" />
+    <result column="stan_name" property="stanName" jdbcType="VARCHAR" />
+    <collection property="standardsvalSet" resultMap="StandardsvalResultMap"></collection>
+  </resultMap>
+  <resultMap id="StandardsvalResultMap" type="org.lanqiao.entity.StandardsVal" >
+    <id column="stan_val_id" property="stanValId" jdbcType="INTEGER" />
+    <result column="stan_val_name" property="stanValName" jdbcType="VARCHAR" />
+    <collection property="proDetailSet" resultMap="ProdetailResultMap"></collection>
+  </resultMap>
+  <resultMap id="ProdetailResultMap" type="org.lanqiao.entity.ProDetail">
+    <id column="pdetail_id" jdbcType="INTEGER" property="pdetailId" />
+    <result column="dtl_pro_id" jdbcType="INTEGER" property="dtlProId" />
+    <result column="pro_price" jdbcType="DOUBLE" property="proPrice" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+  </resultMap>
   <sql id="Base_Column_List" >
     pro_id, pro_name, pro_type_id, pro_brand_id, up_time, down_time, pro_state, pro_user_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="ProductResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from product
-    where pro_id = #{proId,jdbcType=INTEGER}
+  <select id="selectByAll" parameterType="java.lang.Integer" resultMap="ProductResultMap">
+select * from prodetail pd,product pro,standardsval sdv,standards sd,prodstandar psd,prodtlstanval psv where psd.prod_id = pro.pro_id
+and psd.stand_id = sd.stan_id and sdv.stanval_stan_id = sd.stan_id and psv.pdsv_pdetail_id = pd.pdetail_id and psv.pdsv_stan_val_id = sdv.stan_val_id
+and pd.dtl_pro_id=pro.pro_id and pro_id = #{proId,jdbcType=INTEGER}
+
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from product
-    where pro_id = #{proId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="org.lanqiao.entity.Product" >
-    insert into product (pro_id, pro_name, pro_type_id, 
-      pro_brand_id, up_time, down_time, 
-      pro_state, pro_user_id)
-    values (#{proId,jdbcType=INTEGER}, #{proName,jdbcType=VARCHAR}, #{proTypeId,jdbcType=INTEGER}, 
-      #{proBrandId,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP}, #{downTime,jdbcType=DATE}, 
-      #{proState,jdbcType=VARCHAR}, #{proUserId,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="org.lanqiao.entity.Product" >
-    insert into product
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="proId != null" >
-        pro_id,
-      </if>
-      <if test="proName != null" >
-        pro_name,
-      </if>
-      <if test="proTypeId != null" >
-        pro_type_id,
-      </if>
-      <if test="proBrandId != null" >
-        pro_brand_id,
-      </if>
-      <if test="upTime != null" >
-        up_time,
-      </if>
-      <if test="downTime != null" >
-        down_time,
-      </if>
-      <if test="proState != null" >
-        pro_state,
-      </if>
-      <if test="proUserId != null" >
-        pro_user_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="proId != null" >
-        #{proId,jdbcType=INTEGER},
-      </if>
-      <if test="proName != null" >
-        #{proName,jdbcType=VARCHAR},
-      </if>
-      <if test="proTypeId != null" >
-        #{proTypeId,jdbcType=INTEGER},
-      </if>
-      <if test="proBrandId != null" >
-        #{proBrandId,jdbcType=INTEGER},
-      </if>
-      <if test="upTime != null" >
-        #{upTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="downTime != null" >
-        #{downTime,jdbcType=DATE},
-      </if>
-      <if test="proState != null" >
-        #{proState,jdbcType=VARCHAR},
-      </if>
-      <if test="proUserId != null" >
-        #{proUserId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Product" >
-    update product
-    <set >
-      <if test="proName != null" >
-        pro_name = #{proName,jdbcType=VARCHAR},
-      </if>
-      <if test="proTypeId != null" >
-        pro_type_id = #{proTypeId,jdbcType=INTEGER},
-      </if>
-      <if test="proBrandId != null" >
-        pro_brand_id = #{proBrandId,jdbcType=INTEGER},
-      </if>
-      <if test="upTime != null" >
-        up_time = #{upTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="downTime != null" >
-        down_time = #{downTime,jdbcType=DATE},
-      </if>
-      <if test="proState != null" >
-        pro_state = #{proState,jdbcType=VARCHAR},
-      </if>
-      <if test="proUserId != null" >
-        pro_user_id = #{proUserId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where pro_id = #{proId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Product" >
-    update product
-    set pro_name = #{proName,jdbcType=VARCHAR},
-      pro_type_id = #{proTypeId,jdbcType=INTEGER},
-      pro_brand_id = #{proBrandId,jdbcType=INTEGER},
-      up_time = #{upTime,jdbcType=TIMESTAMP},
-      down_time = #{downTime,jdbcType=DATE},
-      pro_state = #{proState,jdbcType=VARCHAR},
-      pro_user_id = #{proUserId,jdbcType=INTEGER}
-    where pro_id = #{proId,jdbcType=INTEGER}
-  </update>
+  <select id="selectByPrimaryKey" resultMap="ProductResultMap" parameterType="java.lang.Integer" >
+    select * from prodtlstanval psv,prodetail pd,product pro,standardsval sdv,standards sd,user u where pro_price in
+(select min(pro_price) from prodetail pd,product pro where pd.dtl_pro_id = pro.pro_id
+GROUP BY pro_id) and psv.pdsv_pdetail_id = pdetail_id
+   and pd.dtl_pro_id = pro.pro_id and psv.pdsv_stan_val_id=sdv.stan_val_id and sdv.stanval_stan_id = sd.stan_id and pro.pro_user_id = u.user_id
+   and pro_id = #{proId,jdbcType=INTEGER}
+  </select>
 </mapper>

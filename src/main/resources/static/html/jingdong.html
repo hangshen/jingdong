@@ -45,8 +45,16 @@
             if(i == imgs.length){
                 i = 0;
             }
-            $("#second_2 img").attr("src", "images/" + imgs[i]);
+            $("#second_2 img").attr("src", "../images/settlementimages/" + imgs[i]);
             setTimeout("changeImg()", 3000);
+        }
+    </script>
+    <script>
+        window.onload=function () {
+            document.getElementById("liA4").innerText = sessionStorage.getItem("userName");
+            var userId = sessionStorage.getItem("userId");
+            sessionStorage.setItem("userId",userId);
+            // alert(sessionStorage.getItem('userName'));
         }
     </script>
 </head>
@@ -64,8 +72,8 @@
             </div>
             <div id="first_1_2">
                 <ul>
-                    <li class="a4"><a>你好，请登录</a></li>
-                    <li class="a5"><a class="a1">免费注册</a></li>
+                    <li class="a4" ><a id="liA4" href="loginhtml/login.html">你好，请登录</a></li>
+                    <li class="a5"><a class="a1" href="loginhtml/reRegister.html">免费注册</a></li>
                     <li class="f1"></li>
                     <li class="a5"><a>我的订单</a></li>
                     <li class="f1"></li>
@@ -186,7 +194,7 @@
             <div id="second_4_1_2">
                 <a>Hi~欢迎逛京东!</a>
                 <p>
-                    <a>登录</a>&nbsp;|&nbsp;<a>注册</a>
+                    <a href="loginhtml/login.html">登录</a>&nbsp;|&nbsp;<a href="loginhtml/reRegedit.html">注册</a>
                 </p>
             </div>
             <div id="second_4_1_3">

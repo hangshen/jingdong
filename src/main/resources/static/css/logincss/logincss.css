@@ -456,7 +456,7 @@ input {
 }
 
 #background_jdlogin {
-    background-image: url(../../img/jdlogin_bg.png);
+    background-image: url(static/img/jdlogin_bg.png);
 }
 
 .login-wrap .i-inner {

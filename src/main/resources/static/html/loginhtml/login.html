@@ -23,29 +23,16 @@
                     },
                     dataType: "json",
                     success: function (result) {
+                        if(result!=null){
+                           sessionStorage.setItem("userName",result.userName);
+                           sessionStorage.setItem("userId",result.userId);
+                           window.location.href="../jingdong.html";
+                        }
 
-                        alert(result+"登录成功！");
-                        /*$.ajax({
 
-                            url: "http://localhost:8080/changeLoginStatus",
-                            type: "post",
-                            data: {
-                                'userStatus': true,
-                                'loginName': loginname
-                            },
-                            dataType: "json"
-                        });*/
-
-//                         if (result) {
-//                             sessionStorage.setItem("loginName", result);
-// // //                       var url1 = encodeURI("jdhomepage.html?loginname="+loginname);//此处拼接内容
-// //                             var url1 = encodeURI("jdhomepage.html");//此处拼接内容
-// //                             window.location.href = url1
-//                         }
-//                         else $(".msg-error").show();
                     },
                     error: function () {
-                        alert("errorToLink");
+                        alert("登录失败！");
 
                     }
                 });
@@ -193,7 +180,7 @@
                         </li>
                         <li class="extra-r">
                             <div>
-                                <div class="regist-link"><a href="reRegedit.html"
+                                <div class="regist-link"><a href="reRegister.html"
                                                             clstag="pageclick|keycount|login_pc_201804112|5"
                                                             target="_blank"><b></b>立即注册</a></div>
                             </div>

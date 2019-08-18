@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lanqiao.mapper.CommentMapper" >
+  <resultMap id="CommentResultMap" type="org.lanqiao.entity.Comment" >
+    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
+    <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
+    <result column="comment_text" property="commentText" jdbcType="VARCHAR" />
+    <association property="orders" resultMap="OrdersResultMap"></association>
+    <association property="user" resultMap="UserResultMap"></association>
+  </resultMap>
+  <resultMap id="OrdersResultMap" type="org.lanqiao.entity.Orders" >
+    <id column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="order_state" property="orderState" jdbcType="INTEGER" />
+    <result column="or_express_type" property="orExpressType" jdbcType="INTEGER" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="total" property="total" jdbcType="DOUBLE" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="pay_time" property="payTime" jdbcType="DATE" />
+    <result column="or_add_id" property="orAddId" jdbcType="INTEGER" />
+    <result column="or_user_id" property="orUserId" jdbcType="INTEGER" />
+    <collection property="orderDetailSet" resultMap="OrderdetailResultMap"></collection>
+  </resultMap>
+  <resultMap id="OrderdetailResultMap" type="org.lanqiao.entity.OrderDetail" >
+    <id column="or_de_id" property="orDeId" jdbcType="INTEGER" />
+    <result column="pro_price" property="proPrice" jdbcType="DOUBLE" />
+    <result column="pro_num" property="proNum" jdbcType="INTEGER" />
+    <result column="leave_msg" property="leaveMsg" jdbcType="VARCHAR" />
+    <result column="return_worry" property="returnWorry" jdbcType="VARCHAR" />
+    <result column="de_order_id" property="deOrderId" jdbcType="INTEGER" />
+    <association property="proDetail" resultMap="ProdetailResultMap"></association>
+  </resultMap>
+  <resultMap id="ProdetailResultMap" type="org.lanqiao.entity.ProDetail">
+    <id column="pdetail_id" jdbcType="INTEGER" property="pdetailId" />
+    <result column="dtl_pro_id" jdbcType="INTEGER" property="dtlProId" />
+    <result column="pro_price" jdbcType="DOUBLE" property="proPrice" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+  </resultMap>
+  <resultMap id="UserResultMap" type="org.lanqiao.entity.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="user_pid" property="userPid" jdbcType="VARCHAR" />
+    <result column="love" property="love" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    comment_id, comment_time, comment_text, com_order_id, com_user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="CommentResultMap" parameterType="org.lanqiao.entity.Page" >
+   select * from comment c,orders o,orderdetail od,prodetail pd,user u,product pro where c.com_order_id=o.order_id and od.de_order_id=o.order_id
+   and pd.pdetail_id = od.de_prode_id and pd.dtl_pro_id= pro.pro_id and c.com_user_id = u.user_id
+   and pro.pro_id = #{proId,jdbcType=INTEGER} LIMIT #{pageToPoint,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Comment" >
+    insert into comment (comment_id, comment_time, comment_text,
+      com_order_id, com_user_id)
+    values (#{commentId,jdbcType=INTEGER}, #{commentTime,jdbcType=TIMESTAMP}, #{commentText,jdbcType=VARCHAR},
+      #{comOrderId,jdbcType=INTEGER}, #{comUserId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Comment" >
+    insert into comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="commentTime != null" >
+        comment_time,
+      </if>
+      <if test="commentText != null" >
+        comment_text,
+      </if>
+      <if test="comOrderId != null" >
+        com_order_id,
+      </if>
+      <if test="comUserId != null" >
+        com_user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="commentTime != null" >
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentText != null" >
+        #{commentText,jdbcType=VARCHAR},
+      </if>
+      <if test="comOrderId != null" >
+        #{comOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="comUserId != null" >
+        #{comUserId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Comment" >
+    update comment
+    <set >
+      <if test="commentTime != null" >
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentText != null" >
+        comment_text = #{commentText,jdbcType=VARCHAR},
+      </if>
+      <if test="comOrderId != null" >
+        com_order_id = #{comOrderId,jdbcType=INTEGER},
+      </if>
+      <if test="comUserId != null" >
+        com_user_id = #{comUserId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Comment" >
+    update comment
+    set comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_text = #{commentText,jdbcType=VARCHAR},
+      com_order_id = #{comOrderId,jdbcType=INTEGER},
+      com_user_id = #{comUserId,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+</mapper>
