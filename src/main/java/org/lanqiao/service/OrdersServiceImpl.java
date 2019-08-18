@@ -41,19 +41,68 @@ public class OrdersServiceImpl implements OrdersService {
 
 
     @Override
-    public Set<Orders> getUserOrders(Integer userId, String orderState) {
+    public List<Orders> getUserOrders(Integer userId, String orderState,Integer pageNum,Integer pageSize) {
+
 
         if(orderState.equals("待付款") || orderState.equals("待收货")){
             String str = "等" +orderState;
-            return ordersMapper.getUserOrders(userId,str);
+            List<Orders> orders=ordersMapper.getUserOrders(userId,str);
+            int Size=orders.size();
+            for (Orders or:orders) {
+                if(Size%pageSize == 0){
+                    or.setPageNum(Size/pageSize);
+                }
+                else{
+                    or.setPageNum(Size/pageSize + 1);
+                }
+            }
+            pageNum--;
+            System.out.println((pageNum*pageSize)+" "+Size+"  "+(pageNum*pageSize+pageSize));
+            if((pageNum*pageSize+pageSize) >=Size ){
+                return orders.subList(pageNum*pageSize,Size);
+            } else{
+                return orders.subList(pageNum*pageSize,(pageNum*pageSize+pageSize));
+            }
         }else {
-            return ordersMapper.getUserOrders(userId,orderState);
+            List<Orders> orders=ordersMapper.getUserOrders(userId,orderState);
+            int Size=orders.size();
+            for (Orders or:orders) {
+                if(Size%pageSize == 0){
+                    or.setPageNum(Size/pageSize);
+                }
+                else{
+                    or.setPageNum(Size/pageSize + 1);
+                }
+            }
+            pageNum--;
+            System.out.println((pageNum*pageSize)+" "+Size+"  "+(pageNum*pageSize+pageSize));
+            if((pageNum*pageSize+pageSize) >=Size ){
+                return orders.subList(pageNum*pageSize,Size);
+            } else{
+                return orders.subList(pageNum*pageSize,(pageNum*pageSize+pageSize));
+            }
         }
     }
 
     @Override
-    public Set<Orders> getAllOrders(Integer userId) {
-        return ordersMapper.getAllOrders(userId);
+    public List<Orders> getAllOrders(Integer userId,Integer pageNum,Integer pageSize) {
+        List<Orders> orders=ordersMapper.getAllOrders(userId);
+        int Size=orders.size();
+        for (Orders or:orders) {
+            if(Size%pageSize == 0){
+                or.setPageNum(Size/pageSize);
+            }
+            else{
+                or.setPageNum(Size/pageSize + 1);
+            }
+        }
+        pageNum--;
+        System.out.println((pageNum*pageSize)+" "+Size+"  "+(pageNum*pageSize+pageSize));
+        if((pageNum*pageSize+pageSize) >=Size ){
+            return orders.subList(pageNum*pageSize,Size);
+        } else{
+            return orders.subList(pageNum*pageSize,(pageNum*pageSize+pageSize));
+        }
     }
 
     @Override

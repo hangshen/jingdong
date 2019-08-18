@@ -28,14 +28,14 @@ public class OrdersController {
     }
 
     @RequestMapping("/get/user/state/order")
-    public Set<Orders> getUserOrders(int userId, String orderState)
+    public List<Orders> getUserOrders(int userId, String orderState,int pageNum,int pageSize)
     {
-        return ordersService.getUserOrders(userId,orderState);
+        return ordersService.getUserOrders(userId,orderState,pageNum,pageSize);
     }
 
     @RequestMapping("/get/user/all/order")
-    public Set<Orders> getAllOrders(int userId){
-        return ordersService.getAllOrders(userId);
+    public List<Orders> getAllOrders(int userId,int pageNum,int pageSize){
+        return ordersService.getAllOrders(userId,pageNum,pageSize);
     }
 
     @RequestMapping("delete/user/order")
