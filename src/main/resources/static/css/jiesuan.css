@@ -75,7 +75,7 @@ body {
 
 .map {
     float: left;
-    background-image: url("../settlementimages/rr.png");
+    background-image: url("../images/settlementimages/rr.png");
     width: 14px;
     height: 14px;
     margin-top: 8px
@@ -172,7 +172,7 @@ body {
 
 .b1 {
     float: right;
-    background-image: url("../settlementimages/b.png");
+    background-image: url("../images/settlementimages/b.png");
     width: 12px;
     height: 12px;
     margin-top: 10px

@@ -57,7 +57,7 @@ body {
 
 .map {
     float: left;
-    background-image: url("../settlementimages/a.png");
+    background-image: url("../images/settlementimages/a.png");
     width: 14px;
     height: 15px;
     margin-top: 8px
@@ -133,7 +133,7 @@ body {
 
 .b1 {
     float: right;
-    background-image: url("../settlementimages/b.png");
+    background-image: url("../images/settlementimages/b.png");
     width: 12px;
     height: 12px;
     margin-top: 10px
@@ -154,7 +154,7 @@ body {
     width: 190px;
     height: 120px;
     float: left;
-    background-image: url("../settlementimages/c.png");
+    background-image: url("../images/settlementimages/c.png");
     margin-top: 10px
 }
 
@@ -173,7 +173,7 @@ body {
     width: 66px;
     height: 66px;
     float: right;
-    background-image: url("../settlementimages/e.png");
+    background-image: url("../images/settlementimages/e.png");
     box-shadow: 5px 5px 10px #999999
 }
 
@@ -206,7 +206,7 @@ body {
 
 #i2 {
     border: #E1251B 1px solid;
-    background-image: url("../settlementimages/f.png")
+    background-image: url("../images/settlementimages/f.png")
 }
 
 #first_2_3_2 {
@@ -223,7 +223,7 @@ body {
 
 .s1 {
     float: left;
-    background-image: url("../settlementimages/g.png");
+    background-image: url("../images/settlementimages/g.png");
     width: 33px;
     height: 28px;
     margin: 4px 7px 0 15px
@@ -355,7 +355,7 @@ body {
 
 .he {
     float: left;
-    background-image: url("../settlementimages/l.png");
+    background-image: url("../images/settlementimages/l.png");
     width: 40px;
     height: 40px;
     margin-top: 2px;
@@ -436,7 +436,7 @@ body {
 }
 
 .m1{
-    background-image: url("../settlementimages/m.png");
+    background-image: url("../images/settlementimages/m.png");
     width: 12px;
     height: 14px;
     float: right;
@@ -881,7 +881,7 @@ body {
 
 #i4 {
     border: #E1251B 1px solid;
-    background-image: url("../settlementimages/f.png")
+    background-image: url("../images/settlementimages/f.png")
 }
 
 #header_1_2{
