@@ -1,7 +1,9 @@
 package org.lanqiao.controller;
 
 
+import org.lanqiao.entity.Brand;
 import org.lanqiao.entity.Shop;
+import org.lanqiao.service.BrandServiceInfo;
 import org.lanqiao.service.ShopServiceInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +18,8 @@ public class MsgController {
 
 @Autowired
 ShopServiceInfo shopServiceInfo;
-
+    @Autowired
+    BrandServiceInfo brandServiceInfo;
 @RequestMapping("/seach")
  public List<Shop> getProduct(String produce){
     System.out.println(produce);
@@ -27,4 +30,8 @@ ShopServiceInfo shopServiceInfo;
     System.out.println(pname);
     return shopServiceInfo.findId(pname);
 }
+    @RequestMapping("/brand")
+    public  List<Brand> getbrand(){
+        return  brandServiceInfo.getBrand();
+    }
 }

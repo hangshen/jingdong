@@ -113,24 +113,8 @@
                 <div id="brand1_1">品牌:</div>
             </div>
             <div id="brand2">
-                <div class="brand2_1"><a>戴维（DELL）</a></div>
-                <div class="brand2_1"><a>联想（Lenovo）</a></div>
-                <div class="brand2_1"><a>惠普（HP）</a></div>
-                <div class="brand2_1"><a>极限矩阵</a></div>
-                <div class="brand2_1"><a>七喜（HEDY）</a></div>
-                <div class="brand2_1"><a>微星（MSI）</a></div>
-                <div class="brand2_1"><a>海尔（Haier）</a></div>
-                <div class="brand2_1"><a>清华同方（THTF）</a></div>
-                <div class="brand2_1"><a>机械革命</a></div>
-                <div class="brand2_1"><a>戴维（DELL）</a></div>
-                <div class="brand2_1"><a>联想（Lenovo）</a></div>
-                <div class="brand2_1"><a>惠普（HP）</a></div>
-                <div class="brand2_1"><a>极限矩阵</a></div>
-                <div class="brand2_1"><a>七喜（HEDY）</a></div>
-                <div class="brand2_1"><a>微星（MSI）</a></div>
-                <div class="brand2_1"><a>海尔（Haier）</a></div>
-                <div class="brand2_1"><a>清华同方（THTF）</a></div>
-                <div class="brand2_1"><a>机械革命</a></div>
+                <div class="brand2_1" v-for="(br,index2) in brand"><a>{{br.bradName}}</a></div>
+
             </div>
             <div class="brand3"><i>更多</i></div>
             <div class="brand3"><i>多选</i></div>
@@ -294,6 +278,21 @@
     var msg = document.getElementById('sear1_1');
     var mv1 = new Vue();
     $(function () {
+        $.ajax({
+            url: "http://localhost:8080/brand",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                alert(data),
+                    mv2 =new Vue({
+                        el: "#brand2",
+                        data:{brand:data},
+
+                    })
+            }
+        })
+    });
+    $(function () {
         if (msg.value == "") {
             msg.value = p;
             $.ajax({
@@ -314,7 +313,7 @@
                                     data: {"pname": $(".s").eq(i).text()},
                                     dataType: "json",
                                     success: function (data) {
-                                        alert(data);
+                                        setp:sessionStorage.setItem("id",data);
                                     },
                                     error: function () {
 
