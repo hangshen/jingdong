@@ -22,4 +22,9 @@ public class LoginServiceImpl implements LoginService {
     public int insertLogin(String account,String password,Integer userId) {
         return loginMapper.insertLogin(account,password,userId);
     }
+
+    @Override
+    public int deleteLogin(Integer userId) {
+        return loginMapper.deleteLogin(userId);
+    }
 }

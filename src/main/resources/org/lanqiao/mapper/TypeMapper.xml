@@ -16,4 +16,18 @@
   <insert id="insertType" parameterType="org.lanqiao.entity.Type" >
     insert into type (type_name, father_id) values (#{typeName,jdbcType=VARCHAR}, #{fatherId,jdbcType=INTEGER})
   </insert>
+
+  <select id="getAllType" resultMap="TypeResultMap">
+    select * from type;
+  </select>
+  <select id="findType" resultMap="TypeResultMap" parameterType="java.lang.String">
+    select * from type where type_name like #{typeName, jdbcType=VARCHAR};
+  </select>
+
+  <delete id="deleteType" parameterType="java.lang.Integer">
+    delete from type where type_id = #{typeId,jdbcType=INTEGER};
+  </delete>
+  <update id="updateType" parameterType="org.lanqiao.entity.Type" >
+    update type set type_name = #{typeName,jdbcType=VARCHAR}, father_id = #{fatherId,jdbcType=INTEGER} where type_id = #{typeId,jdbcType=INTEGER};
+  </update>
 </mapper>

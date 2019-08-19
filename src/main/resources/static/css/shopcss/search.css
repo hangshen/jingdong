@@ -28,7 +28,7 @@
 #sear{width: 736px;height: 40px;margin-top: 25px;float: left;margin-left:250px;}
 #sear1{width: 650px;height: 32px;float: left; border: 2px solid #e1251b;}
 #sear1_1{text-align: left;font-size: 16px;margin-top: 6px;width: 600px;height: 16px;outline: none;}
-#sear1_2{width: 32px;height: 20px;margin-top: 5px;float: right;background-color: chocolate;margin-right: 10px;}
+#sear1_2{width: 32px;height: 20px;margin-top: 5px;float: right;margin-right: 10px;}
 
 #sear2{width: 80px;height: 36px;float: left;background-color: #f30213;}
 #sear2_1{    float: left;
@@ -172,11 +172,113 @@ box-shadow: #E4393c}
 #bootsearch{width: 1390px;height: 111px;margin-left: 50px ; background-color: lightcoral;float: left;margin-top: 15px;}
 
 
-.floatmun{width: 34px;height: 35px;background-color: #7a6e6e;position: fixed; z-index: 1;}
-#floatmun1{right: 0px;top: 300px}
-#floatmun2{right: 0px;top: 336px}
-#floatmun3{right: 0px;top: 372px}
-#floatmun4{right: 0px;top: 408px}
-#floatmun5{right: 0px;top: 668px}
-#floatmun6{right: 0px;top: 704px}
-#floatmun7{right: 0px;top: 740px}
+.floatmun{width: 34px;height: 35px;background-color: #7a6e6e;position: fixed; z-index: 1;
+}
+#floatmun1{right: 0px;top: 300px;background-image:url("../../images/shopimages/user.png");
+    background-size:auto; }
+#floatmun2{right: 0px;top: 336px;background-image:url("../../images/shopimages/tabcar.png");
+    background-size:auto; }
+#floatmun3{right: 0px;top: 372px;background-image:url("../../images/shopimages/tablove.png");
+    background-size:auto; }
+#floatmun4{right: 0px;top: 408px;background-image:url("../../images/shopimages/tabmsg.png");
+    background-size:auto; }
+#floatmun5{right: 0px;top: 668px;background-image:url("../../images/shopimages/tabma.png");
+    background-size:auto; }
+#floatmun6{right: 0px;top: 704px;background-image:url("../../images/shopimages/tabtop.png");
+    background-size:auto; }
+#floatmun7{right: 0px;top: 740px;background-image:url("../../images/shopimages/tabback.png");
+    background-size:auto; }
+.brand2_1:hover{
+    border:#ff0000 solid 2px;
+}
+.s_s:hover{
+    box-shadow:1px 1px 4px #666666 ;
+}
+
+
+
+
+
+#footer {
+    height: 400px;
+    width: 100%;
+    background-color: #F5F5F5;
+    margin: 50px auto;
+}
+.w{
+    margin: 0 auto;
+    height: 200px;
+}
+#e{
+    height: 200px;
+    width: 700px;
+    margin-left: 280px;
+    float: left;
+}
+#service-2014 {
+    margin-bottom: 20px;
+}
+
+#service-2014 dl {
+    float: left;
+    width: 120px;
+    padding-left: 20px;
+}
+
+#service-2014 dl.fore5 {
+    width: 100px
+}
+
+#service-2014 dt {
+    padding: 6px 0;
+    font: 400 16px/24px "microsoft yahei"
+}
+
+#service-2014 dd {
+    line-height: 20px
+}
+
+#service-2014 .slogan {
+    height: 54px;
+    padding: 20px 0;
+    margin-bottom: 14px;
+    background: #F5F5F5;
+    text-align: center
+}
+
+#service-2014 .slogan img {
+    margin-right: 20px;
+    text-align: center;
+}
+
+#service-2014 .item {
+    display: inline-block;
+    left: 50%;
+    top: 20px;
+    width: 240px;
+    height: 54px;
+    text-align: center;
+    vertical-align: middle;
+    font: 400 18px/50px "microsoft yahei"
+}
+
+#coverage {
+    float: left;
+    width: 300px;
+    height: 168px;
+    background: url("../../images/settlementimages/dt.png") no-repeat 60px -131px;
+}
+
+#coverage .dt {
+    padding: 6px 40px 15px 80px;
+    font: 400 16px/24px "microsoft yahei"
+}
+
+#coverage .dd {
+    padding: 0 40px 15px 80px
+}
+
+.copyright {
+    clear: both;
+    text-align: center;
+}
