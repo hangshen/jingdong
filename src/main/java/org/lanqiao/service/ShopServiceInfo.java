@@ -20,7 +20,7 @@ public class ShopServiceInfo implements Shopservice {
     }
 
     @Override
-    public Product findId(String pname){
+    public int findId(String pname){
         return shopMapper.findId(pname);
     }
 

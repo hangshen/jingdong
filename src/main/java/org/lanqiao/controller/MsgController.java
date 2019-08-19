@@ -27,7 +27,7 @@ ShopServiceInfo shopServiceInfo;
     return shopServiceInfo.findProduct(produce);
 }
 @RequestMapping("/getId")
-public Product findId(String pname){
+public int findId(String pname){
     return shopServiceInfo.findId(pname);
 }
 @RequestMapping("/brand")

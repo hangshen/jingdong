@@ -25,6 +25,7 @@
                 var l=0;
                 var vn;
                 userName=sessionStorage.getItem("userName");
+                var userId = sessionStorage.getItem("userId");
                 if (userName != null)
                 {
                     $("#log").html(userName);
@@ -196,7 +197,8 @@
                     var record = {
                         "carProNum":num,
                         "carProdeId":proid,
-                        "carUserId":userId
+                        "carUserId":userId,
+                        "cartFlag":1
                     };
                     $.ajax({
                         url:"http://localhost:8080/insertToCart",
@@ -206,6 +208,8 @@
                         contentType: "application/json;charset-UTF-8",
                         success:function (data) {
                             alert("已成功加入购物车");
+                            sessionStorage.setItem("userId",userId);
+                            window.location.href="../jiesuanhtml/settlement.html";
                         },
                         error: function (msg) {//ajax请求失败后触发的方法
                             alert("错误3");//弹出错误信息

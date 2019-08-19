@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface Shopservice {
     List<Shop> findProduct(String produce);
-    Product findId(String pname);
+    int findId(String pname);
 }

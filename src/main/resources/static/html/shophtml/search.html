@@ -237,7 +237,7 @@
 
             <div id="shopshow">
                 <div class="s_s" id="s1" v-for="(pro, index1) in pro">
-                    <div class="s_s1"><img src={{pro.imgPath}}></div>
+                    <div class="s_s1"><img src="../../images/shopimages/shopvv.png"></div>
                     <div class="s_s2"><p class="s_s2font">￥{{pro.price}}</p></div>
                     <div class="s_s3"><a class="s" @click="getId(index1)">{{pro.proName}}</a></div>
                     <div class="s_s4"><p>7.1万+评论</p></div>
@@ -374,16 +374,14 @@
 
 <script src="../../js/shopjs/vue.min.js"></script>
 <script>
-    var userId;
-    var p;
-    window.onload=function () {
-        document.getElementById("liA4").innerText = sessionStorage.getItem("userName");
-        userId = sessionStorage.getItem("userId");
-        p = sessionStorage.getItem("p");
-        sessionStorage.setItem("userId",userId);
 
-        // alert(sessionStorage.getItem('userName'));
-    }
+    document.getElementById("liA4").innerText = sessionStorage.getItem("userName");
+    var userId = sessionStorage.getItem("userId");
+    var p = sessionStorage.getItem("p");
+    var userName=sessionStorage.getItem("userName");
+    sessionStorage.setItem("userName",userName);
+    sessionStorage.setItem("userId",userId);
+
     var msg = document.getElementById('sear1_1');
 
     var mv1 = new Vue();
@@ -422,8 +420,8 @@
                                     data: {"pname": $(".s").eq(i).text()},
                                     dataType: "json",
                                     success: function (data) {
-                                        setp:sessionStorage.setItem("id",data[0].proId);
-                                        window.location = "/html/producthtml/jdproduct.html"
+                                        setp:sessionStorage.setItem("id",data);
+                                        window.location.href = "../producthtml/jdproduct.html"
                                     },
                                     error: function () {
 

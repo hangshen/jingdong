@@ -50,10 +50,10 @@
     where cart_id = #{cartId,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="org.lanqiao.entity.Cart" >
-    insert into cart (car_pro_num, car_user_id, car_prode_id
+    insert into cart (car_pro_num, car_user_id, car_prode_id, cart_flag
       )
     values (#{carProNum,jdbcType=INTEGER},
-     #{carUserId,jdbcType=INTEGER}, #{carProdeId,jdbcType=INTEGER}
+     #{carUserId,jdbcType=INTEGER}, #{carProdeId,jdbcType=INTEGER},#{cartFlag,jdbcType=INTEGER}
       )
   </insert>
 </mapper>

@@ -21,7 +21,7 @@
                     <li class="map"></li>
                     <li>福建</li>
                 </ul>
-            </a>新增收货地址
+            </a>
         </div>
         <div id="first_1_2">
             <ul>
@@ -179,11 +179,11 @@
                                         <div class="third_2_7_2_2_4" v-if="pro.proDetail.stock > 0">有货</div>
                                         <div class="third_2_7_2_2_4" v-else>无货</div>
                                     </div>
-                                    <!--<div v-for="(stan, index3) in pro.proDetail.standardsVal">-->
-                                        <!--<div class="third_2_7_2_2_5"><span>{{stan.standards.stanName}}：</span>{{stan.stanValName}}-->
-                                        <!--</div>-->
-                                        <!--<br>-->
-                                    <!--</div>-->
+<!--                                    <div v-for="(stan, index3) in pro.proDetail.standardsVal">-->
+<!--                                        <div class="third_2_7_2_2_5"><span>{{stan.standards.stanName}}：</span>{{stan.stanValName}}-->
+<!--                                        </div>-->
+<!--                                        <br>-->
+<!--                                    </div>-->
                                     <div id="third_2_7_2_2_6">
                                         <img src="../../images/settlementimages/xx.png">
                                         支持7天无理由退货（使用后不支持）
@@ -570,6 +570,7 @@
                 this.orUserId = orUserId;
             }
             var orders = new order($(".third_2_7_1_1").eq(red2).text(), "在线支付", temp_total, temp_add[red1].addressId, userId);
+            alert(orders.orUserId);
             $.ajax({
                 url: "http://localhost:8080/Orders/CreateOrders",
                 type: "post",
