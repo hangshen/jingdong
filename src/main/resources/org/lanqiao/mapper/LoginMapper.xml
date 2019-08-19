@@ -21,9 +21,9 @@
         from login
         where account_num = #{account,jdbcType=VARCHAR}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteLogin" parameterType="java.lang.Integer">
     delete from login
-    where login_id = #{loginId,jdbcType=INTEGER}
+    where login_user_id = #{userId,jdbcType=INTEGER}
   </delete>
 
 <!--    =================================添加登录用户====================================-->

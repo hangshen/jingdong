@@ -28,13 +28,12 @@
   </select>
 
   <!--    =======================================查询用户信息=============================================-->
-  <select id="selectByPrimaryKey" resultMap="UserMapWithBLOBs" parameterType="java.lang.Integer">
+  <select id="getAllUser" resultMap="UserMapWithBLOBs">
     select
     <include refid="Base_Column_List"/>
     ,
     <include refid="Blob_Column_List"/>
     from user
-    where user_id = #{userId,jdbcType=INTEGER}
   </select>
   <!--验证手机号-->
   <select id="selectByPhone" resultMap="UserResultMap" parameterType="java.lang.String">
@@ -43,6 +42,7 @@
     from user
     where phone = #{account,jdbcType=VARCHAR}
   </select>
+
 
 
   <!--  =========================================删除用户============================================-->
