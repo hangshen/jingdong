@@ -10,7 +10,8 @@
     <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
     <result column="pay_time" property="payTime" jdbcType="DATE" />
     <result column="or_add_id" property="orAddId" jdbcType="INTEGER" />
-    <result column="or_user_id" property="orUserId" jdbcType="INTEGER" />
+    <!--<result column="or_user_id" property="orUserId" jdbcType="INTEGER" />-->
+    <association property="user" resultMap="UserResultMap"></association>
     <association property="address" resultMap="AddressResultMap"></association>
     <collection property="orderDetailSet" resultMap="OrderDetailResultMap"></collection>
   </resultMap>
@@ -44,6 +45,22 @@
     <association property="product" resultMap="ProductResultMap"></association>
   </resultMap>
 
+
+  <resultMap id="UserResultMap" type="org.lanqiao.entity.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+    <result column="user_pid" property="userPid" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+
+
   <sql id="Base_Column_List" >
     order_id, order_state, or_express_type, pay_type, total, order_time, pay_time, or_add_id, 
     or_user_id
@@ -57,9 +74,12 @@
     and o.order_state =s.state_id and s.state_name=#{orderState} and od.de_order_id=o.order_id and o.or_express_type = e.express_id;
   </select>
   <select id="getAllOrders" resultMap="OrdersResultMap" parameterType="java.lang.Integer">
-    select * from orders o,orderdetail od,state s,address a,product p ,paytype pt,prodetail pd, express e
-    where o.pay_type=pt.pay_type_id and p.pro_id=pd.dtl_pro_id and od.de_prode_id=pd.pdetail_id and a.address_id=o.or_add_id
-    and o.or_user_id=#{userId} and od.de_order_id=o.order_id and o.order_state =s.state_id and or_express_type = e.express_id;
+    select * from orders o,orderdetail od,state s,address a,product p ,paytype pt,prodetail pd, express e,user u
+    where o.or_user_id=u.user_id and o.pay_type=pt.pay_type_id and p.pro_id=pd.dtl_pro_id and od.de_prode_id=pd.pdetail_id and a.address_id=o.or_add_id
+    and od.de_order_id=o.order_id and o.order_state =s.state_id and or_express_type = e.express_id
+    <if test="_parameter != 0">
+      and o.or_user_id=#{userId}
+    </if>;
   </select>
   <insert id="insert" parameterType="org.lanqiao.entity.Orders" >
     insert into orders (or_express_type, pay_type, total, or_add_id, or_user_id ) values (#{orExpressTypeId,jdbcType=INTEGER}, #{payTypeId,jdbcType=INTEGER}, #{total,jdbcType=DOUBLE}, #{orAddId,jdbcType=INTEGER}, #{orUserId,jdbcType=INTEGER})
@@ -69,6 +89,15 @@
     where order_id = #{orderId,jdbcType=INTEGER}
   </delete>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Orders" >
-    update orders set order_state=(select state_id from state where state_name =#{orderState}) where order_id = #{orderId,jdbcType=INTEGER};
+    update orders
+    <set>
+      <if test="orderState !=null and orderState !=''">
+        order_state=(select state_id from state where state_name =#{orderState}),
+      </if>
+      <if test="orAddId !=null and orAddId != ''">
+        or_add_id=#{orAddId},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER};
   </update>
 </mapper>

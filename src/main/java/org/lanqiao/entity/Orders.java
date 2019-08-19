@@ -24,7 +24,9 @@ public class Orders {
 
     private Integer orAddId;
 
-    private Integer orUserId;
+//    private Integer orUserId;
+
+    private User user;
 
     private Address address;
 
@@ -92,12 +94,12 @@ public class Orders {
         this.orAddId = orAddId;
     }
 
-    public Integer getOrUserId() {
-        return orUserId;
+    public User getUser() {
+        return user;
     }
 
-    public void setOrUserId(Integer orUserId) {
-        this.orUserId = orUserId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getPayType() {
@@ -143,4 +145,5 @@ public class Orders {
     public void setPageNum(Integer pageNum) {
         this.pageNum = pageNum;
     }
+
 }

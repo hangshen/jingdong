@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="../../css/background/background.css" rel="stylesheet">
+    <link rel="Stylesheet" type="text/css" href="../../css/addressadd.css"/>
 </head>
 <body>
 <div id="header">
@@ -46,31 +47,212 @@
 
 <div id="biaoge">
 
+    <div class="input-group" style="width:500px;margin:0px auto;">
+        <input name="searchtext" type="text" class="form-control">
+        <span class="input-group-btn">
+              <input @click="idSearch()" type="button" name="search" value="IdSearch" class="btn btn-default"/>
+        </span>
+    </div>
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr class="tableHead">
-            <th>商品种类编号</th>
-            <th>商品种类名称</th>
-            <th>商品种类描述</th>
-            <th>操作</th>
+            <th>订单号</th>
+            <th>下单时间</th>
+            <th>订单用户姓名</th>
+            <th>联系电话</th>
+            <th>订单金额</th>
+            <th>收货人姓名</th>
+            <th>收货人联系电话</th>
+            <th>收货地址</th>
+            <th>订单状态</th>
             <th>操作</th>
         </tr>
         </thead>
 
-        <tbody>
-        <tr>
-            <td>994</td>
-            <td>图书录像</td>
-            <td>333</td>
-            <td><a href="#">修改</a></td>
-            <td><a href="#">删除</a></td>
+        <tbody >
+        <tr v-for="(order,index) in orders">
+            <td>{{order.orderId}}</td>
+            <td>{{order.orderTime}}</td>
+            <td>{{order.user.userName}}</td>
+            <td>{{order.user.phone}}</td>
+            <td>{{order.total}}</td>
+            <td>{{order.address.receiverName}}</td>
+            <td>{{order.address.receiverPhone}}</td>
+            <td>{{order.address.province}}{{order.address.city}}{{order.address.area}}{{order.address.detailAdd}}</td>
+            <td>{{order.orderState}}</td>
+            <td><a @click="change(index)" href="#">修改</a></td>
         </tr>
         </tbody>
-
     </table>
+    <div>
+        <ul class="pager">
+            <li><a @click="prevP()" href="#">上一页</a></li>
+            <li><a @click="nextP()" href="#">下一页</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="add">
+    <div class="row1">
+        订单修改<a href="javascript:void(0)" title="关闭窗口" class="close_btn" id="closeBtn">×</a>
+    </div>
+    <form id="bigbox">
+        <div id="one">
+            <span>修改收货信息Id</span>
+            <input name="sheng" type="text">
+        </div>
+        <div class="twe">
+            <span>修改订单状态</span>
+            <input name="shi" type="text">
+        </div>
+        <div class="twe">
+            <input name="insert" id="infor" type="submit" value="确认修改订单号">
+        </div>
+        <div id="thr">
+            <span></span>
+        </div>
+    </form>
 </div>
 
 <script src="../../js/jquery-3.4.1.js"></script>
 <script src="../../js/bootstrap.js"></script>
+<script src="../../js/vue.min.js"></script>
+<script src="../../js/jquery.validate.js"></script>
+<script src="../../js/jquery.validate.regex.js"></script>
+
+<script>
+    var pageNum= 1;
+    var userId=0;
+    $(function () {
+        $.ajax({
+            url:"http://localhost:8080/get/user/all/order",
+            type:"post",
+            data:{
+                "pageNum":pageNum,
+                "pageSize":6,
+                "userId":userId,
+            },
+            dataType:"json",
+            success:function (data) {
+                var lan = data[0].pageNum;
+                for(var i = 0;i<data.length;i++){
+                    data[i].orderTime=data[i].orderTime.substring(0,10)+" "+data[i].orderTime.substring(12,19);
+                }
+                var vm = new Vue({
+                    el:"#biaoge",
+                    data:{
+                        orders:data,
+                    },
+                    methods:{
+                      nextP:function () {
+                          if(pageNum < lan){
+                              pageNum++;
+                              $.ajax({
+                                  url:"http://localhost:8080/get/user/all/order",
+                                  type:"post",
+                                  data:{
+                                      "pageNum":pageNum,
+                                      "pageSize":6,
+                                      "userId":userId,
+                                  },
+                                  dataType:"json",
+                                  success:function (data) {
+                                      for(var i = 0;i<data.length;i++){
+                                          data[i].orderTime=data[i].orderTime.substring(0,10)+" "+data[i].orderTime.substring(12,19);
+                                      }
+                                      vm.orders=data;
+                                  }
+                              })
+
+                          }
+                          else {
+                              alert(1);
+                          }
+                      },
+
+                        prevP:function () {
+                          if(pageNum > 1){
+                              pageNum--;
+                              $.ajax({
+                                  url:"http://localhost:8080/get/user/all/order",
+                                  type:"post",
+                                  data:{
+                                      "pageNum":pageNum,
+                                      "pageSize":6,
+                                      "userId":userId,
+                                  },
+                                  dataType:"json",
+                                  success:function (data) {
+                                      for(var i = 0;i<data.length;i++){
+                                          data[i].orderTime=data[i].orderTime.substring(0,10)+" "+data[i].orderTime.substring(12,19);
+                                      }
+                                      vm.orders=data;
+                                  }
+                              })
+
+                          }
+                        },
+
+                        idSearch:function () {
+                            if($("input[name='searchtext']").val() != ""){
+                                pageNum=1;
+                                userId = $("input[name='searchtext']").val();
+                            }else{
+                                pageNum=1;
+                                userId=0;
+                            }
+                            $.ajax({
+                                url:"http://localhost:8080/get/user/all/order",
+                                type:"post",
+                                data:{
+                                    "pageNum":pageNum,
+                                    "pageSize":6,
+                                    "userId":userId,
+                                },
+                                dataType:"json",
+                                success:function (data) {
+                                    for(var i = 0;i<data.length;i++){
+                                        data[i].orderTime=data[i].orderTime.substring(0,10)+" "+data[i].orderTime.substring(12,19);
+                                    }
+                                    vm.orders=data;
+                                }
+                            })
+
+                        },
+
+                        change:function (i) {
+                            $("body").append("<div id='mask'></div>");
+                            $("#mask").addClass("mask").fadeIn("slow");
+                            $("#add").fadeIn("slow");
+                            $("#thr span").text(this.orders[i].orderId);
+                        }
+                    },
+                })
+            }
+        })
+    });
+
+    $(".close_btn").on('click', function () {
+        $("#add").fadeOut("fast");
+        $("#mask").css({display: 'none'});
+    });
+
+    $("#infor").click(function () {
+        alert($("#thr span").text());
+        alert($("input[name='shi']").val());
+        alert($("input[name='sheng']").val());
+
+        $.ajax({
+            url:"http://localhost:8080/update/order",
+            type:"post",
+            data:{
+                orderId:$("#thr span").text(),
+                orAddId:$("input[name='sheng']").val(),
+                orderState:$("input[name='shi']").val(),
+            },
+            dataType:"json",
+        })
+    })
+</script>
 </body>
 </html>

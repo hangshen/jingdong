@@ -35,6 +35,7 @@ public class OrdersController {
 
     @RequestMapping("/get/user/all/order")
     public List<Orders> getAllOrders(int userId,int pageNum,int pageSize){
+        System.out.println(userId);
         return ordersService.getAllOrders(userId,pageNum,pageSize);
     }
 
@@ -45,6 +46,7 @@ public class OrdersController {
 
     @RequestMapping("update/order")
     public int updateOrder(Orders orders){
+        System.out.println(orders.getOrderId() +" "+orders.getOrderState()+" "+ orders.getOrAddId());
         if(orders.getOrderState().equals("等待付款")){
             orders.setOrderState("已取消");
         } else if ( orders.getOrderState().equals("等待收货")){
@@ -52,5 +54,6 @@ public class OrdersController {
         }
         System.out.println(orders.getOrderState());
         return ordersService.updateOrder(orders);
+
     }
 }
