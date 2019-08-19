@@ -2,6 +2,7 @@ package org.lanqiao.controller;
 
 
 import org.lanqiao.entity.Brand;
+import org.lanqiao.entity.Product;
 import org.lanqiao.entity.Shop;
 import org.lanqiao.service.BrandServiceImpl;
 import org.lanqiao.service.ShopServiceInfo;
@@ -26,11 +27,9 @@ ShopServiceInfo shopServiceInfo;
     return shopServiceInfo.findProduct(produce);
 }
 @RequestMapping("/getId")
-    public List<Shop> getId(String pname){
-    System.out.println(pname);
+public Product findId(String pname){
     return shopServiceInfo.findId(pname);
-}
-    @RequestMapping("/brand")
+}  @RequestMapping("/brand")
     public  List<Brand> getbrand(){
         return  brandServiceInfo.getBrand();
     }

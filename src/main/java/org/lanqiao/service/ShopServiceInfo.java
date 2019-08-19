@@ -1,5 +1,6 @@
 package org.lanqiao.service;
 
+import org.lanqiao.entity.Product;
 import org.lanqiao.entity.Shop;
 import org.lanqiao.mapper.ShopMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,7 @@ public class ShopServiceInfo implements Shopservice {
     }
 
     @Override
-    public List<Shop> findId(String pname) {
-        pname=new StringBuilder().append(pname).toString();
+    public Product findId(String pname){
         return shopMapper.findId(pname);
     }
 

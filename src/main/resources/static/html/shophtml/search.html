@@ -303,26 +303,12 @@
                 success: function (data) {
                     mv1 = new Vue({
                         el: '#shopshow',
-                        data: {pro: []},
+                        data: {pro: data},
                         methods: {
                             getId: function (i) {
-
-                                $.ajax({
-                                    url: "http://localhost:8080/getId",
-                                    type: "POST",
-                                    data: {"pname": $(".s").eq(i).text()},
-                                    dataType: "json",
-                                    success: function (data) {
-                                        alert(data);
-                                        setp:sessionStorage.setItem("id",data);
-                                        window.location = "/html/producthtml/jdproduct.html"
-                                    },
-                                    error: function () {
-
-                                        alert("error");
-
-                                    }
-                                })
+                                var id = this.pro[i].proId;
+                                sessionStorage.setItem("id",id);
+                                window.location = "/html/producthtml/jdproduct.html"
                             }
                         },
 

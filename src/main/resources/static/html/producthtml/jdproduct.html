@@ -25,6 +25,13 @@
                 var option;
                 var l=0;
                 var vn;
+                sessionStorage.getItem("userId");
+                if (userId != null)
+                {
+                    $("#log").val(userId);
+                }else {
+                    $("#log").val("你好请登录");
+                }
                 $.ajax({
                     url:"http://localhost:8080/seleOnePro",
                     dataType:"json",
@@ -192,7 +199,7 @@
                         data:JSON.stringify(record),
                         contentType: "application/json;charset-UTF-8",
                         success:function (data) {
-                            window.location = "/html/carthtml/cart.html";
+                            alert("已成功加入购物车");
                         },
                         error: function (msg) {//ajax请求失败后触发的方法
                             alert("错误3");//弹出错误信息
@@ -273,7 +280,7 @@
             <div id="return">
                 <img src="../../images/productimages/shouye.png">
                 <div id="return_box">
-                    <a href="jdindex.html">京东首页</a>
+                    <a href="/html/top/jingdong.html">京东首页</a>
                 </div>
             </div>
             <div id="location">
@@ -287,10 +294,10 @@
             <div id="tabar1">
                 <ul>
                     <li id="dt1">
-                            <a href="#" id>
-                                <span class="dt1_li1">你好，请登录</span>
+                            <a href="/html/loginhtml/login.html" id>
+                                <span class="dt1_li1" id="log">你好，请登录</span>
                             </a>
-                            <a href="#">
+                            <a href="/html/loginhtml/register.html">
                                 <span class="dt1_li2">免费注册</span>
                             </a>
                     </li>
@@ -368,11 +375,13 @@
                         </li>
                     </ul>
                 </div>
-                <div class="buycart">
-                    <img src="../../images/productimages/cart.png" id="img_cart">
-                    <div class="mycart">我的购物车</div>
-                    <div id="pro_count">0</div>
-                </div>
+                <a href="/html/carthtml/cart.html">
+                    <div class="buycart">
+                        <img src="../../images/productimages/cart.png" id="img_cart">
+                        <div class="mycart">我的购物车</div>
+                        <div id="pro_count">0</div>
+                    </div>
+                </a>
             </div>
             <div id="tabar2">
                 <ul>
