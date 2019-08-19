@@ -8,4 +8,10 @@
 <select id="getBrand" resultMap="BrandResultMap">
   select brad_name from  brand;
 </select>
+  <select id="checkBrand" resultMap="BrandResultMap" parameterType="java.lang.String">
+      select * from  brand where brad_name = #{bradName, jdbcType=VARCHAR};
+  </select>
+  <insert id="insertBrand" parameterType="org.lanqiao.entity.Brand">
+    insert into brand (brad_name) values (#{bradName,jdbcType=VARCHAR});
+  </insert>
 </mapper>
