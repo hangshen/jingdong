@@ -25,4 +25,11 @@ public class ProductController {
     public int insert(@RequestBody Product record){
         return productService.insert(record);
     }
+    @RequestMapping("/selByName")
+    public List<Product> selByName(@RequestBody String selName){
+            int len = selName.length();
+            selName = selName.substring(1,len-1);
+          selName = "%"+selName+"%";
+          return productService.selByName(selName);
+    }
 }

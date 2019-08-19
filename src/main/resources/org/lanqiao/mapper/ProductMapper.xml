@@ -59,4 +59,7 @@ GROUP BY pro_id) and psv.pdsv_pdetail_id = pdetail_id
       insert into product (pro_name, pro_type_id, pro_brand_id, down_time, pro_state,pro_user_id ) values
       (#{proName,jdbcType=VARCHAR}, #{proTypeId,jdbcType=INTEGER}, #{proBrandId,jdbcType=INTEGER}, #{downTime,jdbcType=DATE}, #{proState,jdbcType=VARCHAR},#{proUserId,jdbcType=INTEGER})
   </insert>
+  <select id="selByName" resultMap="ProductResultMap" parameterType="java.lang.String">
+    select * from product pro where pro_name like #{selName}
+  </select>
 </mapper>

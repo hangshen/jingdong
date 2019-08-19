@@ -23,4 +23,8 @@ public class ProductServiceImpl implements ProductService{
     public int insert(Product record){
         return productMapper.insert(record);
     }
+    @Override
+    public List<Product> selByName(String selName){
+        return productMapper.selByName(selName);
+    }
 }

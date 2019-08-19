@@ -36,6 +36,7 @@
 
 #daohang2 ul{
     width: 800px;
+    float: left;
 }
 
 #biaoge{
@@ -87,4 +88,12 @@
 
 .suoyin a{
     text-decoration: none;
+}
+#chaxun{
+    float: right;
+    width: 170px;
+}
+#shuru{
+    height: 20px;
+    width: 100px;
 }

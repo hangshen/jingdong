@@ -6,6 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../css/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="../../css/background/background.css" rel="stylesheet">
+    <script src="../../js/jquery-3.4.1.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/vue.min.js"></script>
+    <script>
+        $(function () {
+            var vm;
+            var selName=$("#shuru").val();
+            $.ajax({
+                url:"http://localhost:8080/selByName",
+                type: "post",
+                dataType: "json",
+                data:JSON.stringify(selName),
+                contentType: "application/json;charset-UTF-8",
+                success:function (data) {
+                    if(data.length>0)
+                    {
+                        $("#selPro").css("display","table-row");
+                    }
+                    vm = new Vue({
+                        el:"#biaoge",
+                        data:{pros:data}
+                    })
+                }
+            })
+            $("#sou").click(function () {
+                selName = $("#shuru").val();
+                alert(selName);
+                $.ajax({
+                    url:"http://localhost:8080/selByName",
+                    type: "post",
+                    dataType: "json",
+                    data:JSON.stringify(selName),
+                    contentType: "application/json;charset-UTF-8",
+                    success:function (data) {
+                        if(data.length>0)
+                        {
+                            $("#selPro").css("display","table-row");
+                        }
+                        vm.pros = data;
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 <body>
 <div id="header">
@@ -41,11 +85,14 @@
         <li><a href="background.html">首页</a></li>
         <li><a href="product.html">商品管理</a></li>
         <li><a href="checkproduct.html">查询商品</a></li>
+        <li id="chaxun">
+            <input type="text" id="shuru">
+            <a href="#" id="sou">搜索</a>
+        </li>
     </ul>
 </div>
 
 <div id="biaoge">
-
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr class="tableHead">
@@ -55,24 +102,19 @@
             <th>品牌编号</th>
             <th>下架时间</th>
             <th>状态</th>
-            <th>卖家编号</th>
         </tr>
         </thead>
-
-        <tbody>
-        <tr>
-            <td>994</td>
-            <td>图书录像</td>
-            <td>333</td>
-            <td><a href="#">修改</a></td>
-            <td><a href="#">删除</a></td>
+        <tr v-for="(pro,index) in pros" style="display: none" id="selPro">
+            <td><span>{{pro.proId}}</span></td>
+            <td>{{pro.proName}}</td>
+            <td>{{pro.proTypeId}}</td>
+            <td>{{pro.proBrandId}}</td>
+            <td>{{pro.downTime}}</td>
+            <td>{{pro.proState}}</td>
         </tr>
-        </tbody>
 
     </table>
 </div>
 
-<script src="../../js/jquery-3.4.1.js"></script>
-<script src="../../js/bootstrap.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package org.lanqiao.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.lanqiao.entity.Product;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +20,6 @@ public interface ProductMapper {
     Product selectByPrimaryKey(Integer proId);
 
     List<Product> selectByAll(Integer proId);
+
+    List<Product> selByName(String selName);
 }
