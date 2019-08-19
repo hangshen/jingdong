@@ -22,4 +22,6 @@ public interface ProductMapper {
     List<Product> selectByAll(Integer proId);
 
     List<Product> selByName(String selName);
+
+    int delPro(Integer proId);
 }

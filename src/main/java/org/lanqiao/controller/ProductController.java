@@ -30,6 +30,12 @@ public class ProductController {
             int len = selName.length();
             selName = selName.substring(1,len-1);
           selName = "%"+selName+"%";
+          System.out.println(selName);
           return productService.selByName(selName);
+    }
+    @RequestMapping("/delPro")
+    public int delPro(@RequestBody Integer proId){
+            System.out.println(proId);
+        return productService.delPro(proId);
     }
 }

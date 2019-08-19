@@ -12,7 +12,7 @@
     <script>
         $(function () {
             var vm;
-            var selName=$("#shuru").val();
+            var selName="";
             $.ajax({
                 url:"http://localhost:8080/selByName",
                 type: "post",
@@ -26,7 +26,22 @@
                     }
                     vm = new Vue({
                         el:"#biaoge",
-                        data:{pros:data}
+                        data:{pros:data},
+                        methods:{
+                            dele:function (index) {
+                                var proId = this.pros[index].proId;
+                                $.ajax({
+                                    url:"http://localhost:8080/delPro",
+                                    type: "post",
+                                    dataType: "json",
+                                    data:JSON.stringify(proId),
+                                    contentType: "application/json;charset-UTF-8",
+                                    success:function (data) {
+                                        location.reload();
+                                    }
+                                })
+                            }
+                        }
                     })
                 }
             })
@@ -102,15 +117,19 @@
             <th>品牌编号</th>
             <th>下架时间</th>
             <th>状态</th>
+            <th>操作</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tr v-for="(pro,index) in pros" style="display: none" id="selPro">
-            <td><span>{{pro.proId}}</span></td>
+            <td class="id">{{pro.proId}}</td>
             <td>{{pro.proName}}</td>
             <td>{{pro.proTypeId}}</td>
             <td>{{pro.proBrandId}}</td>
             <td>{{pro.downTime}}</td>
             <td>{{pro.proState}}</td>
+            <td><a href="#" id="update">修改</a></td>
+            <td ><a href="#" id="del" @click="dele(index)">删除</a></td>
         </tr>
 
     </table>

@@ -62,4 +62,7 @@ GROUP BY pro_id) and psv.pdsv_pdetail_id = pdetail_id
   <select id="selByName" resultMap="ProductResultMap" parameterType="java.lang.String">
     select * from product pro where pro_name like #{selName}
   </select>
+  <delete id="delPro" parameterType="java.lang.Integer">
+    delete from product where pro_id = #{proId,jdbcType=INTEGER}
+  </delete>
 </mapper>

@@ -11,4 +11,5 @@ public interface ProductService {
     public List<Product> selectByAll(Integer proId);
     public int insert(Product record);
     public List<Product> selByName(String selName);
+    int delPro(Integer proId);
 }

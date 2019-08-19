@@ -27,4 +27,8 @@ public class ProductServiceImpl implements ProductService{
     public List<Product> selByName(String selName){
         return productMapper.selByName(selName);
     }
+    @Override
+    public int delPro(Integer proId){
+        return productMapper.delPro(proId);
+    }
 }
