@@ -9,5 +9,9 @@ import java.util.List;
 public interface BrandService {
     List<Brand> getBrand();
     Brand checkBrand(String bradName);
+    List<Brand> getAllBrand();
+    List<Brand> findBrand(String bradName);
     int insertBrand(String bradName);
+    int deleteBrand(int brandId);
+    int updateBrand(Brand brand);
 }

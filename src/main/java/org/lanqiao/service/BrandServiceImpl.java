@@ -33,4 +33,26 @@ public class BrandServiceImpl implements BrandService {
         return brandMapper.insertBrand(brand);
     }
 
+    @Override
+    public List<Brand> getAllBrand(){
+        return brandMapper.getAllBrand();
+    }
+
+    @Override
+    public List<Brand> findBrand(String bradName){
+//        int len = bradName.length();
+//        bradName = bradName.substring(1, len - 1);
+        bradName = "%" + bradName + "%";
+        return brandMapper.findBrand(bradName);
+    }
+
+    @Override
+    public int deleteBrand(int brandId){
+        return brandMapper.deleteBrand(brandId);
+    }
+
+    @Override
+    public int updateBrand(Brand brand){
+        return brandMapper.updateBrand(brand);
+    }
 }
