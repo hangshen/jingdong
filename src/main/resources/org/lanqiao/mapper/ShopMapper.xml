@@ -13,7 +13,7 @@
    select * from shop s where pro_name like #{produce} or type_name like #{produce} or brad_name like #{produce}
   </select>
   <select id="findId" resultMap="ShopResultMap" parameterType="java.lang.String">
-   select pro_id  from shop s where pro_name = #{pname}
+   select pro_id  from product pro where pro_name = #{pname}
   </select>
 
 </mapper>

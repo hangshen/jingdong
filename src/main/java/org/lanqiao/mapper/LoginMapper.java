@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LoginMapper {
-//    int deleteByPrimaryKey(Integer loginId);
+    int deleteLogin(Integer userId);
 //
 //    int insert(Login record);
 //

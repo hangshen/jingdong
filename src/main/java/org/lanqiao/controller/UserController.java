@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.swing.plaf.synth.SynthUI;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -50,13 +51,28 @@ public class UserController {
         }
 
     }
+    @RequestMapping("deleteUserById")
+    public int deleteUserById(Integer userId) {
+        int flag = userService.deleteUserById(userId);
+        if(flag==1){
+            return loginService.deleteLogin(userId);
+        }else{
+            return 0;
+        }
 
-    public int deleteUserById(int id) {
-        return userService.deleteUseById(id);
     }
 
     public int updateUser(User user, String account) {
         Login login=loginService.selectByAccount(account);
         return userService.updateUser(user,login.getLoginId());
+    }
+
+    @RequestMapping("/getAllUser")
+    public List<User> getAllUser(){
+//        for(User u:  userService.getAllUser()){
+//            System.out.println(u.getUserId()+","+u.getUserName());
+//        }
+        System.out.println(1);
+        return userService.getAllUser();
     }
 }

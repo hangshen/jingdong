@@ -23,4 +23,16 @@ public class ProductServiceImpl implements ProductService{
     public int insert(Product record){
         return productMapper.insert(record);
     }
+    @Override
+    public List<Product> selByName(String selName){
+        return productMapper.selByName(selName);
+    }
+    @Override
+    public int delPro(Integer proId){
+        return productMapper.delPro(proId);
+    }
+    @Override
+    public int updatePro(Product record){
+        return productMapper.updatePro(record);
+    }
 }

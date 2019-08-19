@@ -10,4 +10,7 @@ public interface ProductService {
      public Product selectByPrimaryKey(Integer proId);
     public List<Product> selectByAll(Integer proId);
     public int insert(Product record);
+    public List<Product> selByName(String selName);
+    int delPro(Integer proId);
+    public int updatePro(Product record);
 }

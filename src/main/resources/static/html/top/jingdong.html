@@ -45,7 +45,7 @@
             if(i == imgs.length){
                 i = 0;
             }
-            $("#second_2 img").attr("src", "../images/settlementimages/" + imgs[i]);
+            $("#second_2 img").attr("src", "../../images/settlementimages/" + imgs[i]);
             setTimeout("changeImg()", 3000);
         };
 
@@ -133,11 +133,13 @@
         <div id="first_2_3">
             <div id="first_2_3_1">
                 <input name="key" type="text" style="width: 425px; height: 26px" id="i1">
-                <input name="find" type="button" value=" " style="width: 58px; height: 34px" id="i2">
+                <a href="/html/shophtml/search.html">
+                    <input name="find" type="button" value=" " style="width: 58px; height: 34px" id="i2">
+                </a>
             </div>
             <div id="first_2_3_2">
                 <ul>
-                    <a>
+                    <a href="/html/carthtml/cart.html">
                         <li class="s1"></li>
                         <li class="a1"><a href="../carthtml/cart.html">我的购物车</a></li>
                     </a>

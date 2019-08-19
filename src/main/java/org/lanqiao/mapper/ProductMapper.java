@@ -19,4 +19,9 @@ public interface ProductMapper {
     Product selectByPrimaryKey(Integer proId);
 
     List<Product> selectByAll(Integer proId);
+
+    List<Product> selByName(String selName);
+
+    int delPro(Integer proId);
+    int updatePro(Product record);
 }

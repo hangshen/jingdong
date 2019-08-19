@@ -19,14 +19,11 @@
         <li class="active"><a href="protype.html">商品种类管理</a></li>
         <li><a href="addprotype.html">添加商品种类</a></li>
         <li><a href="changeprotype.html">管理商品种类</a></li>
-        <li><a href="checkprotype.html">查询商品种类</a></li>
         <li class="active"><a href="probrand.html">商品品牌管理</a></li>
         <li><a href="addprobrand.html">添加商品品牌</a></li>
         <li><a href="changeprobrand.html">管理商品品牌</a></li>
-        <li><a href="checkprobrand.html">查询商品品牌</a></li>
         <li class="active"><a href="product.html">商品管理</a></li>
         <li><a href="addproduct.html">添加商品</a></li>
-        <li><a href="changeproduct.html">管理商品</a></li>
         <li><a href="checkproduct.html">查询商品</a></li>
         <li class="active"><a href="order.html">订单管理</a></li>
         <li><a href="checkorder.html">查看订单</a></li>
@@ -210,6 +207,7 @@
                 contentType: 'application/json;charset=UTF-8',
                 success:function (data) {
                     alert("添加成功！");
+                    location.reload();
                 }
             })
         }

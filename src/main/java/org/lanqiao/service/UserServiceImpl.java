@@ -5,6 +5,8 @@ import org.lanqiao.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -30,8 +32,12 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public int deleteUseById(int id) {
+    public int deleteUserById(int id) {
         return userMapper.deleteUserById(id);
     }
 
+    @Override
+    public List<User> getAllUser() {
+        return userMapper.getAllUser();
+    }
 }

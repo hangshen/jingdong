@@ -13,11 +13,10 @@
     <script>
             $(function() {
                 var pid=sessionStorage.getItem("id");
-                alert(pid);
                 var stock;
                 var num;
                 var proid=0;
-                var userId;
+                var userName;
                 var a = 0;
                 var b;
                 var c =0;
@@ -25,6 +24,13 @@
                 var option;
                 var l=0;
                 var vn;
+                userName=sessionStorage.getItem("userName");
+                if (userName != null)
+                {
+                    $("#log").html(userName);
+                }else {
+                    $("#log").html("你好请登录");
+                }
                 $.ajax({
                     url:"http://localhost:8080/seleOnePro",
                     dataType:"json",
@@ -42,6 +48,7 @@
                             b=data.standardsSet[i].standardsvalSet[0].stanValName;
                             option = {sd:a,sdv:b};
                             selectArr[i] = option;
+
                         }
                         // for(var i=0;i<data.standardsvalSet.length;i++){
                         //     stanval[i] = data.standardsvalSet[i].stanValName;
@@ -75,22 +82,28 @@
                                             }
                                         }
                                     }
-
-                                    for(var k in selectArr){
-                                        $(".dt6_pro2").eq(k).children().css("border","#999999 0.2px solid");
-                                        for(var t =0;t <=  $(".dt6_pro2").eq(k).children().length;t++){
-                                           if( $(".dt6_pro2").eq(k).children().eq(t).text()==selectArr[k].sdv){
-                                               $(".dt6_pro2").eq(k).children().eq(t).css("border","#E1251B 0.2px solid");
-
-                                               // for(var p=0;p < $(".dt6_pro2_i1").length;p++){
-                                               //     $(".dt6_pro2_1").eq(p).css("border","#999999 0.2px solid");
-                                               //     if( $(".dt6_pro2_i1").eq(p).text() == b){
-                                               //     }
-                                               // }
-
-                                           }
+                                    for(var p=0;p < $(".dt6_pro2_i1").length;p++){
+                                        $(".dt6_pro2_1").eq(p).css("border","#999999 0.5px solid");
+                                        if( $(".dt6_pro2_i1").eq(p).text() ==  b){
+                                            $(".dt6_pro2_1").eq(p).css("border","#E1251B 0.5px solid");
                                         }
                                     }
+
+                                    // for(var k in selectArr){
+                                    //     $(".dt6_pro2").eq(k).children().css("border","#999999 0.2px solid");
+                                    //     for(var t =0;t <=  $(".dt6_pro2").eq(k).children().length;t++){
+                                    //        if( $(".dt6_pro2").eq(k).children().eq(t).text()==selectArr[k].sdv){
+                                    //            $(".dt6_pro2").eq(k).children().eq(t).css("border","#E1251B 0.2px solid");
+                                    //            for(var p=0;p < $(".dt6_pro2_i1").length;p++){
+                                    //                $(".dt6_pro2_1").eq(p).css("border","#999999 0.2px solid");
+                                    //                if( $(".dt6_pro2_i1").eq(p).text() == b){
+                                    //                    $(".dt6_pro2").eq(k).children().eq(t).css("border","#E1251B 0.2px solid");
+                                    //                }
+                                    //            }
+                                    //
+                                    //        }
+                                    //     }
+                                    // }
                                 },
 
                                 Clipro:function (index,index1,index2) {
@@ -157,12 +170,7 @@
                         alert("错误2");//弹出错误信息
                     }
                 }),
-                // $("#dt6_pro2_1").click(function () {
-                //     debugger;
-                //     var css = $("#div").attr("style");
-                //     if (css.indexOf("border: #999999 0.2px solid")>=0)
-                //         $(this).css("border", "#E1251B 0.2px solid");
-                // }),
+                //  数量加减
                 $("#add").click(function () {
                     num = parseInt($("#buy-num").val());
                     if(num<stock){
@@ -197,13 +205,14 @@
                         data:JSON.stringify(record),
                         contentType: "application/json;charset-UTF-8",
                         success:function (data) {
-                            window.location = "/html/carthtml/cart.html";
+                            alert("已成功加入购物车");
                         },
                         error: function (msg) {//ajax请求失败后触发的方法
                             alert("错误3");//弹出错误信息
                         }
                     })
                 })
+                //分页
                 var pageNum=0;
                 var page = {
                     "proId":"",
@@ -277,7 +286,7 @@
             <div id="return">
                 <img src="../../images/productimages/shouye.png">
                 <div id="return_box">
-                    <a href="jdindex.html">京东首页</a>
+                    <a href="/html/top/jingdong.html">京东首页</a>
                 </div>
             </div>
             <div id="location">
@@ -291,10 +300,10 @@
             <div id="tabar1">
                 <ul>
                     <li id="dt1">
-                            <a href="#" id>
-                                <span class="dt1_li1">你好，请登录</span>
+                            <a href="/html/loginhtml/login.html" id>
+                                <span class="dt1_li1" id="log"></span>
                             </a>
-                            <a href="#">
+                            <a href="/html/loginhtml/register.html">
                                 <span class="dt1_li2">免费注册</span>
                             </a>
                     </li>
@@ -372,11 +381,13 @@
                         </li>
                     </ul>
                 </div>
-                <div class="buycart">
-                    <img src="../../images/productimages/cart.png" id="img_cart">
-                    <div class="mycart">我的购物车</div>
-                    <div id="pro_count">0</div>
-                </div>
+                <a href="/html/carthtml/cart.html">
+                    <div class="buycart">
+                        <img src="../../images/productimages/cart.png" id="img_cart">
+                        <div class="mycart">我的购物车</div>
+                        <div id="pro_count">0</div>
+                    </div>
+                </a>
             </div>
             <div id="tabar2">
                 <ul>
@@ -556,20 +567,20 @@
                 </div>
                 <div class="proInfo2_5_5"></div>
                 <div id="prostand" >
-                    <div v-for="(stan,index) in stans">
-                    <div id="proInfo2_5_6" v-for="(sd,index1) in stan.standardsSet">
-                        <div class="dt6_pro1">{{sd.stanName}}</div>
-                        <div class="dt6_pro2">
-                            <a class="dt6_pro2_a" v-for="(sdv,index2) in sd.standardsvalSet">
-                                <div class="dt6_pro2_1" @click="Clipro(index,index1,index2)">
-                                    <img src="../../images/productimages/product1.png">
-                                    <div class="dt6_pro2_i2" >
-                                        <div class="dt6_pro2_i1">{{sdv.stanValName}}</div>
+                    <div v-for="(stan,index) in stans" class="ccc">
+                        <div class="proInfo2_5_6" v-for="(sd,index1) in stan.standardsSet">
+                            <div class="dt6_pro1">{{sd.stanName}}</div>
+                            <div class="dt6_pro2">
+                                <a class="dt6_pro2_a" v-for="(sdv,index2) in sd.standardsvalSet">
+                                    <div class="dt6_pro2_1" @click="Clipro(index,index1,index2)">
+                                        <img src="../../images/productimages/product1.png">
+                                        <div class="dt6_pro2_i2" >
+                                            <div class="dt6_pro2_i1">{{sdv.stanValName}}</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
                 <div id="proInfo2_5_7">
@@ -611,7 +622,6 @@
             </div>
         </div>
         <div id="next">下一页</div>
-        <div class="pageNum">1</div>
         <div id="prev">上一页</div>
     </div>
     <div id="footer">

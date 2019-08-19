@@ -20,4 +20,12 @@ public class Brand {
     public void setBradName(String bradName) {
         this.bradName = bradName == null ? null : bradName.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Brand{" +
+                "brandId=" + brandId +
+                ", bradName='" + bradName + '\'' +
+                '}';
+    }
 }

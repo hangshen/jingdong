@@ -26,4 +26,9 @@ public class LoginServiceImpl implements LoginService {
         login.setLoginUserId(userId);
         return loginMapper.insertLogin(login);
     }
+
+    @Override
+    public int deleteLogin(Integer userId) {
+        return loginMapper.deleteLogin(userId);
+    }
 }

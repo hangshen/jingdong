@@ -72,7 +72,7 @@
 #logo{width: 277px;
 height: 50px;
 margin: 15px 0px 22px;
-  background-image: url("../../img/newlogo.png");}
+  background-image: url("../../images/cartimages/newlogo.png");}
 #search{width: 325.75px;
   height: 28px;
 float: right;
@@ -167,7 +167,7 @@ float: left}
 }
 #lianxikefu{width: 29px;
 height: 30px;
-background-image: url("../../img/111.png");
+background-image: url("../../images/cartimages/111.png");
 float: left;
 margin-left: 40px}
 #shop-coupon-btn{

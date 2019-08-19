@@ -57,16 +57,16 @@
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.StandardsVal" >
     update standardsval
-    <set >
-      <if test="stanValName != null" >
-        stan_val_name = #{stanValName,jdbcType=VARCHAR},
-      </if>
-      <if test="stanvalStanId != null" >
-        stanval_stan_id = #{stanvalStanId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where stan_val_id = #{stanValId,jdbcType=INTEGER}
-  </update>
+  <set >
+    <if test="stanValName != null" >
+      stan_val_name = #{stanValName,jdbcType=VARCHAR},
+    </if>
+    <if test="stanvalStanId != null" >
+      stanval_stan_id = #{stanvalStanId,jdbcType=INTEGER},
+    </if>
+  </set>
+  where stan_val_id = #{stanValId,jdbcType=INTEGER}
+</update>
   <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.StandardsVal" >
     update standardsval
     set stan_val_name = #{stanValName,jdbcType=VARCHAR},

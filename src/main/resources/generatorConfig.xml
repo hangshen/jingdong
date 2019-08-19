@@ -79,7 +79,7 @@
 <!--			   enableSelectByExample="false" enableUpdateByExample="false">-->
 <!--			<property name="useActualColumnNames" value="false" />-->
 <!--		</table>-->
-<!--		<table tableName="prodetail" domainObjectName="ProDetail"-->
+<!--		<table tableName="type" domainObjectName="TypeController"-->
 <!--			   enableCountByExample="false" enableDeleteByExample="false"-->
 <!--			   enableSelectByExample="false" enableUpdateByExample="false">-->
 <!--			<property name="useActualColumnNames" value="false" />-->
