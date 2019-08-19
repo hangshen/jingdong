@@ -19,4 +19,8 @@ public class ProductServiceImpl implements ProductService{
    public List<Product> selectByAll(Integer proId){
         return  productMapper.selectByAll(proId);
     }
+    @Override
+    public int insert(Product record){
+        return productMapper.insert(record);
+    }
 }

@@ -9,4 +9,5 @@ import java.util.List;
 public interface ProductService {
      public Product selectByPrimaryKey(Integer proId);
     public List<Product> selectByAll(Integer proId);
+    public int insert(Product record);
 }

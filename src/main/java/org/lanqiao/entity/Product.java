@@ -17,6 +17,7 @@ public class Product {
     private Date downTime;
 
     private String proState;
+    private Integer proUserId;
 
     private User user;
 
@@ -92,6 +93,14 @@ public class Product {
 
     public void setStandardsSet(Set<Standards> standardsSet) {
         this.standardsSet = standardsSet;
+    }
+
+    public Integer getProUserId() {
+        return proUserId;
+    }
+
+    public void setProUserId(Integer proUserId) {
+        this.proUserId = proUserId;
     }
 
     @Override

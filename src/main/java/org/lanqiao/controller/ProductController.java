@@ -20,4 +20,8 @@ public class ProductController {
         public List<Product> selectByAll(Integer proId) {
             return productService.selectByAll(proId);
         }
+    @RequestMapping("/insertPro")
+    public int insert(Product record){
+        return productService.insert(record);
+    }
 }
