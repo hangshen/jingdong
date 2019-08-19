@@ -29,7 +29,8 @@ ShopServiceInfo shopServiceInfo;
 @RequestMapping("/getId")
 public Product findId(String pname){
     return shopServiceInfo.findId(pname);
-}  @RequestMapping("/brand")
+}
+@RequestMapping("/brand")
     public  List<Brand> getbrand(){
         return  brandServiceInfo.getBrand();
     }
