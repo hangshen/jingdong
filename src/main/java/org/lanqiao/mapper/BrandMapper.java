@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface BrandMapper {
     List<Brand> getBrand();
+    Brand checkBrand(String bradName);
+    int insertBrand(Brand brand);
 }

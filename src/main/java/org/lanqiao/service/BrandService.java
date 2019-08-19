@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface Brandservice {
+public interface BrandService {
     List<Brand> getBrand();
+    Brand checkBrand(String bradName);
+    int insertBrand(String bradName);
 }
