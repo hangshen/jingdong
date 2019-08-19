@@ -108,7 +108,14 @@ public class Product {
         return "Product{" +
                 "proId=" + proId +
                 ", proName='" + proName + '\'' +
+                ", proTypeId=" + proTypeId +
+                ", proBrandId=" + proBrandId +
+                ", upTime=" + upTime +
+                ", downTime=" + downTime +
+                ", proState='" + proState + '\'' +
+                ", proUserId=" + proUserId +
                 ", user=" + user +
+                ", standardsSet=" + standardsSet +
                 '}';
     }
 }

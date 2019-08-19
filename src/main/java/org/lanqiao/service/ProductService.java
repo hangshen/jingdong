@@ -12,4 +12,5 @@ public interface ProductService {
     public int insert(Product record);
     public List<Product> selByName(String selName);
     int delPro(Integer proId);
+    public int updatePro(Product record);
 }

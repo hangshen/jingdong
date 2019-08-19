@@ -157,12 +157,7 @@
                         alert("错误2");//弹出错误信息
                     }
                 }),
-                // $("#dt6_pro2_1").click(function () {
-                //     debugger;
-                //     var css = $("#div").attr("style");
-                //     if (css.indexOf("border: #999999 0.2px solid")>=0)
-                //         $(this).css("border", "#E1251B 0.2px solid");
-                // }),
+                //  数量加减
                 $("#add").click(function () {
                     num = parseInt($("#buy-num").val());
                     if(num<stock){
@@ -204,6 +199,7 @@
                         }
                     })
                 })
+                //分页
                 var pageNum=0;
                 var page = {
                     "proId":"",

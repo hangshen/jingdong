@@ -38,4 +38,8 @@ public class ProductController {
             System.out.println(proId);
         return productService.delPro(proId);
     }
+    @RequestMapping("/updatePro")
+    public int updatePro(@RequestBody Product record){
+        return productService.updatePro(record);
+    }
 }

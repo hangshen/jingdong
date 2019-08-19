@@ -31,4 +31,8 @@ public class ProductServiceImpl implements ProductService{
     public int delPro(Integer proId){
         return productMapper.delPro(proId);
     }
+    @Override
+    public int updatePro(Product record){
+        return productMapper.updatePro(record);
+    }
 }

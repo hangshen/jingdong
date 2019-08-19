@@ -65,4 +65,11 @@ GROUP BY pro_id) and psv.pdsv_pdetail_id = pdetail_id
   <delete id="delPro" parameterType="java.lang.Integer">
     delete from product where pro_id = #{proId,jdbcType=INTEGER}
   </delete>
+  <update id="updatePro" parameterType="org.lanqiao.entity.Product">
+    update product
+    set
+    pro_name = #{proName,jdbcType=VARCHAR},
+        down_time = #{downTime,jdbcType=DATE},
+        pro_state = #{proState,jdbcType=VARCHAR} where pro_id = #{proId,jdbcType=INTEGER}
+  </update>
 </mapper>
