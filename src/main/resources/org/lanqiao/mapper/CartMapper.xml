@@ -18,58 +18,34 @@
         </association>
         <collection property="standardsVal" resultMap="StandardsValResultMap">
         </collection>
-        <collection property="images" resultMap="ImageResultMap">
-        </collection>
     </resultMap>
     <resultMap id="ProductResultMap" type="org.lanqiao.entity.Product">
         <id column="pro_id" property="proId" jdbcType="INTEGER" />
         <result column="pro_name" property="proName" jdbcType="VARCHAR" />
-        <result column="pro_type_id" property="proTypeId" jdbcType="INTEGER" />
-        <result column="pro_brand_id" property="proBrandId" jdbcType="INTEGER" />
-        <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
-        <result column="down_time" property="downTime" jdbcType="DATE" />
-        <result column="pro_state" property="proState" jdbcType="VARCHAR" />
         <association property="user" resultMap="UserResultMap">
         </association>
     </resultMap>
     <resultMap id="UserResultMap" type="org.lanqiao.entity.User">
-        <id column="user_id" property="userId" jdbcType="INTEGER" />
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
-        <result column="sex" property="sex" jdbcType="VARCHAR" />
-        <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
-        <result column="phone" property="phone" jdbcType="VARCHAR" />
-        <result column="email" property="email" jdbcType="VARCHAR" />
-        <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-        <result column="user_type" property="userType" jdbcType="VARCHAR" />
-        <result column="user_pid" property="userPid" jdbcType="VARCHAR" />
     </resultMap>
     <resultMap id="StandardsValResultMap" type="org.lanqiao.entity.StandardsVal">
-        <id column="stan_val_id" property="stanValId" jdbcType="INTEGER" />
         <result column="stan_val_name" property="stanValName" jdbcType="VARCHAR" />
-        <result column="stanval_stan_id" property="stanvalStanId" jdbcType="INTEGER" />
         <association property="standards" resultMap="StandardsResultMap">
         </association>
     </resultMap>
     <resultMap id="StandardsResultMap" type="org.lanqiao.entity.Standards">
-        <id column="stan_id" property="stanId" jdbcType="INTEGER" />
         <result column="stan_name" property="stanName" jdbcType="VARCHAR" />
-    </resultMap>
-    <resultMap id="ImageResultMap" type="org.lanqiao.entity.Image">
-        <id column="image_id" jdbcType="INTEGER" property="imageId" />
-        <result column="img_psv_id" jdbcType="INTEGER" property="imgPsvId" />
-        <result column="img_path" jdbcType="VARCHAR" property="imgPath" />
-        <result column="img_flag" jdbcType="INTEGER" property="imgFlag" />
     </resultMap>
     <sql id="Base_Column_List">
     cart_id, car_pro_num, add_time, cart_flag, car_user_id, car_prode_id
   </sql>
     <select id="selectByPrimaryKey" resultMap="CartResultMap" parameterType="java.lang.Integer">
     select u.user_name, p.pro_id, p.pro_name, pd.pro_price, c.car_pro_num, pd.stock, s.stan_name, sv.
-    stan_val_name, i.img_path, i.img_flag from cart c, prodetail pd, product p, user u, standardsval sv,
-    prodtlstanval pdsv, standards s, image i where c.car_prode_id = pd.pdetail_id and pd.dtl_pro_id
+    stan_val_name, pd.pdetail_id from cart c, prodetail pd, product p, user u, standardsval sv,
+    prodtlstanval pdsv, standards s where c.car_prode_id = pd.pdetail_id and pd.dtl_pro_id
     = p.pro_id and p.pro_user_id = u.user_id and pdsv.pdsv_pdetail_id = pd.pdetail_id and
     pdsv.pdsv_stan_val_id = sv.stan_val_id and sv.stanval_stan_id = s.stan_id and c.
-    cart_flag = 1 and i.img_psv_id = pd.pdetail_id;
+    cart_flag = 1 and c.car_user_id = #{userId,jdbcType=INTEGER};
   </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from cart

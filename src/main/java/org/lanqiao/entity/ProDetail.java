@@ -1,6 +1,7 @@
 package org.lanqiao.entity;
 
 import java.util.List;
+import java.util.Set;
 
 public class ProDetail {
     private Integer pdetailId;
@@ -15,7 +16,6 @@ public class ProDetail {
 
     private List<StandardsVal> standardsVal;
 
-    private List<Image> images;
 
     public Integer getPdetailId() {
         return pdetailId;
@@ -57,14 +57,6 @@ public class ProDetail {
         this.standardsVal = standardsVal;
     }
 
-    public List<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Image> images) {
-        this.images = images;
-    }
-
     public Integer getDtlProId() {
         return dtlProId;
     }
@@ -81,7 +73,6 @@ public class ProDetail {
                 ", proPrice=" + proPrice +
                 ", stock=" + stock +
                 ", standardsVal=" + standardsVal +
-                ", images=" + images +
                 '}';
     }
 }
