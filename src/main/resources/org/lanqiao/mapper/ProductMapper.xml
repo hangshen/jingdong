@@ -57,6 +57,6 @@ GROUP BY pro_id) and psv.pdsv_pdetail_id = pdetail_id
   </select>
   <insert id="insert" parameterType="org.lanqiao.entity.Product">
       insert into product (pro_name, pro_type_id, pro_brand_id, down_time, pro_state,pro_user_id ) values
-      (#{proName,jdbcType=INTEGER}, #{proTypeId,jdbcType=INTEGER}, #{proBrandId,jdbcType=DOUBLE}, #{downTime,jdbcType=INTEGER}, #{proState,jdbcType=INTEGER},#{proUserId,jdbcType=INTEGER})
+      (#{proName,jdbcType=VARCHAR}, #{proTypeId,jdbcType=INTEGER}, #{proBrandId,jdbcType=INTEGER}, #{downTime,jdbcType=DATE}, #{proState,jdbcType=VARCHAR},#{proUserId,jdbcType=INTEGER})
   </insert>
 </mapper>

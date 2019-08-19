@@ -3,6 +3,7 @@ package org.lanqiao.controller;
 import org.lanqiao.entity.Product;
 import org.lanqiao.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class ProductController {
             return productService.selectByAll(proId);
         }
     @RequestMapping("/insertPro")
-    public int insert(Product record){
+    public int insert(@RequestBody Product record){
         return productService.insert(record);
     }
 }
