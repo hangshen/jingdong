@@ -19,7 +19,7 @@
     </ul>
     <ul id="m_right">
       <li id="icon-plus-nickname"></li>
-      <li id="m_right_first"><a>踩蘑菇的男孩</a><span class="red"><i class="iconfont"></i></span></li>
+      <li id="m_right_first"><a id="liA4">踩蘑菇的男孩</a><span class="red"><i class="iconfont"></i></span></li>
       <li class="spacer"></li>
       <li class="dt"><a>我的订单</a></li>
       <li class="spacer"></li>
@@ -135,7 +135,7 @@
           <span class="price_four">-¥0.00</span>
         </div>
         <div class="pay">
-          <span class="pay_text"  @click="add()">去结算</span>
+          <span class="pay_text"  @click="add()"><a href="../jiesuanhtml/settlement.html">去结算</a></span>
         </div>
       </div>
     </div>
@@ -252,13 +252,22 @@
 <script src="../../js/cartjs/vue.min.js"></script>
 
 <script>
+    var userId;
+    window.onload=function () {
+        document.getElementById("liA4").innerText = sessionStorage.getItem("userName");
+        userId = sessionStorage.getItem("userId");
+        var userName=sessionStorage.getItem("userName");
+        sessionStorage.setItem("userName",userName);
+        sessionStorage.setItem("userId",userId);
+        // alert(sessionStorage.getItem('userName'));
+    }
   var vm = new Vue();
   $(function () {
    $.ajax({
-     url:"http://localhost:8080/Cart/GetCartInformation",
+     url:"http://localhost:8080/get/all/cart",
      type:"post",
        data:{
-         "userId":1,
+         "userId":userId,
        },
      dataType:"json",
      success:function (data) {
@@ -310,7 +319,6 @@
                },
 
              add: function () {
-               alert(1);
                var cartAdd=function(cartId,carProNum){
                  this.cartId = cartId;
                  this.carProNum=carProNum;

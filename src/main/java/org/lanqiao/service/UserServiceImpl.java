@@ -13,6 +13,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User selectByPhone(String phone) {
+
         return userMapper.selectByPhone(phone);
     }
 
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int insertUser(User user) {
+        System.out.println(user);
         return userMapper.insertUser(user);
     }
 

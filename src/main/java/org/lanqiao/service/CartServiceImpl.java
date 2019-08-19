@@ -35,4 +35,9 @@ public class CartServiceImpl implements CartService {
     public int insert(Cart record){
         return cartMapper.insert(record);
     }
+
+    @Override
+    public List<Cart> getAllCart(Integer userId) {
+        return cartMapper.getAllCart(userId);
+    }
 }

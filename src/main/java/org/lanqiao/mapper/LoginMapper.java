@@ -19,7 +19,7 @@ public interface LoginMapper {
 
 
     Login selectByAccount(String account);
-    int insertLogin(String account, String password, Integer userId);
+    int insertLogin(Login login);
 
     int updatePassword(String oldPassword, String newPassword, String reNewPassword, String account);
 }

@@ -14,6 +14,7 @@ public class Cart {
     private Integer carUserId;
 
     private ProDetail proDetail;
+
     private Integer carProdeId;
 
     public Integer getCartId() {

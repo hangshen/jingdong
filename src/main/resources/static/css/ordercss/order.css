@@ -176,7 +176,7 @@ a:hover{
     padding: 7px 0;
 }
 
-.nickname{
+#nickname{
     display: block;
     float: left;
     width: 70px;

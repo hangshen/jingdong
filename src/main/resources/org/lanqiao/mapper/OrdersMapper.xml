@@ -10,7 +10,7 @@
     <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
     <result column="pay_time" property="payTime" jdbcType="DATE" />
     <result column="or_add_id" property="orAddId" jdbcType="INTEGER" />
-    <!--<result column="or_user_id" property="orUserId" jdbcType="INTEGER" />-->
+    <result column="or_user_id" property="orUserId" jdbcType="INTEGER" />
     <association property="user" resultMap="UserResultMap"></association>
     <association property="address" resultMap="AddressResultMap"></association>
     <collection property="orderDetailSet" resultMap="OrderDetailResultMap"></collection>

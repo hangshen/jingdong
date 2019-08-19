@@ -9,7 +9,7 @@ public class StandardsVal {
 
     private Standards standards;
 
-    private Set<ProDetail> proDetailSet;
+//    private Set<ProDetail> proDetailSet;
 
     public Integer getStanValId() {
         return stanValId;
@@ -35,13 +35,13 @@ public class StandardsVal {
         this.standards = standards;
     }
 
-    public Set<ProDetail> getProDetailSet() {
-        return proDetailSet;
-    }
-
-    public void setProDetailSet(Set<ProDetail> proDetailSet) {
-        this.proDetailSet = proDetailSet;
-    }
+//    public Set<ProDetail> getProDetailSet() {
+//        return proDetailSet;
+//    }
+//
+//    public void setProDetailSet(Set<ProDetail> proDetailSet) {
+//        this.proDetailSet = proDetailSet;
+//    }
 
     @Override
     public String toString() {

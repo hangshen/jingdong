@@ -20,6 +20,10 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public int insertLogin(String account,String password,Integer userId) {
-        return loginMapper.insertLogin(account,password,userId);
+        Login login=new Login();
+        login.setAccountNum(account);
+        login.setPassword(password);
+        login.setLoginUserId(userId);
+        return loginMapper.insertLogin(login);
     }
 }

@@ -47,13 +47,27 @@
             }
             $("#second_2 img").attr("src", "../images/settlementimages/" + imgs[i]);
             setTimeout("changeImg()", 3000);
-        }
+        };
+
+        $(function () {
+            $("#i2").click(function () {
+                var p = $("#i1").val();
+                if( p !=""){
+                    sessionStorage.setItem("p",p);
+                    window.location.href="../shophtml/search.html";
+                }
+            })
+        })
+
+
     </script>
     <script>
         window.onload=function () {
             document.getElementById("liA4").innerText = sessionStorage.getItem("userName");
             var userId = sessionStorage.getItem("userId");
             sessionStorage.setItem("userId",userId);
+            var userName=sessionStorage.getItem("userName");
+            sessionStorage.setItem("userName",userName);
             // alert(sessionStorage.getItem('userName'));
         }
     </script>
@@ -75,7 +89,7 @@
                     <li class="a4" ><a id="liA4" href="../loginhtml/login.html">你好，请登录</a></li>
                     <li class="a5"><a class="a1" href="../loginhtml/reRegister.html">免费注册</a></li>
                     <li class="f1"></li>
-                    <li class="a5"><a>我的订单</a></li>
+                    <li class="a5"><a href="../orderhtml/order.html">我的订单</a></li>
                     <li class="f1"></li>
                     <li class="a6"><a>
                         <div class="f2">
@@ -125,7 +139,7 @@
                 <ul>
                     <a>
                         <li class="s1"></li>
-                        <li class="a1">我的购物车</li>
+                        <li class="a1"><a href="../carthtml/cart.html">我的购物车</a></li>
                     </a>
                 </ul>
             </div>

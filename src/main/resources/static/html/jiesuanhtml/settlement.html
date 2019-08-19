@@ -21,7 +21,7 @@
                     <li class="map"></li>
                     <li>福建</li>
                 </ul>
-            </a>
+            </a>新增收货地址
         </div>
         <div id="first_1_2">
             <ul>
@@ -179,11 +179,11 @@
                                         <div class="third_2_7_2_2_4" v-if="pro.proDetail.stock > 0">有货</div>
                                         <div class="third_2_7_2_2_4" v-else>无货</div>
                                     </div>
-                                    <div v-for="(stan, index3) in pro.proDetail.standardsVal">
-                                        <div class="third_2_7_2_2_5"><span>{{stan.standards.stanName}}：</span>{{stan.stanValName}}
-                                        </div>
-                                        <br>
-                                    </div>
+                                    <!--<div v-for="(stan, index3) in pro.proDetail.standardsVal">-->
+                                        <!--<div class="third_2_7_2_2_5"><span>{{stan.standards.stanName}}：</span>{{stan.stanValName}}-->
+                                        <!--</div>-->
+                                        <!--<br>-->
+                                    <!--</div>-->
                                     <div id="third_2_7_2_2_6">
                                         <img src="../../images/settlementimages/xx.png">
                                         支持7天无理由退货（使用后不支持）
@@ -391,6 +391,7 @@
 <script src="../../js/jquery.validate.regex.js" type="application/javascript"></script>
 
 <script>
+
     $(function ($) {
         //弹出登录
         $("#tanchuang").hover(function () {
@@ -430,6 +431,16 @@
 </script>
 
 <script>
+    var userId;
+    window.onload=function () {
+        userId = sessionStorage.getItem("userId");
+        var userName=sessionStorage.getItem("userName");
+        sessionStorage.setItem("userName",userName);
+        sessionStorage.setItem("userId",userId);
+        alert(userId);
+        // alert(sessionStorage.getItem('userName'));
+    }
+
     $(function () {
 
         var temp_total;
@@ -442,7 +453,7 @@
         $.ajax({
             url: "http://localhost:8080/Address/getAddress",
             type: "post",
-            data: {userId: 1},
+            data: {userId: userId},
             dataType: "json",
             success: function (data) {
                 temp_add = data;
@@ -464,7 +475,7 @@
                             if(red1 != i){
                                 $(".third_2_2_1").eq(i).css("border","#FF0000 2px solid")
                                 $(".third_2_2_1").eq(red1).css("border","#E3E4E5 1px solid")
-                                $(".third_2_2_1").eq(i).append("<img src=\"../images/settlementimages/ss.png\" id = \"T\">");
+                                $(".third_2_2_1").eq(i).append("<img src=\"../../images/settlementimages/ss.png\" id = \"T\">");
                                 $(".third_2_2_1").eq(red1).children().remove("#T");
                                 mv6.adds = data[i];
                                 red1 = i;
@@ -495,7 +506,7 @@
         $.ajax({
             url:"http://localhost:8080/Cart/GetCartInformation",
             type:"post",
-            data:{userId:1},
+            data:{userId:userId},
             dataType:"json",
             success:function (data) {
                 var mv3 = new Vue({
@@ -558,7 +569,7 @@
                 this.orAddId = orAddId;
                 this.orUserId = orUserId;
             }
-            var orders = new order($(".third_2_7_1_1").eq(red2).text(), "在线支付", temp_total, temp_add[red1].addressId, 1);
+            var orders = new order($(".third_2_7_1_1").eq(red2).text(), "在线支付", temp_total, temp_add[red1].addressId, userId);
             $.ajax({
                 url: "http://localhost:8080/Orders/CreateOrders",
                 type: "post",
@@ -668,7 +679,7 @@
                     this.addUserId = addUserId;
                 }
                 var temp_address = new address($("input[name = 'rname']").val(), $("input[name = 'rphone']").val(), $("input[name = 'sheng']").val(),
-                    $("input[name = 'shi']").val(), $("input[name = 'qu']").val(), $("input[name = 'addde']").val(), 1);
+                    $("input[name = 'shi']").val(), $("input[name = 'qu']").val(), $("input[name = 'addde']").val(), userId);
                 $.ajax({
                     url:"http://localhost:8080/Address/createAddress",
                     type: "post",

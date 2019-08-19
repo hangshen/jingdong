@@ -7,7 +7,7 @@ public class Standards {
 
     private String stanName;
 
-    private Set<StandardsVal> standardsvalSet;
+//    private Set<StandardsVal> standardsvalSet;
 
 
     public Integer getStanId() {
@@ -26,13 +26,13 @@ public class Standards {
         this.stanName = stanName == null ? null : stanName.trim();
     }
 
-    public Set<StandardsVal> getStandardsvalSet() {
-        return standardsvalSet;
-    }
-
-    public void setStandardsvalSet(Set<StandardsVal> standardsvalSet) {
-        this.standardsvalSet = standardsvalSet;
-    }
+//    public Set<StandardsVal> getStandardsvalSet() {
+//        return standardsvalSet;
+//    }
+//
+//    public void setStandardsvalSet(Set<StandardsVal> standardsvalSet) {
+//        this.standardsvalSet = standardsvalSet;
+//    }
 
     @Override
     public String toString() {

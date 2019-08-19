@@ -36,7 +36,7 @@
                 <i class="iconfont">
                     <img src="../../images/orderimages/home.png">
                 </i>
-                <a href="">京东首页</a>
+                <a href="../top/jingdong.html">京东首页</a>
             </li>
             <li class="dorpdown">
                 <div class="dor_address">
@@ -50,7 +50,7 @@
         <ul class="fr">
             <li class="fore1_dorpdown">
                 <div class="cw-icon">
-                    <a class="nickname" href="">j_nibdsfac</a>
+                    <a id="nickname" href="">j_nibdsfac</a>
                     <i class="iconfont">
                         <img src="../../images/orderimages/drop.png">
                     </i>
@@ -650,10 +650,20 @@
 <script src="../../js/jquery.validate.js" type="application/javascript"></script>
 <script src="../../js/jquery.validate.regex.js" type="application/javascript"></script>
 <script src="../../js/vue.min.js"></script>
+
 <script>
+    var userId;
+    window.onload=function () {
+        document.getElementById("nickname").innerText = sessionStorage.getItem("userName");
+        userId = sessionStorage.getItem("userId");
+        sessionStorage.setItem("userId",userId);
+        // alert(sessionStorage.getItem('userName'));
+    }
     var vm = new Vue();
+
     //页面选择
     $(function () {
+
         var s = location.search.substring(1);
         if(s == "2"){
             var x=document.getElementById("t2");
@@ -694,12 +704,14 @@
             data:{
                 "pageNum":1,
                 "pageSize":4,
-                'userId':1,
+                'userId':userId,
                 'orderState':state,
             },
             dataType:"json",
             success:function (data) {
-                var lan = data[0].pageNum;
+                if(data.length != "0"){
+                    var lan = data[0].pageNum;
+                }
                 for(var i = 0;i<data.length;i++){
                     data[i].orderTime=data[i].orderTime.substring(0,10)+" "+data[i].orderTime.substring(12,19);
                 }
@@ -766,7 +778,7 @@
                                     data:{
                                         "pageNum":$(".pagenum").text(),
                                         "pageSize":4,
-                                        "userId":1,
+                                        "userId":userId,
                                         'orderState':state,
                                     },
                                     dataType:"json",
@@ -788,7 +800,7 @@
                                     data:{
                                         "pageNum":$(".pagenum").text(),
                                         "pageSize":4,
-                                        "userId":1,
+                                        "userId":userId,
                                         'orderState':state,
                                     },
                                     dataType:"json",
@@ -819,11 +831,13 @@
             data:{
                 "pageNum":1,
                 "pageSize":4,
-                "userId":1,
+                "userId":userId,
             },
             dataType:"json",
             success:function (data) {
-                var lan = data[0].pageNum;
+                if(data.length != "0"){
+                    var lan = data[0].pageNum;
+                }
                 for(var i = 0;i<data.length;i++){
                     data[i].orderTime=data[i].orderTime.substring(0,10)+" "+data[i].orderTime.substring(12,19);
                 }
@@ -883,7 +897,7 @@
                                     data:{
                                         "pageNum":$(".pagenum").text(),
                                         "pageSize":4,
-                                        "userId":1,
+                                        "userId":userId,
                                     },
                                     dataType:"json",
                                     success:function (data) {
@@ -904,7 +918,7 @@
                                     data:{
                                         "pageNum":$(".pagenum").text(),
                                         "pageSize":4,
-                                        "userId":1,
+                                        "userId":userId,
                                     },
                                     dataType:"json",
                                     success:function (data) {

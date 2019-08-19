@@ -29,8 +29,8 @@
 <!--    =================================添加登录用户====================================-->
     <insert id="insertLogin" parameterType="org.lanqiao.entity.Login">
     insert into login (account_num, password,login_user_id)
-    values (#{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
-      #{userId,jdbcType=INTEGER})
+    values (#{accountNum,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{loginUserId,jdbcType=INTEGER})
   </insert>
 
 <!--    <insert id="insertSelective" parameterType="org.lanqiao.entity.Login">-->

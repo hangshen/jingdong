@@ -3,6 +3,7 @@ package org.lanqiao.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class User {
@@ -106,5 +107,21 @@ public class User {
 
     public void setLove(byte[] love) {
         this.love = love;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday=" + birthday +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", createDate=" + createDate +
+                ", userType='" + userType + '\'' +
+                ", userPid='" + userPid + '\'' +
+                ", love=" + Arrays.toString(love) +
+                '}';
     }
 }

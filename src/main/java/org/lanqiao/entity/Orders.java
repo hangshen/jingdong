@@ -24,7 +24,7 @@ public class Orders {
 
     private Integer orAddId;
 
-//    private Integer orUserId;
+    private Integer orUserId;
 
     private User user;
 
@@ -146,4 +146,11 @@ public class Orders {
         this.pageNum = pageNum;
     }
 
+    public Integer getOrUserId() {
+        return orUserId;
+    }
+
+    public void setOrUserId(Integer orUserId) {
+        this.orUserId = orUserId;
+    }
 }

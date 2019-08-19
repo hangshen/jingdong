@@ -14,4 +14,6 @@ public interface CartService {
     public Integer getProAdd(List<Cart> cartId);
 
     public int insert(Cart record);
+
+    public List<Cart> getAllCart(Integer userId);
 }

@@ -21,6 +21,9 @@ public class CartController {
     }
     @RequestMapping("/add")
     public Integer getProAdd(@RequestBody List<Cart> cartId){
+        for (Cart ct:cartId) {
+            ct.getCarProNum();
+        }
         return cartService.getProAdd(cartId);
     }
 
@@ -30,5 +33,10 @@ public class CartController {
     @RequestMapping("/insertToCart")
     public int insert(@RequestBody Cart record){
         return cartService.insert(record);
+    }
+
+    @RequestMapping("/get/all/cart")
+    public List<Cart> getAllCar(Integer userId){
+        return cartService.getAllCart(userId);
     }
 }

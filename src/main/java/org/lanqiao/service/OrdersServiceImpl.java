@@ -42,8 +42,7 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public List<Orders> getUserOrders(Integer userId, String orderState,Integer pageNum,Integer pageSize) {
-
-
+        System.out.println(orderState);
         if(orderState.equals("待付款") || orderState.equals("待收货")){
             String str = "等" +orderState;
             List<Orders> orders=ordersMapper.getUserOrders(userId,str);

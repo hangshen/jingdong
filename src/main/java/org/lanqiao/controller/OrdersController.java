@@ -28,22 +28,19 @@ public class OrdersController {
     }
 
     @RequestMapping("/get/user/state/order")
-    public List<Orders> getUserOrders(int userId, String orderState,int pageNum,int pageSize)
-    {
+    public List<Orders> getUserOrders(int userId, String orderState,int pageNum,int pageSize) {
+        System.out.println(orderState);
         return ordersService.getUserOrders(userId,orderState,pageNum,pageSize);
     }
-
     @RequestMapping("/get/user/all/order")
     public List<Orders> getAllOrders(int userId,int pageNum,int pageSize){
-        System.out.println(userId);
+        System.out.println(userId+" "+pageNum+" "+pageSize);
         return ordersService.getAllOrders(userId,pageNum,pageSize);
     }
-
     @RequestMapping("delete/user/order")
     public int deleteOrder(int orderId){
         return ordersService.deleteOrder(orderId);
     }
-
     @RequestMapping("update/order")
     public int updateOrder(Orders orders){
         System.out.println(orders.getOrderId() +" "+orders.getOrderState()+" "+ orders.getOrAddId());

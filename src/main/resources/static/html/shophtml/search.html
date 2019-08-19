@@ -26,7 +26,7 @@
             </div>
             <div id="find2">
                 <ul id="m_find">
-                    <li class="deng"><a>你好，请登录</a></li>
+                    <li class="deng"><a id="liA4" href="../loginhtml/login.html">你好，请登录</a></li>
                     <li class="register">免费注册</li>
                     <li class="spacer"></li>
                     <li class="dt"><a>我的订单</a></li>
@@ -237,7 +237,7 @@
 
             <div id="shopshow">
                 <div class="s_s" id="s1" v-for="(pro, index1) in pro">
-                    <div class="s_s1"><img src={{pro.imgPath}}></div>
+                    <div class="s_s1"><img src="../../images/shopimages/shopvv.png"></div>
                     <div class="s_s2"><p class="s_s2font">￥{{pro.price}}</p></div>
                     <div class="s_s3"><a class="s" @click="getId(index1)">{{pro.proName}}</a></div>
                     <div class="s_s4"><p>7.1万+评论</p></div>
@@ -274,8 +274,18 @@
 
 <script src="../../js/shopjs/vue.min.js"></script>
 <script>
-    var p = sessionStorage.getItem("p");
+    var userId;
+    var p;
+    window.onload=function () {
+        document.getElementById("liA4").innerText = sessionStorage.getItem("userName");
+        userId = sessionStorage.getItem("userId");
+        p = sessionStorage.getItem("p");
+        sessionStorage.setItem("userId",userId);
+
+        // alert(sessionStorage.getItem('userName'));
+    }
     var msg = document.getElementById('sear1_1');
+
     var mv1 = new Vue();
     $(function () {
         $.ajax({
@@ -283,7 +293,6 @@
             type: "post",
             dataType: "json",
             success: function (data) {
-                alert(data),
                     mv2 =new Vue({
                         el: "#brand2",
                         data:{brand:data},
@@ -313,8 +322,7 @@
                                     data: {"pname": $(".s").eq(i).text()},
                                     dataType: "json",
                                     success: function (data) {
-                                        alert(data);
-                                        setp:sessionStorage.setItem("id",data);
+                                        setp:sessionStorage.setItem("id",data[0].proId);
                                         window.location = "/html/producthtml/jdproduct.html"
                                     },
                                     error: function () {
