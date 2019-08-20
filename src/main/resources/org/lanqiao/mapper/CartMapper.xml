@@ -56,4 +56,10 @@
      #{carUserId,jdbcType=INTEGER}, #{carProdeId,jdbcType=INTEGER},#{cartFlag,jdbcType=INTEGER}
       )
   </insert>
+
+    <select id="getAllCart" resultMap="CartResultMap" parameterType="java.lang.Integer">
+
+select * from cart c,prodetail pt,product p,type t where p.pro_type_id=t.type_id AND pt.dtl_pro_id=p.pro_id and c.car_prode_id=pt.pdetail_id and c.car_user_id = #{userId};
+
+  </select>
 </mapper>

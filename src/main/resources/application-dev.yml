@@ -16,3 +16,4 @@ logging:
     org:
       lanqiao:
         mapper: debug
+

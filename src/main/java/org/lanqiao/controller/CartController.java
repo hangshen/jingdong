@@ -37,6 +37,7 @@ public class CartController {
 
     @RequestMapping("/get/all/cart")
     public List<Cart> getAllCar(Integer userId){
+        System.out.println(userId);
         return cartService.getAllCart(userId);
     }
 }
