@@ -84,5 +84,7 @@
 <!--			   enableSelectByExample="false" enableUpdateByExample="false">-->
 <!--			<property name="useActualColumnNames" value="false" />-->
 <!--		</table>-->
+
+
 	</context>
 </generatorConfiguration>

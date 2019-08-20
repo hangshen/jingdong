@@ -33,7 +33,7 @@ public class Test {
 
         CartMapper cartMapper = session.getMapper(CartMapper.class);
 
-        System.out.println(cartMapper.selectByPrimaryKey(42));
+        System.out.println(cartMapper.getAllCart(1));
 
     }
 }

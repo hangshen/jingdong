@@ -10,6 +10,7 @@
     <script src="../../js/productjs/jquery.js"></script>
     <script src="../../js/productjs/jquery.validate.min.js"></script>
     <script src="../../js/productjs/vue.min.js"></script>
+    <script src="../../js/productjs/layer.js"></script>
     <script>
             $(function() {
                 var pid=sessionStorage.getItem("id");
@@ -42,7 +43,6 @@
                         $("#proInfo2_4_1_3").html(data.standardsSet[0].standardsvalSet[0].proDetailSet[0].proPrice);
                         $("#ul2_2").html(data.user.userName);
                         proid = data.standardsSet[0].standardsvalSet[0].proDetailSet[0].pdetailId;
-                        userId = data.user.userId;
                         stock = data.standardsSet[0].standardsvalSet[0].proDetailSet[0].stock;
                         for(var i in data.standardsSet){
                             a = data.standardsSet[i].stanName;
